@@ -1,0 +1,150 @@
+{
+    "version": 1,
+
+    "months": {
+
+        "2026-08": {
+
+            "name": "Agosto",
+            "year": 2026,
+
+            "totalBalance": 17050.32,
+
+            "accounts": {
+
+                "nubank": {
+
+                    "name": "Nubank",
+                    "type": "Conta",
+                    "initialBalance": 7800,
+                    "balance": 8240.32
+
+                },
+
+                "itau": {
+
+                    "name": "Itaú",
+                    "type": "Conta",
+                    "initialBalance": 6200,
+                    "balance": 6810
+
+                },
+
+                "mercado-pago": {
+
+                    "name": "Mercado Pago",
+                    "type": "Conta",
+                    "initialBalance": 2000,
+                    "balance": 2000
+
+                }
+
+            },
+
+
+            "transactions": [
+
+                {
+
+                    "id": "20260805-001",
+                    "date": "05 AGO",
+                    "description": "Salário",
+                    "group": "Salário",
+                    "account": "Nubank",
+                    "type": "income",
+                    "amount": 4500
+
+                },
+
+                {
+
+                    "id": "20260808-001",
+                    "date": "08 AGO",
+                    "description": "Mercado",
+                    "group": "Alimentação",
+                    "account": "Nubank",
+                    "type": "expense",
+                    "amount": 320.40
+
+                },
+
+                {
+
+                    "id": "20260810-001",
+                    "date": "10 AGO",
+                    "description": "Combustível",
+                    "group": "Transporte",
+                    "account": "Itaú",
+                    "type": "expense",
+                    "amount": 180
+
+                },
+
+                {
+
+                    "id": "20260812-001",
+                    "date": "12 AGO",
+                    "description": "Compra online",
+                    "group": "Compras",
+                    "account": "Itaú",
+                    "type": "expense",
+                    "amount": 450
+
+                },
+
+                {
+
+                    "id": "20260816-001",
+                    "date": "16 AGO",
+                    "description": "Freelance",
+                    "group": "Renda extra",
+                    "account": "Mercado Pago",
+                    "type": "income",
+                    "amount": 850
+
+                }
+
+            ],
+
+
+            "summary": {
+
+                "income": 5350,
+                "expenses": 950,
+                "result": 4400
+
+            },
+
+
+            "categories": [
+
+                {
+                    "name": "Alimentação",
+                    "value": 320.40
+                },
+
+                {
+                    "name": "Transporte",
+                    "value": 180
+                },
+
+                {
+                    "name": "Compras",
+                    "value": 450
+                }
+
+            ],
+
+
+            "credit": {
+
+                "month": "Setembro 2026",
+                "value": 1420
+
+            }
+
+        }
+
+    }
+
+}

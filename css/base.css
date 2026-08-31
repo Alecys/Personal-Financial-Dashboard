@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+
+}
+
+
+button,
+input,
+select {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+
+    outline: 1px solid var(--border-light);
+
+    outline-offset: 2px;
+
+}
+
+
+h1,
+h2,
+h3,
+p {
+
+    margin: 0;
+
+}
+
+
+.hidden {
+
+    display: none !important;
+
+}
