@@ -63,6 +63,8 @@
 
     border-radius: 11px;
 
+    color: var(--text);
+
     font-size: 12px;
 
     font-weight: 700;
@@ -122,6 +124,8 @@
 
     align-items: center;
     justify-content: center;
+
+    padding: 0;
 
     background: transparent;
 
@@ -232,20 +236,6 @@
 }
 
 
-.positive {
-
-    color: var(--positive);
-
-}
-
-
-.negative {
-
-    color: var(--negative);
-
-}
-
-
 /* =========================
    ACCOUNTS
 ========================= */
@@ -313,9 +303,9 @@
 
     display: flex;
 
-    justify-content: space-between;
-
     align-items: center;
+
+    justify-content: space-between;
 
 }
 
@@ -434,181 +424,17 @@
 
 .panel-subtitle {
 
-    color: var(--text-muted);
-
-    font-size: 10px;
-
-}
-
-
-/* =========================
-   TRANSACTIONS
-========================= */
-
-.transaction {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        auto
-        auto;
-
-    align-items: center;
-
-    gap: 20px;
-
-    padding: 15px 21px;
-
-    border-bottom: 1px solid #292c31;
-
-}
-
-
-.transaction:last-child {
-
-    border-bottom: 0;
-
-}
-
-
-.transaction-name {
-
-    font-size: 12px;
-
-    font-weight: 500;
-
-}
-
-
-.transaction-meta {
-
     margin-top: 4px;
 
     color: var(--text-muted);
 
-    font-size: 9px;
-
-}
-
-
-.transaction-date {
-
-    color: var(--text-muted);
-
     font-size: 10px;
 
 }
 
 
-.transaction-value {
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    text-align: right;
-
-}
-
-
 /* =========================
-   SUMMARY
-========================= */
-
-.summary {
-
-    padding: 20px;
-
-}
-
-
-.summary-row {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 14px 0;
-
-    border-bottom: 1px solid var(--border);
-
-}
-
-
-.summary-label {
-
-    color: var(--text-soft);
-
-    font-size: 11px;
-
-}
-
-
-.summary-value {
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-}
-
-
-.summary-total {
-
-    margin-top: 5px;
-
-    padding-top: 19px;
-
-    border-top: 1px solid var(--border-light);
-
-    border-bottom: 0;
-
-}
-
-
-.summary-total .summary-value {
-
-    font-size: 23px;
-
-}
-
-
-/* =========================
-   CHART
-========================= */
-
-.chart-placeholder {
-
-    height: 150px;
-
-    margin-top: 18px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: var(--surface-2);
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    color: var(--text-muted);
-
-    font-size: 9px;
-
-    letter-spacing: 1.5px;
-
-}
-
-
-/* =========================
-   CATEGORIES
+   BOTTOM SECTIONS
 ========================= */
 
 .bottom-panel {
@@ -618,45 +444,6 @@
 }
 
 
-.category-container {
-
-    padding: 20px;
-
-}
-
-
-.category-list {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-}
-
-
-.category {
-
-    padding: 8px 12px;
-
-    background: var(--surface-3);
-
-    border: 1px solid var(--border);
-
-    border-radius: 8px;
-
-    color: var(--text-soft);
-
-    font-size: 10px;
-
-}
-
-
-/* =========================
-   CREDIT
-========================= */
-
 .credit-panel {
 
     margin-top: 14px;
@@ -664,64 +451,178 @@
 }
 
 
-.credit-content {
+/* =========================
+   EDIT BUTTON
+========================= */
 
-    padding: 20px;
+.edit-button {
 
-}
-
-
-.credit-box {
-
-    padding: 18px;
-
-    background: var(--surface-2);
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-}
-
-
-.credit-header {
+    width: 30px;
+    height: 30px;
 
     display: flex;
 
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
 
-}
+    padding: 0;
 
-
-.credit-label {
-
-    color: var(--text-soft);
-
-    font-size: 10px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1.3px;
-
-}
-
-
-.credit-month {
+    background: transparent;
 
     color: var(--text-muted);
 
-    font-size: 9px;
+    border: 1px solid transparent;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: var(--transition);
 
 }
 
 
-.credit-value {
+.edit-button:hover {
 
-    margin-top: 9px;
+    background: var(--surface-3);
 
-    font-size: 23px;
+    color: var(--text);
+
+    border-color: var(--border);
+
+}
+
+
+/* =========================
+   EDIT INPUTS
+========================= */
+
+.edit-input {
+
+    width: 100%;
+
+    background: var(--surface-3);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    padding: 10px 12px;
+
+    font-family: inherit;
+
+    transition: var(--transition);
+
+}
+
+
+.edit-input:hover {
+
+    border-color: var(--border-light);
+
+}
+
+
+.edit-input:focus {
+
+    border-color: var(--text-soft);
+
+    outline: none;
+
+}
+
+
+.edit-input.text {
+
+    font-size: 12px;
 
     font-weight: 600;
+
+}
+
+
+.edit-input.money {
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+}
+
+
+.edit-input.small {
+
+    font-size: 11px;
+
+}
+
+
+/* =========================
+   EDIT ACTIONS
+========================= */
+
+.edit-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    margin-top: 16px;
+
+}
+
+
+.edit-action {
+
+    padding: 9px 14px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    transition: var(--transition);
+
+}
+
+
+.edit-cancel {
+
+    background: transparent;
+
+    color: var(--text-soft);
+
+    border: 1px solid var(--border);
+
+}
+
+
+.edit-cancel:hover {
+
+    background: var(--surface-3);
+
+}
+
+
+.edit-save {
+
+    background: var(--text);
+
+    color: var(--bg);
+
+    border: 1px solid var(--text);
+
+}
+
+
+.edit-save:hover {
+
+    opacity: .85;
 
 }
 
@@ -751,22 +652,6 @@
     .header {
 
         align-items: flex-start;
-
-    }
-
-
-    .transaction {
-
-        grid-template-columns:
-            1fr
-            auto;
-
-    }
-
-
-    .transaction-date {
-
-        display: none;
 
     }
 

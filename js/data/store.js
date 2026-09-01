@@ -1,174 +1,156 @@
 const STORAGE_KEY = "finance-data";
 
-let state = null;
+
+const defaultData = {
+
+    version: 1,
+
+    months: {
+
+        "2026-08": {
+
+            name: "Agosto",
+
+            year: 2026,
+
+            accounts: {
+
+                nubank: {
+                    name: "Nubank",
+                    type: "Conta",
+                    initialBalance: 7800
+                },
+
+                itau: {
+                    name: "Itaú",
+                    type: "Conta",
+                    initialBalance: 6200
+                },
+
+                "mercado-pago": {
+                    name: "Mercado Pago",
+                    type: "Conta",
+                    initialBalance: 2000
+                }
+
+            },
+
+            transactions: [
+
+                {
+                    id: 1,
+                    date: "05 AGO",
+                    description: "Salário",
+                    group: "Salário",
+                    account: "nubank",
+                    amount: 4500
+                },
+
+                {
+                    id: 2,
+                    date: "08 AGO",
+                    description: "Mercado",
+                    group: "Alimentação",
+                    account: "nubank",
+                    amount: -320.40
+                },
+
+                {
+                    id: 3,
+                    date: "10 AGO",
+                    description: "Combustível",
+                    group: "Transporte",
+                    account: "itau",
+                    amount: -180
+                },
+
+                {
+                    id: 4,
+                    date: "12 AGO",
+                    description: "Compra online",
+                    group: "Compras",
+                    account: "itau",
+                    amount: -450
+                },
+
+                {
+                    id: 5,
+                    date: "16 AGO",
+                    description: "Freelance",
+                    group: "Renda extra",
+                    account: "mercado-pago",
+                    amount: 850
+                }
+
+            ],
+
+            credit: {
+                month: "Setembro 2026",
+                value: 1420
+            }
+
+        }
+
+    }
+
+};
 
 
-/*
-========================================
-INICIALIZAÇÃO
-========================================
-*/
+export function getData() {
 
-export async function initializeStore() {
-
-    const savedData =
+    const saved =
         localStorage.getItem(STORAGE_KEY);
 
 
-    /*
-    Se já existem dados salvos,
-    usa eles.
-    */
+    if (!saved) {
 
-    if (savedData) {
-
-        state = JSON.parse(savedData);
-
-        return state;
-
-    }
-
-
-    /*
-    Se não existem dados,
-    carrega o JSON-base.
-    */
-
-    const response =
-        await fetch("./data/finance.json");
-
-
-    if (!response.ok) {
-
-        throw new Error(
-            "Não foi possível carregar o finance.json"
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(defaultData)
         );
 
+        return structuredClone(defaultData);
+
     }
 
 
-    state =
-        await response.json();
-
-
-    saveState();
-
-
-    return state;
+    return JSON.parse(saved);
 
 }
 
 
-/*
-========================================
-LEITURA
-========================================
-*/
-
-export function getState() {
-
-    return state;
-
-}
-
-
-/*
-========================================
-SALVAR
-========================================
-*/
-
-export function saveState() {
+export function saveData(data) {
 
     localStorage.setItem(
         STORAGE_KEY,
-        JSON.stringify(state)
+        JSON.stringify(data)
     );
 
 }
 
 
-/*
-========================================
-RESET
-========================================
-*/
+export function getCurrentMonth() {
 
-export async function resetState() {
+    const data = getData();
 
-    localStorage.removeItem(
-        STORAGE_KEY
-    );
-
-
-    state = null;
-
-
-    return await initializeStore();
+    return data.months["2026-08"];
 
 }
 
-/*
-========================================
-ATUALIZAÇÃO GENÉRICA
-========================================
-*/
 
-export function updateValue(
-    path,
-    value
-) {
+export function updateCurrentMonth(callback) {
 
-    if (!Array.isArray(path)) {
+    const data = getData();
 
-        throw new Error(
-            "O caminho precisa ser um array."
-        );
-
-    }
+    const month =
+        data.months["2026-08"];
 
 
-    let target = state;
+    callback(month);
 
 
-    /*
-    Percorre tudo até o
-    penúltimo item.
-    */
+    saveData(data);
 
-    for (
-        let i = 0;
-        i < path.length - 1;
-        i++
-    ) {
-
-        target =
-            target[path[i]];
-
-    }
-
-
-    /*
-    Último item = propriedade
-    que será alterada.
-    */
-
-    const lastKey =
-        path[path.length - 1];
-
-
-    target[lastKey] =
-        value;
-
-
-    /*
-    Salva automaticamente
-    no navegador.
-    */
-
-    saveState();
-
-
-    return state;
+    return month;
 
 }

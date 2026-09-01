@@ -1,0 +1,562 @@
+ /* =========================
+    TRANSACTIONS LIST
+ ========================= */
+
+.transactions-list {
+
+    max-height: 430px;
+
+    overflow-y: auto;
+
+}
+
+
+/* =========================
+   TRANSACTION
+========================= */
+
+.transaction {
+
+    display: flex;
+
+    align-items: stretch;
+
+    min-height: 67px;
+
+    border-bottom: 1px solid var(--border);
+
+    overflow: hidden;
+
+    transition:
+        background var(--transition);
+
+}
+
+
+.transaction:last-child {
+
+    border-bottom: 0;
+
+}
+
+
+.transaction:hover {
+
+    background: rgba(255, 255, 255, 0.018);
+
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.transaction-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto
+        auto;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 15px 21px;
+
+    transition:
+        padding-right 180ms ease;
+
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.transaction-main {
+
+    min-width: 0;
+
+}
+
+
+.transaction-name {
+
+    overflow: hidden;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+.transaction-meta {
+
+    margin-top: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.transaction-date {
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================
+   VALUE
+========================= */
+
+.transaction-value {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-align: right;
+
+    white-space: nowrap;
+
+}
+
+
+.transaction-value.positive {
+
+    color: var(--positive);
+
+}
+
+
+.transaction-value.negative {
+
+    color: var(--negative);
+
+}
+
+
+/* =========================
+   EDIT BUTTON
+========================= */
+
+.transaction-edit {
+
+    width: 0;
+
+    min-width: 0;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    background: var(--surface-2);
+
+    color: var(--text-muted);
+
+    border: 0;
+
+    border-left: 1px solid transparent;
+
+    font-size: 14px;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform: translateX(100%);
+
+    pointer-events: none;
+
+    transition:
+        width 180ms ease,
+        min-width 180ms ease,
+        opacity 140ms ease,
+        transform 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease,
+        color 180ms ease;
+
+}
+
+
+/* =========================
+   SHOW EDIT
+========================= */
+
+.transaction:hover .transaction-edit {
+
+    width: 44px;
+
+    min-width: 44px;
+
+    border-left-color: var(--border);
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+    pointer-events: auto;
+
+}
+
+
+/* =========================
+   BUTTON HOVER
+========================= */
+
+.transaction-edit:hover {
+
+    background: var(--surface-3);
+
+    color: var(--text);
+
+}
+
+
+/* =========================
+   ADD
+========================= */
+
+.transaction-add {
+
+    padding: 8px 12px;
+
+    background: transparent;
+
+    color: var(--text-soft);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-small);
+
+    font-size: 10px;
+
+    transition: var(--transition);
+
+}
+
+
+.transaction-add:hover {
+
+    background: var(--surface-2);
+
+    color: var(--text);
+
+    border-color: var(--border-light);
+
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+.transactions-list::-webkit-scrollbar {
+
+    width: 6px;
+
+}
+
+
+.transactions-list::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+
+.transactions-list::-webkit-scrollbar-thumb {
+
+    background: var(--border);
+
+    border-radius: 10px;
+
+}
+
+
+.transactions-list::-webkit-scrollbar-thumb:hover {
+
+    background: var(--border-light);
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .transaction-content {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            auto;
+
+    }
+
+
+    .transaction-date {
+
+        display: none;
+
+    }
+
+
+    .transaction-edit {
+
+        width: 44px;
+
+        min-width: 44px;
+
+        opacity: 1;
+
+        transform: translateX(0);
+
+        pointer-events: auto;
+
+        border-left-color: var(--border);
+
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .transaction-content {
+
+        padding-left: 16px;
+
+        padding-right: 16px;
+
+    }
+
+}
+
+/* =========================
+   EDIT FORM
+========================= */
+
+.transaction-edit-form {
+
+    grid-column: 1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(140px, 1.4fr)
+        minmax(110px, 1fr)
+        minmax(120px, 1fr)
+        90px
+        120px
+        auto;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.transaction-input {
+
+    width: 100%;
+
+    min-width: 0;
+
+    padding: 9px 10px;
+
+    background: var(--surface-2);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-small);
+
+    font-size: 10px;
+
+    transition: var(--transition);
+
+}
+
+
+.transaction-input::placeholder {
+
+    color: var(--text-muted);
+
+}
+
+
+.transaction-input:hover {
+
+    border-color: var(--border-light);
+
+}
+
+
+.transaction-input:focus {
+
+    outline: none;
+
+    border-color: var(--border-light);
+
+    background: var(--surface-3);
+
+}
+
+
+.transaction-input-money {
+
+    font-weight: 600;
+
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.transaction-edit-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+}
+
+
+.transaction-action {
+
+    padding: 8px 10px;
+
+    border-radius: var(--radius-small);
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    transition: var(--transition);
+
+}
+
+
+.transaction-cancel {
+
+    background: transparent;
+
+    color: var(--text-muted);
+
+    border: 1px solid var(--border);
+
+}
+
+
+.transaction-cancel:hover {
+
+    background: var(--surface-2);
+
+    color: var(--text-soft);
+
+}
+
+
+.transaction-save {
+
+    background: var(--text);
+
+    color: var(--bg);
+
+    border: 1px solid var(--text);
+
+}
+
+
+.transaction-save:hover {
+
+    opacity: 0.85;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .transaction-edit-form {
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+    }
+
+
+    .transaction-edit-actions {
+
+        grid-column: 1 / -1;
+
+        justify-content: flex-end;
+
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .transaction-edit-form {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .transaction-edit-actions {
+
+        grid-column: auto;
+
+    }
+
+}

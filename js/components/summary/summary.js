@@ -1,4 +1,33 @@
-export function renderSummary(container, summary) {
+import { formatMoney } from "../../core/formatters.js";
+import {
+    calculateIncome,
+    calculateExpenses,
+    calculateResult
+} from "../../data/calculations.js";
+
+
+export function renderSummary(
+    container,
+    month
+) {
+
+    const income =
+        calculateIncome(
+            month.transactions
+        );
+
+
+    const expenses =
+        calculateExpenses(
+            month.transactions
+        );
+
+
+    const result =
+        calculateResult(
+            month.transactions
+        );
+
 
     container.innerHTML = `
 
@@ -26,12 +55,7 @@ export function renderSummary(container, summary) {
                     </span>
 
                     <span class="summary-value positive">
-                        R$ ${summary.income.toLocaleString(
-                            "pt-BR",
-                            {
-                                minimumFractionDigits: 2
-                            }
-                        )}
+                        ${formatMoney(income)}
                     </span>
 
                 </div>
@@ -44,12 +68,7 @@ export function renderSummary(container, summary) {
                     </span>
 
                     <span class="summary-value negative">
-                        R$ ${summary.expenses.toLocaleString(
-                            "pt-BR",
-                            {
-                                minimumFractionDigits: 2
-                            }
-                        )}
+                        ${formatMoney(expenses)}
                     </span>
 
                 </div>
@@ -62,21 +81,14 @@ export function renderSummary(container, summary) {
                     </span>
 
                     <span class="summary-value">
-                        R$ ${summary.result.toLocaleString(
-                            "pt-BR",
-                            {
-                                minimumFractionDigits: 2
-                            }
-                        )}
+                        ${formatMoney(result)}
                     </span>
 
                 </div>
 
 
                 <div class="chart-placeholder">
-
                     GRÁFICO
-
                 </div>
 
             </div>
@@ -84,4 +96,5 @@ export function renderSummary(container, summary) {
         </div>
 
     `;
+
 }

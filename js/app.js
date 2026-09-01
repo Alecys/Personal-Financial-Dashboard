@@ -1,91 +1,53 @@
-import { renderHeader } from "./components/header.js";
-import { renderBalance } from "./components/balance.js";
-import { renderAccounts } from "./components/accounts.js";
-import { renderSummary } from "./components/summary.js";
-import { renderTransactions } from "./components/transactions.js";
-import { renderCategories } from "./components/categories.js";
-import { renderCredit } from "./components/credit.js";
+import { getCurrentMonth } from "./data/store.js";
+import { renderBalance } from "./components/balance/balance.js";
+import { renderAccounts } from "./components/accounts/accounts.js";
+import { renderTransactions } from "./components/transactions/transactions.js";
+import { renderSummary } from "./components/summary/summary.js";
+import { renderCategories } from "./components/categories/categories.js";
+import { renderCredit } from "./components/credit/credit.js";
 
 
-async function loadData() {
+function renderApp() {
 
-    const response =
-        await fetch("./data/finance.json");
-
-    if (!response.ok) {
-
-        throw new Error(
-            "Não foi possível carregar os dados."
-        );
-
-    }
-
-    return await response.json();
-
-}
+    const month = getCurrentMonth();
 
 
-async function init() {
-
-    try {
-
-        const data =
-            await loadData();
+    renderBalance(
+        document.querySelector("#balance"),
+        month
+    );
 
 
-        const currentMonth =
-            data.months["2026-08"];
+    renderAccounts(
+        document.querySelector("#accounts"),
+        month
+    );
 
 
-        renderHeader(
-            document.getElementById("header"),
-            currentMonth
-        );
+    renderTransactions(
+        document.querySelector("#transactions"),
+        month.transactions
+    );
 
 
-        renderBalance(
-            document.getElementById("balance"),
-            currentMonth
-        );
+    renderSummary(
+        document.querySelector("#summary"),
+        month
+    );
 
 
-        renderAccounts(
-            document.getElementById("accounts"),
-            currentMonth.accounts
-        );
+    renderCategories(
+        document.querySelector("#categories"),
+        month
+    );
 
 
-        renderTransactions(
-            document.getElementById("transactions"),
-            currentMonth.transactions
-        );
-
-
-        renderSummary(
-            document.getElementById("summary"),
-            currentMonth.summary
-        );
-
-
-        renderCategories(
-            document.getElementById("categories"),
-            currentMonth.categories
-        );
-
-
-        renderCredit(
-            document.getElementById("credit"),
-            currentMonth.credit
-        );
-
-
-    } catch (error) {
-
-        console.error(error);
-
-    }
+    renderCredit(
+        document.querySelector("#credit"),
+        month
+    );
 
 }
 
 
-init();
+renderApp();
