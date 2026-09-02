@@ -1,26 +1,30 @@
 import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
 import { getCurrentMonth, subscribe } from "../../core/store.js";
-import { buildTransactions } from "./transactions-builder.js";
+import { formatMonth } from "../../core/formatters.js";
+import { headerConfig } from "./config.js";
 
-export async function Transactions() {
-    loadStyle("./css/components/transactions.css");
+export async function Header() {
+    loadStyle(headerConfig.style);
 
     const html =
         await loadTemplate(
-            "./js/components/transactions/transactions.html"
+            "./js/components/header/header.html"
         );
 
     const element =
         createElement(html);
 
+    const monthElement =
+        element.querySelector(
+            '[data-field="month"]'
+        );
+
     function refresh() {
         const month =
             getCurrentMonth();
 
-        buildTransactions(
-            element,
-            month
-        );
+        monthElement.textContent =
+            formatMonth(month);
     }
 
     refresh();

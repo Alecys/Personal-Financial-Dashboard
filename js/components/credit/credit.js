@@ -1,63 +1,51 @@
+import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
+import { getCurrentMonth, subscribe } from "../../core/store.js";
 import { formatMoney } from "../../core/formatters.js";
+import { creditConfig } from "./config.js";
 
+export async function Credit() {
+    loadStyle(creditConfig.style);
 
-export function renderCredit(
-    container,
-    month
-) {
+    const html =
+        await loadTemplate(
+            "./js/components/credit/credit.html"
+        );
 
-    const credit =
-        month.credit;
+    const element =
+        createElement(html);
 
+    function refresh() {
+        const month =
+            getCurrentMonth();
 
-    container.innerHTML = `
+        const value =
+            month.credit?.value ||
+            0;
 
-        <section class="panel credit-panel">
+        const monthName =
+            month.credit?.month ||
+            "Próximo mês";
 
-            <div class="panel-header">
+        element
+            .querySelector(
+                '[data-field="value"]'
+            )
+            .textContent =
+                formatMoney(value);
 
-                <div class="panel-title">
-                    Crédito futuro
-                </div>
+        element
+            .querySelector(
+                '[data-field="month"]'
+            )
+            .textContent =
+                monthName;
+    }
 
-                <div class="panel-subtitle">
-                    Próximo mês
-                </div>
+    refresh();
 
-            </div>
+    subscribe(() => {
+        refresh();
+    });
 
-
-            <div class="credit-content">
-
-                <div class="credit-box">
-
-                    <div class="credit-header">
-
-                        <div class="credit-label">
-                            Fatura prevista
-                        </div>
-
-                        <div class="credit-month">
-                            ${credit?.month || "—"}
-                        </div>
-
-                    </div>
-
-
-                    <div class="credit-value">
-
-                        ${formatMoney(
-                            credit?.value || 0
-                        )}
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    `;
-
+    return element;
 }

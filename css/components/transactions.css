@@ -1,10 +1,69 @@
- /* =========================
-    TRANSACTIONS LIST
- ========================= */
+/* =========================
+   PANEL
+========================= */
+
+.transactions-panel {
+
+    overflow: hidden;
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+}
+
+
+.panel-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 19px 21px;
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+.panel-title {
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+
+.panel-subtitle {
+
+    margin-top: 4px;
+
+    color:
+        var(--text-muted);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================
+   LIST
+========================= */
 
 .transactions-list {
-
-    max-height: 430px;
 
     overflow-y: auto;
 
@@ -17,61 +76,47 @@
 
 .transaction {
 
-    display: flex;
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto
+        auto
+        0px;
 
     align-items: stretch;
 
+    gap: 20px;
+
     min-height: 67px;
 
-    border-bottom: 1px solid var(--border);
+    padding: 0px 0px 0px 20px;
 
-    overflow: hidden;
+    border-bottom:
+        1px solid var(--border);
 
     transition:
-        background var(--transition);
-
-}
-
-
-.transaction:last-child {
-
-    border-bottom: 0;
+        grid-template-columns 180ms ease,
+        background 180ms ease;
 
 }
 
 
 .transaction:hover {
 
-    background: rgba(255, 255, 255, 0.018);
-
-}
-
-
-/* =========================
-   CONTENT
-========================= */
-
-.transaction-content {
-
-    flex: 1;
-
-    min-width: 0;
-
-    display: grid;
-
     grid-template-columns:
         minmax(0, 1fr)
         auto
-        auto;
+        auto
+        44px;
 
-    align-items: center;
-
-    gap: 20px;
-
-    padding: 15px 21px;
-
-    transition:
-        padding-right 180ms ease;
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.018
+        );
 
 }
 
@@ -84,6 +129,8 @@
 
     min-width: 0;
 
+    align-self: center;
+
 }
 
 
@@ -91,7 +138,8 @@
 
     overflow: hidden;
 
-    color: var(--text);
+    color:
+        var(--text);
 
     font-size: 12px;
 
@@ -108,7 +156,8 @@
 
     margin-top: 4px;
 
-    color: var(--text-muted);
+    color:
+        var(--text-muted);
 
     font-size: 9px;
 
@@ -121,7 +170,10 @@
 
 .transaction-date {
 
-    color: var(--text-muted);
+    align-self: center;
+
+    color:
+        var(--text-muted);
 
     font-size: 10px;
 
@@ -136,6 +188,8 @@
 
 .transaction-value {
 
+    align-self: center;
+
     font-size: 12px;
 
     font-weight: 600;
@@ -149,29 +203,57 @@
 
 .transaction-value.positive {
 
-    color: var(--positive);
+    color:
+        var(--positive);
 
 }
 
 
 .transaction-value.negative {
 
-    color: var(--negative);
+    color:
+        var(--negative);
 
 }
 
 
 /* =========================
-   EDIT BUTTON
+   EDIT AREA
 ========================= */
 
-.transaction-edit {
+.transaction-edit-area {
 
     width: 0;
 
     min-width: 0;
 
-    flex-shrink: 0;
+    overflow: hidden;
+
+    transition:
+        width 180ms ease;
+
+}
+
+
+.transaction:hover
+.transaction-edit-area {
+
+    width: 44px;
+
+}
+
+
+/* =========================
+   EDIT
+========================= */
+
+.transaction-edit {
+
+    width: 44px;
+
+    height: 100%;
+
+    min-height: 67px;
 
     display: flex;
 
@@ -181,66 +263,48 @@
 
     padding: 0;
 
-    background: var(--surface-2);
+    background:
+        var(--surface-2);
 
-    color: var(--text-muted);
+    color:
+        var(--text-muted);
 
     border: 0;
 
-    border-left: 1px solid transparent;
+    border-left:
+        1px solid var(--border);
 
-    font-size: 14px;
-
-    overflow: hidden;
+    font-size: 15px;
 
     opacity: 0;
-
-    transform: translateX(100%);
 
     pointer-events: none;
 
     transition:
-        width 180ms ease,
-        min-width 180ms ease,
-        opacity 140ms ease,
-        transform 180ms ease,
-        border-color 180ms ease,
+        opacity 120ms ease,
         background 180ms ease,
         color 180ms ease;
 
 }
 
 
-/* =========================
-   SHOW EDIT
-========================= */
-
-.transaction:hover .transaction-edit {
-
-    width: 44px;
-
-    min-width: 44px;
-
-    border-left-color: var(--border);
+.transaction:hover
+.transaction-edit {
 
     opacity: 1;
-
-    transform: translateX(0);
 
     pointer-events: auto;
 
 }
 
 
-/* =========================
-   BUTTON HOVER
-========================= */
-
 .transaction-edit:hover {
 
-    background: var(--surface-3);
+    background:
+        var(--surface-3);
 
-    color: var(--text);
+    color:
+        var(--text);
 
 }
 
@@ -251,30 +315,39 @@
 
 .transaction-add {
 
-    padding: 8px 12px;
+    padding:
+        8px 12px;
 
-    background: transparent;
+    background:
+        transparent;
 
-    color: var(--text-soft);
+    color:
+        var(--text-soft);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    border-radius: var(--radius-small);
+    border-radius:
+        var(--radius-small);
 
     font-size: 10px;
 
-    transition: var(--transition);
+    transition:
+        var(--transition);
 
 }
 
 
 .transaction-add:hover {
 
-    background: var(--surface-2);
+    background:
+        var(--surface-2);
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    border-color: var(--border-light);
+    border-color:
+        var(--border-light);
 
 }
 
@@ -292,14 +365,16 @@
 
 .transactions-list::-webkit-scrollbar-track {
 
-    background: transparent;
+    background:
+        transparent;
 
 }
 
 
 .transactions-list::-webkit-scrollbar-thumb {
 
-    background: var(--border);
+    background:
+        var(--border);
 
     border-radius: 10px;
 
@@ -308,7 +383,8 @@
 
 .transactions-list::-webkit-scrollbar-thumb:hover {
 
-    background: var(--border-light);
+    background:
+        var(--border-light);
 
 }
 
@@ -319,11 +395,12 @@
 
 @media (max-width: 850px) {
 
-    .transaction-content {
+    .transaction {
 
         grid-template-columns:
             minmax(0, 1fr)
-            auto;
+            auto
+            44px;
 
     }
 
@@ -335,228 +412,133 @@
     }
 
 
-    .transaction-edit {
+    .transaction-edit-area {
 
         width: 44px;
 
-        min-width: 44px;
+    }
+
+
+    .transaction-edit {
 
         opacity: 1;
 
-        transform: translateX(0);
-
         pointer-events: auto;
 
-        border-left-color: var(--border);
-
-    }
-
-}
-
-
-@media (max-width: 520px) {
-
-    .transaction-content {
-
-        padding-left: 16px;
-
-        padding-right: 16px;
-
     }
 
 }
 
 /* =========================
-   EDIT FORM
+   EDITING
 ========================= */
 
-.transaction-edit-form {
-
-    grid-column: 1 / -1;
-
-    display: grid;
-
+.transaction-editing {
     grid-template-columns:
-        minmax(140px, 1.4fr)
-        minmax(110px, 1fr)
-        minmax(120px, 1fr)
-        90px
-        120px
-        auto;
+        minmax(0, 1fr)
+        44px;
 
-    align-items: center;
-
-    gap: 8px;
-
+    background:
+        var(--surface-2);
 }
 
+.transaction-editing:hover {
+    grid-template-columns:
+        minmax(0, 1fr)
+        44px;
 
-/* =========================
-   INPUT
-========================= */
+    background:
+        var(--surface-2);
+}
 
-.transaction-input {
+.transaction-editing
+.transaction-edit-form {
+    display: grid;
+    grid-template-columns:
+        minmax(150px, 2fr)
+        minmax(100px, 1fr)
+        minmax(100px, 1fr)
+        100px
+        120px;
 
-    width: 100%;
-
+    align-items: center;
+    gap: 10px;
     min-width: 0;
-
-    padding: 9px 10px;
-
-    background: var(--surface-2);
-
-    color: var(--text);
-
-    border: 1px solid var(--border);
-
-    border-radius: var(--radius-small);
-
-    font-size: 10px;
-
-    transition: var(--transition);
-
 }
 
-
-.transaction-input::placeholder {
-
-    color: var(--text-muted);
-
-}
-
-
-.transaction-input:hover {
-
-    border-color: var(--border-light);
-
-}
-
-
-.transaction-input:focus {
-
-    outline: none;
-
-    border-color: var(--border-light);
-
-    background: var(--surface-3);
-
-}
-
-
-.transaction-input-money {
-
-    font-weight: 600;
-
-}
-
-
-/* =========================
-   ACTIONS
-========================= */
-
-.transaction-edit-actions {
-
+.transaction-edit-field {
     display: flex;
-
-    align-items: center;
-
+    flex-direction: column;
     gap: 5px;
-
+    min-width: 0;
 }
 
-
-.transaction-action {
-
-    padding: 8px 10px;
-
-    border-radius: var(--radius-small);
-
-    font-size: 9px;
-
-    font-weight: 600;
-
-    transition: var(--transition);
-
+.transaction-edit-field span {
+    color:
+        var(--text-muted);
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-
-.transaction-cancel {
-
-    background: transparent;
-
-    color: var(--text-muted);
-
-    border: 1px solid var(--border);
-
+.transaction-edit-field input,
+.transaction-edit-field select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 7px 8px;
+    background:
+        var(--surface);
+    color:
+        var(--text);
+    border:
+        1px solid var(--border);
+    border-radius:
+        var(--radius-small);
+    outline: none;
+    font: inherit;
+    font-size: 10px;
 }
 
-
-.transaction-cancel:hover {
-
-    background: var(--surface-2);
-
-    color: var(--text-soft);
-
+.transaction-edit-field input:focus {
+    border-color:
+        var(--border-light);
+    background:
+        var(--surface-3);
 }
 
+.transaction-editing
+.transaction-edit-area {
+    width: 44px;
+    min-width: 44px;
+}
 
+.transaction-editing
 .transaction-save {
-
-    background: var(--text);
-
-    color: var(--bg);
-
-    border: 1px solid var(--text);
-
+    opacity: 1;
+    pointer-events: auto;
+    color:
+        var(--positive);
 }
-
 
 .transaction-save:hover {
-
-    opacity: 0.85;
-
+    background:
+        var(--surface-3);
+    color:
+        var(--text);
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 850px) {
-
-    .transaction-edit-form {
-
-        grid-template-columns:
-            1fr
-            1fr;
-
-    }
-
-
-    .transaction-edit-actions {
-
-        grid-column: 1 / -1;
-
-        justify-content: flex-end;
-
-    }
-
+.transaction-edit-field input[type="number"]::-webkit-inner-spin-button,
+.transaction-edit-field input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
+.transaction-edit-field input[type="number"] {
+    -moz-appearance: textfield;
+}
 
-@media (max-width: 520px) {
-
-    .transaction-edit-form {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .transaction-edit-actions {
-
-        grid-column: auto;
-
-    }
-
+.transaction-edit-field input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(1.3);
+    opacity: 1;
+    cursor: pointer;
 }

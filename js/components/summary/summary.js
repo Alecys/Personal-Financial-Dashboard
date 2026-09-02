@@ -1,100 +1,90 @@
+import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
+import { getCurrentMonth, subscribe } from "../../core/store.js";
 import { formatMoney } from "../../core/formatters.js";
-import {
-    calculateIncome,
-    calculateExpenses,
-    calculateResult
-} from "../../data/calculations.js";
+import { summaryConfig } from "./config.js";
 
+export async function Summary() {
+    loadStyle(summaryConfig.style);
 
-export function renderSummary(
-    container,
-    month
-) {
-
-    const income =
-        calculateIncome(
-            month.transactions
+    const html =
+        await loadTemplate(
+            "./js/components/summary/summary.html"
         );
 
+    const element =
+        createElement(html);
 
-    const expenses =
-        calculateExpenses(
-            month.transactions
-        );
+    function refresh() {
+        const month =
+            getCurrentMonth();
 
+        const transactions =
+            month.transactions || [];
 
-    const result =
-        calculateResult(
-            month.transactions
-        );
+        const income =
+            transactions
+                .filter(
+                    transaction =>
+                        transaction.amount > 0
+                )
+                .reduce(
+                    (
+                        total,
+                        transaction
+                    ) =>
+                        total +
+                        transaction.amount,
+                    0
+                );
 
+        const expenses =
+            transactions
+                .filter(
+                    transaction =>
+                        transaction.amount < 0
+                )
+                .reduce(
+                    (
+                        total,
+                        transaction
+                    ) =>
+                        total +
+                        Math.abs(
+                            transaction.amount
+                        ),
+                    0
+                );
 
-    container.innerHTML = `
+        const result =
+            income - expenses;
 
-        <div class="panel">
+        element
+            .querySelector(
+                '[data-field="income"]'
+            )
+            .textContent =
+                formatMoney(income);
 
-            <div class="panel-header">
+        element
+            .querySelector(
+                '[data-field="expenses"]'
+            )
+            .textContent =
+                formatMoney(expenses);
 
-                <div class="panel-title">
-                    Resumo
-                </div>
+        element
+            .querySelector(
+                '[data-field="result"]'
+            )
+            .textContent =
+                formatMoney(result);
+    }
 
-                <div class="panel-subtitle">
-                    Mês atual
-                </div>
+    refresh();
 
-            </div>
+    subscribe(() => {
+        refresh();
+    });
 
-
-            <div class="summary">
-
-                <div class="summary-row">
-
-                    <span class="summary-label">
-                        Total de entradas
-                    </span>
-
-                    <span class="summary-value positive">
-                        ${formatMoney(income)}
-                    </span>
-
-                </div>
-
-
-                <div class="summary-row">
-
-                    <span class="summary-label">
-                        Total de gastos
-                    </span>
-
-                    <span class="summary-value negative">
-                        ${formatMoney(expenses)}
-                    </span>
-
-                </div>
-
-
-                <div class="summary-row summary-total">
-
-                    <span class="summary-label">
-                        Resultado
-                    </span>
-
-                    <span class="summary-value">
-                        ${formatMoney(result)}
-                    </span>
-
-                </div>
-
-
-                <div class="chart-placeholder">
-                    GRÁFICO
-                </div>
-
-            </div>
-
-        </div>
-
-    `;
-
+    return element;
 }

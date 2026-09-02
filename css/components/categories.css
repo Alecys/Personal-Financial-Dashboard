@@ -1,0 +1,41 @@
+/* =========================
+   CATEGORIES
+========================= */
+
+.category-container {
+
+    padding: 20px;
+
+}
+
+
+.category-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+}
+
+
+.category {
+
+    padding:
+        8px 12px;
+
+    background:
+        var(--surface-3);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 8px;
+
+    color:
+        var(--text-soft);
+
+    font-size: 10px;
+
+}

@@ -1,101 +1,119 @@
-import { formatMoney } from "../../core/formatters.js";
-import { calculateAccountBalance } from "../../data/calculations.js";
+import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
+import { getCurrentMonth, subscribe } from "../../core/store.js";
+import { formatMoney, escapeHTML } from "../../core/formatters.js";
+import { accountsConfig } from "./config.js";
 
+export async function Accounts() {
+    loadStyle(accountsConfig.style);
 
-export function renderAccounts(
-    container,
-    month
+    const html =
+        await loadTemplate(
+            "./js/components/accounts/accounts.html"
+        );
+
+    const element =
+        createElement(html);
+
+    const container =
+        element.querySelector(
+            '[data-field="accounts"]'
+        );
+
+    function refresh() {
+        const month =
+            getCurrentMonth();
+
+        const accounts =
+            Object.entries(
+                month.accounts || {}
+            );
+
+        container.innerHTML =
+            accounts
+                .map(
+                    renderAccount
+                )
+                .join("");
+    }
+
+    refresh();
+
+    subscribe(() => {
+        refresh();
+    });
+
+    return element;
+}
+
+function renderAccount(
+    [id, account]
 ) {
 
-    const accounts =
-        Object.entries(month.accounts);
+    return `
 
+        <article
+            class="account-card"
+            data-account-id="${id}"
+        >
 
-    const cards =
-        accounts
-            .map(([id, account]) => {
+            <div class="account-header">
 
-                const balance =
-                    calculateAccountBalance(
-                        {
-                            ...account,
-                            id
-                        },
-                        month.transactions
-                    );
+                <div>
 
+                    <div class="account-name">
 
-                return `
+                        ${escapeHTML(
+                            account.name
+                        )}
 
-                    <article
-                        class="account-card"
-                        data-account-id="${id}"
-                    >
+                    </div>
 
-                        <div class="account-view">
+                    <div class="account-type">
 
-                            <div class="account-header">
+                        ${escapeHTML(
+                            account.type
+                        )}
 
-                                <div>
+                    </div>
 
-                                    <div class="account-name">
-                                        ${account.name}
-                                    </div>
+                </div>
 
-                                    <div class="account-type">
-                                        ${account.type}
-                                    </div>
+                <button
+                    class="account-edit"
+                    data-action="edit"
+                >
 
-                                </div>
+                    ✎
 
-                            </div>
-
-
-                            <div class="account-value">
-
-                                ${formatMoney(balance)}
-
-                            </div>
-
-
-                            <div class="account-footer">
-
-                                <span>
-                                    Saldo inicial
-                                </span>
-
-                                <span>
-                                    ${formatMoney(account.initialBalance)}
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                `;
-
-            })
-            .join("");
-
-
-    container.innerHTML = `
-
-        <section>
-
-            <div class="section-label">
-                Contas & cartões
-            </div>
-
-            <div class="accounts-grid">
-
-                ${cards}
+                </button>
 
             </div>
 
-        </section>
+            <div class="account-value">
+
+                ${formatMoney(
+                    account.balance
+                )}
+
+            </div>
+
+            <div class="account-footer">
+
+                <span>
+                    Saldo inicial
+                </span>
+
+                <span>
+
+                    ${formatMoney(
+                        account.initialBalance
+                    )}
+
+                </span>
+
+            </div>
+
+        </article>
 
     `;
-
 }

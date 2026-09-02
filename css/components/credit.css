@@ -1,0 +1,68 @@
+/* =========================
+   CREDIT
+========================= */
+
+.credit-content {
+
+    padding: 20px;
+
+}
+
+
+.credit-box {
+
+    padding: 18px;
+
+    background:
+        var(--surface-2);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+}
+
+
+.credit-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+
+.credit-label {
+
+    color:
+        var(--text-soft);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.3px;
+
+}
+
+
+.credit-month {
+
+    color:
+        var(--text-muted);
+
+    font-size: 9px;
+
+}
+
+
+.credit-value {
+
+    margin-top: 9px;
+
+    font-size: 23px;
+
+    font-weight: 600;
+
+}

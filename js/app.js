@@ -1,53 +1,58 @@
-import { getCurrentMonth } from "./data/store.js";
-import { renderBalance } from "./components/balance/balance.js";
-import { renderAccounts } from "./components/accounts/accounts.js";
-import { renderTransactions } from "./components/transactions/transactions.js";
-import { renderSummary } from "./components/summary/summary.js";
-import { renderCategories } from "./components/categories/categories.js";
-import { renderCredit } from "./components/credit/credit.js";
+import { initializeStore } from "./core/store.js";
+import { Header } from "./components/header/header.js";
+import { Balance } from "./components/balance/balance.js";
+import { Accounts } from "./components/accounts/accounts.js";
+import { Transactions } from "./components/transactions/transactions.js";
+import { Summary } from "./components/summary/summary.js";
+import { Categories } from "./components/categories/categories.js";
+import { Credit } from "./components/credit/credit.js";
 
+async function start() {
+    await initializeStore();
 
-function renderApp() {
+    const app =
+        document.querySelector("#app");
 
-    const month = getCurrentMonth();
+    const header =
+        await Header();
 
+    const balance =
+        await Balance();
 
-    renderBalance(
-        document.querySelector("#balance"),
-        month
+    const accounts =
+        await Accounts();
+
+    const transactions =
+        await Transactions();
+
+    const summary =
+        await Summary();
+
+    const categories =
+        await Categories();
+
+    const credit =
+        await Credit();
+
+    const mainGrid =
+        document.createElement("section");
+
+    mainGrid.className =
+        "main-grid";
+
+    mainGrid.append(
+        transactions,
+        summary
     );
 
-
-    renderAccounts(
-        document.querySelector("#accounts"),
-        month
+    app.append(
+        header,
+        balance,
+        accounts,
+        mainGrid,
+        categories,
+        credit
     );
-
-
-    renderTransactions(
-        document.querySelector("#transactions"),
-        month.transactions
-    );
-
-
-    renderSummary(
-        document.querySelector("#summary"),
-        month
-    );
-
-
-    renderCategories(
-        document.querySelector("#categories"),
-        month
-    );
-
-
-    renderCredit(
-        document.querySelector("#credit"),
-        month
-    );
-
 }
 
-
-renderApp();
+start();

@@ -1,0 +1,167 @@
+/* =========================
+   ACCOUNTS
+========================= */
+
+.section-label {
+
+    margin-bottom: 12px;
+
+    color:
+        var(--text-muted);
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.8px;
+
+}
+
+
+.accounts-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 12px;
+
+}
+
+
+.account-card {
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--surface-2),
+            var(--surface)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    transition:
+        var(--transition);
+
+}
+
+
+.account-card:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        var(--border-light);
+
+}
+
+
+.account-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.account-name {
+
+    color:
+        var(--text-soft);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.3px;
+
+}
+
+
+.account-type {
+
+    color:
+        var(--text-muted);
+
+    font-size: 9px;
+
+}
+
+
+.account-value {
+
+    margin-top: 21px;
+
+    font-size: 24px;
+
+    font-weight: 550;
+
+}
+
+
+.account-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 13px;
+
+    color:
+        var(--text-muted);
+
+    font-size: 10px;
+
+}
+
+
+.account-edit {
+
+    width: 30px;
+
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: transparent;
+
+    color:
+        var(--text-muted);
+
+    border: 0;
+
+    border-radius: 8px;
+
+    transition:
+        var(--transition);
+
+}
+
+
+.account-edit:hover {
+
+    background:
+        var(--surface-3);
+
+    color:
+        var(--text);
+
+}

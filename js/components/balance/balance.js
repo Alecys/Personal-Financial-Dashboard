@@ -1,45 +1,80 @@
+import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
+import { getCurrentMonth, subscribe } from "../../core/store.js";
 import { formatMoney } from "../../core/formatters.js";
-import { calculateTotalBalance } from "../../data/calculations.js";
+import { balanceConfig } from "./config.js";
 
+export async function Balance() {
+    loadStyle(balanceConfig.style);
 
-export function renderBalance(
-    container,
-    month
-) {
-
-    const total =
-        calculateTotalBalance(
-            month.accounts,
-            month.transactions
+    const html =
+        await loadTemplate(
+            "./js/components/balance/balance.html"
         );
 
+    const element =
+        createElement(html);
 
-    container.innerHTML = `
+    function refresh() {
+        const month =
+            getCurrentMonth();
 
-        <section class="balance-section">
+        const accounts =
+            Object.values(
+                month.accounts || {}
+            );
 
-            <div class="balance-label">
-                Patrimônio disponível
-            </div>
+        const balance =
+            accounts.reduce(
+                (total, account) =>
+                    total +
+                    Number(
+                        account.balance || 0
+                    ),
+                0
+            );
 
-            <div class="balance-value">
-                ${formatMoney(total)}
-            </div>
+        const initialBalance =
+            accounts.reduce(
+                (total, account) =>
+                    total +
+                    Number(
+                        account.initialBalance || 0
+                    ),
+                0
+            );
 
-            <div class="balance-change">
+        const change =
+            initialBalance
+                ? (
+                    (
+                        balance -
+                        initialBalance
+                    ) /
+                    initialBalance
+                ) *
+                100
+                : 0;
 
-                <span class="positive">
-                    +3,42%
-                </span>
+        element
+            .querySelector(
+                '[data-field="balance"]'
+            )
+            .textContent =
+                formatMoney(balance);
 
-                <span>
-                    em relação ao início do mês
-                </span>
+        element
+            .querySelector(
+                '[data-field="change"]'
+            )
+            .textContent =
+                `${change >= 0 ? "+" : ""}${change.toFixed(2)}%`;
+    }
 
-            </div>
+    refresh();
 
-        </section>
+    subscribe(() => {
+        refresh();
+    });
 
-    `;
-
+    return element;
 }

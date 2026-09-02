@@ -1,69 +1,100 @@
-import { formatMoney } from "../../core/formatters.js";
-import { calculateCategories } from "../../data/calculations.js";
+import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
+import { getCurrentMonth, subscribe } from "../../core/store.js";
+import { formatMoney, escapeHTML } from "../../core/formatters.js";
+import { categoriesConfig } from "./config.js";
 
+export async function Categories() {
+    loadStyle(categoriesConfig.style);
 
-export function renderCategories(
-    container,
-    month
-) {
-
-    const categories =
-        calculateCategories(
-            month.transactions
+    const html =
+        await loadTemplate(
+            "./js/components/categories/categories.html"
         );
 
+    const element =
+        createElement(html);
 
-    const items =
-        Object.entries(categories)
-            .map(
-                ([name, value]) => `
+    const list =
+        element.querySelector(
+            '[data-field="list"]'
+        );
 
-                    <div class="category">
+    function refresh() {
+        const month =
+            getCurrentMonth();
 
-                        ${name}
+        const categories =
+            calculateCategories(
+                month.transactions || []
+            );
 
-                        ·
-
-                        ${formatMoney(value)}
-
-                    </div>
-
-                `
-            )
-            .join("");
-
-
-    container.innerHTML = `
-
-        <section class="panel bottom-panel">
-
-            <div class="panel-header">
-
-                <div class="panel-title">
-                    Gastos por grupo
-                </div>
-
-            </div>
-
-
-            <div class="category-container">
-
-                <div class="category-list">
-
-                    ${items || `
+        list.innerHTML =
+            categories
+                .map(
+                    category => `
 
                         <div class="category">
-                            Nenhum gasto registrado
+
+                            ${escapeHTML(
+                                category.name
+                            )}
+
+                            ·
+
+                            ${formatMoney(
+                                category.value
+                            )}
+
                         </div>
 
-                    `}
+                    `
+                )
+                .join("");
+    }
 
-                </div>
+    refresh();
 
-            </div>
+    subscribe(() => {
+        refresh();
+    });
 
-        </section>
+    return element;
+}
 
-    `;
+function calculateCategories(
+    transactions
+) {
 
+    const groups = {};
+
+    transactions
+        .filter(
+            transaction =>
+                transaction.amount < 0
+        )
+        .forEach(
+            transaction => {
+
+                const name =
+                    transaction.group ||
+                    "Sem grupo";
+
+                if (!groups[name]) {
+                    groups[name] = 0;
+                }
+
+                groups[name] +=
+                    Math.abs(
+                        transaction.amount
+                    );
+            }
+        );
+
+    return Object.entries(groups)
+        .map(
+            ([name, value]) => ({
+                name,
+                value
+            })
+        );
 }
