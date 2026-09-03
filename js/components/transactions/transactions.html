@@ -8,7 +8,6 @@
                 Movimentações
             </div>
 
-
             <div
                 class="panel-subtitle"
                 data-transactions-count
@@ -16,18 +15,27 @@
 
         </div>
 
+        <div class="transactions-actions">
 
-        <button
-            class="transaction-add"
-            data-transactions-action="add"
-        >
+            <button
+                class="transaction-sort"
+                data-transactions-action="sort"
+                aria-label="Alterar ordenação"
+                title="Alterar ordenação"
+            >
+                ⇅
+            </button>
 
-            + Adicionar
+            <button
+                class="transaction-add"
+                data-transactions-action="add"
+            >
+                + Adicionar
+            </button>
 
-        </button>
+        </div>
 
     </div>
-
 
     <div
         class="transactions-list"

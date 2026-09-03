@@ -1,13 +1,31 @@
-import { formatMoney, escapeHTML } from "../../core/formatters.js";
-import { bindTransactionsEvents } from "./transactions-events.js";
+import { formatMoney, formatShortDate, escapeHTML } from "../../core/formatters.js";
 
 export function buildTransactions(
     element,
-    month
+    month,
+    sortOrder = "asc"
 ) {
 
     const transactions =
-        month.transactions || [];
+        [
+            ...(month.transactions || [])
+        ].sort(
+            (a, b) => {
+
+                const dateA =
+                    a.date ||
+                    "9999-12-31";
+
+                const dateB =
+                    b.date ||
+                    "9999-12-31";
+
+                return sortOrder === "asc"
+                    ? dateA.localeCompare(dateB)
+                    : dateB.localeCompare(dateA);
+
+            }
+        );
 
     const list =
         element.querySelector(
@@ -28,11 +46,6 @@ export function buildTransactions(
                 renderTransaction
             )
             .join("");
-
-    bindTransactionsEvents(
-        element,
-        month
-    );
 
 }
 
@@ -55,71 +68,76 @@ export function renderTransaction(
             data-transaction-id="${transaction.id}"
         >
 
-            <div class="transaction-main">
+            <div class="transaction-content">
 
-                <div class="transaction-name">
+                <div class="transaction-main">
+
+                    <div class="transaction-name">
+
+                        ${escapeHTML(
+                            transaction.description
+                        )}
+
+                    </div>
+
+                    <div class="transaction-meta">
+
+                        ${escapeHTML(
+                            transaction.group ||
+                            "Sem grupo"
+                        )}
+
+                        ·
+
+                        ${escapeHTML(
+                            transaction.account ||
+                            "Sem conta"
+                        )}
+
+                    </div>
+
+                </div>
+
+                <div class="transaction-date">
 
                     ${escapeHTML(
-                        transaction.description
+                        formatShortDate(
+                            transaction.date
+                        ) ||
+                        "—"
                     )}
 
                 </div>
 
-                <div class="transaction-meta">
+                <div
+                    class="
+                        transaction-value
+                        ${positive
+                            ? "positive"
+                            : "negative"
+                        }
+                    "
+                >
 
-                    ${escapeHTML(
-                        transaction.group ||
-                        "Sem grupo"
-                    )}
+                    ${signal}
 
-                    ·
-
-                    ${escapeHTML(
-                        transaction.account ||
-                        "Sem conta"
+                    ${formatMoney(
+                        Math.abs(
+                            transaction.amount
+                        )
                     )}
 
                 </div>
 
             </div>
 
-            <div class="transaction-date">
-
-                ${escapeHTML(
-                    transaction.date ||
-                    "—"
-                )}
-
-            </div>
-
-            <div
-                class="
-                    transaction-value
-                    ${positive
-                        ? "positive"
-                        : "negative"
-                    }
-                "
-            >
-
-                ${signal}
-
-                ${formatMoney(
-                    Math.abs(
-                        transaction.amount
-                    )
-                )}
-
-            </div>
-
-            <div
-                class="transaction-edit-area"
-            >
+            <div class="transaction-edit-area">
 
                 <button
                     class="transaction-edit"
                     data-transactions-action="edit"
                     aria-label="Editar movimentação"
+                    title="Editar movimentação"
                 >
 
                     ✎

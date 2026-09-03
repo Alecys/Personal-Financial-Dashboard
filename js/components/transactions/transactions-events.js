@@ -3,7 +3,7 @@ import { addTransaction } from "./transactions-add.js";
 
 export function bindTransactionsEvents(
     element,
-    month
+    onSort
 ) {
 
     element.addEventListener(
@@ -16,9 +16,7 @@ export function bindTransactionsEvents(
                 );
 
             if (!button) {
-
                 return;
-
             }
 
             const action =
@@ -32,8 +30,7 @@ export function bindTransactionsEvents(
                 openTransactionEdit(
                     button.closest(
                         "[data-transaction-id]"
-                    ),
-                    month
+                    )
                 );
 
             }
@@ -43,8 +40,16 @@ export function bindTransactionsEvents(
             ) {
 
                 addTransaction(
-                    month
+                    element
                 );
+
+            }
+
+            if (
+                action === "sort"
+            ) {
+
+                onSort();
 
             }
 
