@@ -1,10 +1,11 @@
 import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
 import { getCurrentMonth, subscribe } from "../../core/store.js";
 import { formatMoney, escapeHTML } from "../../core/formatters.js";
-import { categoriesConfig } from "./config.js";
 
 export async function Categories() {
-    loadStyle(categoriesConfig.style);
+    loadStyle(
+        "./css/components/categories.css"
+    );
 
     const html =
         await loadTemplate(

@@ -80,6 +80,59 @@
                     "amount": -180
                 }
             ]
+        },
+        "2026-09": {
+            "name": "Setembro",
+            "year": 2026,
+
+            "accounts": {
+                "nubank": {
+                    "name": "Nubank",
+                    "type": "Conta",
+                    "initialBalance": 333,
+                    "balance": 333
+                },
+                "itau": {
+                    "name": "Itaú",
+                    "type": "Conta",
+                    "initialBalance": 222,
+                    "balance": 222
+                },
+                "mercado-pago": {
+                    "name": "Mercado Pago",
+                    "type": "Conta",
+                    "initialBalance": 111,
+                    "balance": 111
+                }
+            },
+
+            "transactions": [
+                {
+                    "id": "1",
+                    "date": "2026-08-05",
+                    "description": "Salário",
+                    "group": "Salário",
+                    "account": "Nubank",
+                    "amount": 45000
+                },
+                {
+                    "id": "2",
+                    "date": "2026-08-08",
+                    "description": "Mercado",
+                    "group": "Alimentação",
+                    "account": "Nubank",
+                    "amount": -320.400
+                },
+                {
+                    "id": "3",
+                    "date": "2026-08-10",
+                    "description": "Combustível",
+                    "group": "Transporte",
+                    "account": "Itaú",
+                    "amount": -1800
+                }
+            ]
         }
+        
     }
 }

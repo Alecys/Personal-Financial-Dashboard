@@ -1,10 +1,11 @@
 import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
 import { getCurrentMonth, subscribe } from "../../core/store.js";
 import { formatMoney, escapeHTML } from "../../core/formatters.js";
-import { accountsConfig } from "./config.js";
 
 export async function Accounts() {
-    loadStyle(accountsConfig.style);
+    loadStyle(
+        "./css/components/accounts.css"
+    );
 
     const html =
         await loadTemplate(
