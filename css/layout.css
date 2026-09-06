@@ -10,35 +10,66 @@
 
     padding: 30px 0 60px;
 
-}
-
-
-/* =========================
-   PAGE GRID
-========================= */
-
-.main-grid {
-
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.5fr)
-        minmax(300px, .8fr);
+        repeat(12, minmax(0, 1fr));
 
     gap: 14px;
-
-    margin-top: 28px;
 
 }
 
 
 /* =========================
-   PAGE SECTIONS
+   PAGE LAYOUT
 ========================= */
 
-.bottom-section {
+.section-header {
 
-    margin-top: 14px;
+    grid-column:
+        1 / -1;
+
+}
+
+.section-balance {
+
+    grid-column:
+        1 / -1;
+
+}
+
+.section-accounts {
+
+    grid-column:
+        1 / 9;
+
+}
+
+.section-credit {
+
+    grid-column:
+        9 / -1;
+
+}
+
+.section-transactions {
+
+    grid-column:
+        1 / 9;
+
+}
+
+.section-summary {
+
+    grid-column:
+        9 / -1;
+
+}
+
+.section-categories {
+
+    grid-column:
+        1 / -1;
 
 }
 
@@ -58,9 +89,13 @@
     }
 
 
-    .main-grid {
+    .section-accounts,
+    .section-credit,
+    .section-transactions,
+    .section-summary {
 
-        grid-template-columns: 1fr;
+        grid-column:
+            1 / -1;
 
     }
 

@@ -3,7 +3,7 @@ export function formatMoney(value) {
     return Number(
         value || 0
     ).toLocaleString(
-        "pt-BR",
+        "en-US",
         {
             style: "currency",
             currency: "BRL"
@@ -17,7 +17,7 @@ export function formatAmount(value) {
     return Number(
         value || 0
     ).toLocaleString(
-        "pt-BR",
+        "en-US",
         {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
@@ -51,7 +51,7 @@ export function formatMonth(value) {
         );
 
     return date.toLocaleDateString(
-        "pt-BR",
+        "en-US",
         {
             month: "long",
             year: "numeric"
@@ -79,17 +79,17 @@ export function formatShortDate(
 
     const months = [
         "JAN",
-        "FEV",
+        "FEB",
         "MAR",
-        "ABR",
-        "MAI",
+        "APR",
+        "MAY",
         "JUN",
         "JUL",
-        "AGO",
-        "SET",
-        "OUT",
+        "AUG",
+        "SEP",
+        "OCT",
         "NOV",
-        "DEZ"
+        "DEC"
     ];
 
     const month =

@@ -32,7 +32,7 @@ export async function initializeStore() {
     if (!response.ok) {
 
         throw new Error(
-            "Não foi possível carregar finance.json"
+            "Could not load finance.json"
         );
 
     }

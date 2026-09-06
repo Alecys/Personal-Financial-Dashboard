@@ -12,7 +12,7 @@ export async function loadTemplate(
     if (!response.ok) {
 
         throw new Error(
-            `Não foi possível carregar: ${path}`
+            `Could not load:: ${path}`
         );
 
     }

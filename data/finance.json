@@ -13,24 +13,24 @@
         "Fixed",
         "Housing",
         "Transport",
-        "Moto Gas",
-        "Estacionamento",
+        "Motorcycle Fuel",
+        "Parking",
         "Food",
         "Restaurant",
         "Credit Card",
         "Transfer",
-        "Well-being and beauty",
+        "Well-being and Beauty",
         "Clothing",
         "Gift",
         "Health",
-        "Mother Bills",
-        "Pedágio",
-        "Kath Debt"
+        "Mother's Bills",
+        "Toll",
+        "Kath's Debt"
     ],
 
     "months": {
         "2026-08": {
-            "name": "Agosto",
+            "name": "August",
             "year": 2026,
 
             "accounts": {
@@ -58,31 +58,32 @@
                 {
                     "id": "1",
                     "date": "2026-08-05",
-                    "description": "Salário",
-                    "group": "Salário",
+                    "description": "Salary",
+                    "group": "Salary",
                     "account": "Nubank",
                     "amount": 4500
                 },
                 {
                     "id": "2",
                     "date": "2026-08-08",
-                    "description": "Mercado",
-                    "group": "Alimentação",
+                    "description": "Groceries",
+                    "group": "Food",
                     "account": "Nubank",
                     "amount": -320.40
                 },
                 {
                     "id": "3",
                     "date": "2026-08-10",
-                    "description": "Combustível",
-                    "group": "Transporte",
+                    "description": "Fuel",
+                    "group": "Transport",
                     "account": "Itaú",
                     "amount": -180
                 }
             ]
         },
+
         "2026-09": {
-            "name": "Setembro",
+            "name": "September",
             "year": 2026,
 
             "accounts": {
@@ -110,29 +111,28 @@
                 {
                     "id": "1",
                     "date": "2026-08-05",
-                    "description": "Salário",
-                    "group": "Salário",
+                    "description": "Salary",
+                    "group": "Salary",
                     "account": "Nubank",
                     "amount": 45000
                 },
                 {
                     "id": "2",
                     "date": "2026-08-08",
-                    "description": "Mercado",
-                    "group": "Alimentação",
+                    "description": "Groceries",
+                    "group": "Food",
                     "account": "Nubank",
                     "amount": -320.400
                 },
                 {
                     "id": "3",
                     "date": "2026-08-10",
-                    "description": "Combustível",
-                    "group": "Transporte",
+                    "description": "Fuel",
+                    "group": "Transport",
                     "account": "Itaú",
                     "amount": -1800
                 }
             ]
         }
-        
     }
 }

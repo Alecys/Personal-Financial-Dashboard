@@ -29,7 +29,7 @@ export function buildTransactionForm(
             >
 
                 <span>
-                    Descrição
+                    Description
                 </span>
 
                 <input
@@ -47,7 +47,7 @@ export function buildTransactionForm(
             >
 
                 <span>
-                    Grupo
+                    Group
                 </span>
 
                 <select
@@ -61,7 +61,7 @@ export function buildTransactionForm(
                             : ""
                         }
                     >
-                        Selecione...
+                        Select...
                     </option>
 
                     ${groups
@@ -92,7 +92,7 @@ export function buildTransactionForm(
             >
 
                 <span>
-                    Conta
+                    Account
                 </span>
 
                 <select
@@ -106,7 +106,7 @@ export function buildTransactionForm(
                             : ""
                         }
                     >
-                        Selecione...
+                        No account
                     </option>
 
                     ${accounts
@@ -137,7 +137,7 @@ export function buildTransactionForm(
             >
 
                 <span>
-                    Data
+                    Date
                 </span>
 
                 <input
@@ -156,7 +156,7 @@ export function buildTransactionForm(
             >
 
                 <span>
-                    Valor
+                    Amount
                 </span>
 
                 <input
@@ -187,8 +187,8 @@ export function buildTransactionActions(
             <button
                 class="transaction-edit transaction-save"
                 data-transaction-form-save
-                aria-label="Salvar movimentação"
-                title="Salvar movimentação"
+                aria-label="Save transaction"
+                title="Save transaction"
             >
                 ✓
             </button>
@@ -199,8 +199,8 @@ export function buildTransactionActions(
                         <button
                             class="transaction-edit transaction-delete"
                             data-transaction-form-delete
-                            aria-label="Remover movimentação"
-                            title="Remover movimentação"
+                            aria-label="Delete transaction"
+                            title="Delete transaction"
                         >
                             🗑
                         </button>
@@ -377,17 +377,17 @@ function convertDateToInput(
 
     const months = {
         JAN: "01",
-        FEV: "02",
+        FEB: "02",
         MAR: "03",
-        ABR: "04",
-        MAI: "05",
+        APR: "04",
+        MAY: "05",
         JUN: "06",
         JUL: "07",
-        AGO: "08",
-        SET: "09",
-        OUT: "10",
+        AUG: "08",
+        SEP: "09",
+        OCT: "10",
         NOV: "11",
-        DEZ: "12"
+        DEC: "12"
     };
 
     const monthNumber =

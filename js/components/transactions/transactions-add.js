@@ -173,18 +173,6 @@ function validateTransaction(
 
     }
 
-    if (!values.account) {
-
-        element
-            .querySelector(
-                '[data-transaction-field="account"]'
-            )
-            ?.focus();
-
-        return false;
-
-    }
-
     if (!values.date) {
 
         element

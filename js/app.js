@@ -34,24 +34,14 @@ async function start() {
     const credit =
         await Credit();
 
-    const mainGrid =
-        document.createElement("section");
-
-    mainGrid.className =
-        "main-grid";
-
-    mainGrid.append(
-        transactions,
-        summary
-    );
-
     app.append(
         header,
         balance,
         accounts,
-        mainGrid,
+        credit,
+        transactions,
+        summary,
         categories,
-        credit
     );
 }
 

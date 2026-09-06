@@ -2,7 +2,7 @@
    PANEL
 ========================= */
 
-.transactions-panel {
+.section-transactions {
     overflow: hidden;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -229,18 +229,11 @@
 .transaction.transaction-editing {
     grid-template-columns:
         minmax(0, 1fr)
-        88px;
-    background: var(--surface-2);
+        max-content;
+
+    background:
+        var(--surface-2);
 }
-
-.transaction.transaction-editing:hover {
-    grid-template-columns:
-        minmax(0, 1fr)
-        88px;
-    background: var(--surface-2);
-}
-
-
 
 /* =========================
    EDIT ANIMATION

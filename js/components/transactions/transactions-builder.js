@@ -38,7 +38,7 @@ export function buildTransactions(
         );
 
     count.textContent =
-        `${transactions.length} lançamentos`;
+        `${transactions.length} transactions`;
 
     list.innerHTML =
         transactions
@@ -84,14 +84,14 @@ export function renderTransaction(
 
                         ${escapeHTML(
                             transaction.group ||
-                            "Sem grupo"
+                            "No group"
                         )}
 
                         ·
 
                         ${escapeHTML(
                             transaction.account ||
-                            "Sem conta"
+                            "No account"
                         )}
 
                     </div>
@@ -136,8 +136,8 @@ export function renderTransaction(
                 <button
                     class="transaction-edit"
                     data-transactions-action="edit"
-                    aria-label="Editar movimentação"
-                    title="Editar movimentação"
+                    aria-label="Edit transaction"
+                    title="Edit transaction"
                 >
 
                     ✎
