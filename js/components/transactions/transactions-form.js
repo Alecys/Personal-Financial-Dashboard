@@ -12,11 +12,6 @@ export function buildTransactionForm(
     const groups =
         state.groups || [];
 
-    const accounts =
-        Object.values(
-            month.accounts || {}
-        );
-
     return `
 
         <div
@@ -109,24 +104,15 @@ export function buildTransactionForm(
                         No account
                     </option>
 
-                    ${accounts
-                        .map(
-                            account => `
+                    ${buildAccountOptions(
+                        month,
+                        transaction.account
+                    )}
 
-                                <option
-                                    value="${escapeHTML(account.name)}"
-                                    ${account.name === transaction.account
-                                        ? "selected"
-                                        : ""
-                                    }
-                                >
-                                    ${escapeHTML(account.name)}
-                                </option>
-
-                            `
-                        )
-                        .join("")
-                    }
+                    ${buildCreditOptions(
+                        month,
+                        transaction.account
+                    )}
 
                 </select>
 
@@ -169,6 +155,102 @@ export function buildTransactionForm(
             </label>
 
         </div>
+
+    `;
+
+}
+
+function buildAccountOptions(
+    month,
+    selectedId
+) {
+
+    const accounts =
+        Object.entries(
+            month.accounts || {}
+        );
+
+    if (!accounts.length) {
+        return "";
+    }
+
+    return `
+
+        <optgroup
+            label="Accounts"
+        >
+
+            ${accounts
+                .map(
+                    ([id, account]) => `
+
+                        <option
+                            value="${escapeHTML(id)}"
+                            data-source-type="account"
+                            ${id === selectedId
+                                ? "selected"
+                                : ""
+                            }
+                        >
+                            ${escapeHTML(
+                                account.name
+                            )}
+                        </option>
+
+                    `
+                )
+                .join("")
+            }
+
+        </optgroup>
+
+    `;
+
+}
+
+function buildCreditOptions(
+    month,
+    selectedId
+) {
+
+    const credit =
+        Object.entries(
+            month.credit || {}
+        );
+
+    if (!credit.length) {
+        return "";
+    }
+
+    return `
+
+        <optgroup
+            label="Credit Cards"
+        >
+
+            ${credit
+                .map(
+                    ([id, card]) => `
+
+                        <option
+                            value="${escapeHTML(id)}"
+                            data-source-type="credit"
+                            ${id === selectedId
+                                ? "selected"
+                                : ""
+                            }
+                        >
+                            ${escapeHTML(
+                                card.name
+                            )}
+                        </option>
+
+                    `
+                )
+                .join("")
+            }
+
+        </optgroup>
 
     `;
 
@@ -232,6 +314,100 @@ export function getTransactionFormValues(
                 ]
             )
     );
+
+}
+
+export function getTransactionSource(
+    transactionElement
+) {
+
+    const field =
+        transactionElement.querySelector(
+            '[data-transaction-field="account"]'
+        );
+
+    const option =
+        field?.selectedOptions?.[0];
+
+    if (!option) {
+        return null;
+    }
+
+    return {
+
+        id:
+            option.value,
+
+        type:
+            option.dataset.sourceType || null
+
+    };
+
+}
+
+export function validateTransaction(
+    element,
+    values
+) {
+
+    if (!values.description.trim()) {
+
+        element
+            .querySelector(
+                '[data-transaction-field="description"]'
+            )
+            ?.focus();
+
+        return false;
+
+    }
+
+    if (!values.group) {
+
+        element
+            .querySelector(
+                '[data-transaction-field="group"]'
+            )
+            ?.focus();
+
+        return false;
+
+    }
+
+    if (!values.date) {
+
+        element
+            .querySelector(
+                '[data-transaction-field="date"]'
+            )
+            ?.focus();
+
+        return false;
+
+    }
+
+    const amount =
+        Number(
+            values.amount
+        );
+
+    if (
+        values.amount === "" ||
+        !Number.isFinite(amount) ||
+        amount === 0
+    ) {
+
+        element
+            .querySelector(
+                '[data-transaction-field="amount"]'
+            )
+            ?.focus();
+
+        return false;
+
+    }
+
+    return true;
 
 }
 

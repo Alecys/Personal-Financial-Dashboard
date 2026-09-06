@@ -1,5 +1,5 @@
 import { getCurrentMonth, updateCurrentMonth } from "../../core/store.js";
-import { buildTransactionForm, buildTransactionActions, bindTransactionForm } from "./transactions-form.js";
+import { buildTransactionForm, buildTransactionActions, bindTransactionForm, validateTransaction } from "./transactions-form.js";
 
 export function openTransactionEdit(
     transactionElement
@@ -52,6 +52,15 @@ export function openTransactionEdit(
         transactionElement,
 
         values => {
+
+            if (
+                !validateTransaction(
+                    transactionElement,
+                    values
+                )
+            ) {
+                return false;
+            }
 
             const currentMonth =
                 getCurrentMonth();

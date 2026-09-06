@@ -107,6 +107,17 @@
                 }
             },
 
+            "credit": {
+                "nubank": {
+                    "name": "Nubank",
+                    "limit": 2500,
+                    "closingDay": 5,
+                    "dueDay": 12,
+                    "initialBalance": -850,
+                    "status": "OPEN"
+                }
+            },
+
             "transactions": [
                 {
                     "id": "1",

@@ -1,5 +1,5 @@
 import { getCurrentMonth, updateCurrentMonth } from "../../core/store.js";
-import { buildTransactionForm, buildTransactionActions, bindTransactionForm } from "./transactions-form.js";
+import { buildTransactionForm, buildTransactionActions, bindTransactionForm, validateTransaction } from "./transactions-form.js";
 
 export function addTransaction(
     element
@@ -141,72 +141,6 @@ export function addTransaction(
             '[data-transaction-field="description"]'
         )
         ?.focus();
-
-}
-
-function validateTransaction(
-    element,
-    values
-) {
-
-    if (!values.description.trim()) {
-
-        element
-            .querySelector(
-                '[data-transaction-field="description"]'
-            )
-            ?.focus();
-
-        return false;
-
-    }
-
-    if (!values.group) {
-
-        element
-            .querySelector(
-                '[data-transaction-field="group"]'
-            )
-            ?.focus();
-
-        return false;
-
-    }
-
-    if (!values.date) {
-
-        element
-            .querySelector(
-                '[data-transaction-field="date"]'
-            )
-            ?.focus();
-
-        return false;
-
-    }
-
-    const amount =
-        Number(
-            values.amount
-        );
-
-    if (
-        values.amount === "" ||
-        !Number.isFinite(amount) ||
-        amount === 0
-    ) {
-
-        element
-            .querySelector(
-                '[data-transaction-field="amount"]'
-            )
-            ?.focus();
-
-        return false;
-
-    }
-
-    return true;
 
 }
 
