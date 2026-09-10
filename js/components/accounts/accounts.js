@@ -1,8 +1,25 @@
-import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
-import { getCurrentMonth, subscribe } from "../../core/store.js";
-import { formatMoney, escapeHTML } from "../../core/formatters.js";
+import {
+    loadTemplate,
+    loadStyle,
+    createElement
+} from "../../core/component.js";
+
+import {
+    getCurrentMonth,
+    subscribe
+} from "../../core/store.js";
+
+import {
+    buildAccounts
+} from "./accounts-builder.js";
+
+import {
+    openAccountEdit
+} from "./accounts-edit.js";
+
 
 export async function Accounts() {
+
     loadStyle(
         "./css/components/accounts.css"
     );
@@ -15,27 +32,47 @@ export async function Accounts() {
     const element =
         createElement(html);
 
-    const container =
-        element.querySelector(
-            '[data-field="accounts"]'
-        );
-
     function refresh() {
+
         const month =
             getCurrentMonth();
 
-        const accounts =
-            Object.entries(
-                month.accounts || {}
+        buildAccounts(
+            element,
+            month
+        );
+
+    }
+
+    element.addEventListener(
+        "click",
+        event => {
+
+            const button =
+                event.target.closest(
+                    '[data-action="edit"]'
+                );
+
+            if (!button) {
+                return;
+            }
+
+            const accountElement =
+                button.closest(
+                    "[data-account-id]"
+                );
+
+            openAccountEdit(
+                accountElement
             );
 
-        container.innerHTML =
-            accounts
-                .map(
-                    renderAccount
-                )
-                .join("");
-    }
+        }
+    );
+
+    window.addEventListener(
+        "finance-account-edit-cancel",
+        refresh
+    );
 
     refresh();
 
@@ -44,77 +81,5 @@ export async function Accounts() {
     });
 
     return element;
-}
 
-function renderAccount(
-    [id, account]
-) {
-
-    return `
-
-        <article
-            class="account-card"
-            data-account-id="${id}"
-        >
-
-            <div class="account-header">
-
-                <div>
-
-                    <div class="account-name">
-
-                        ${escapeHTML(
-                            account.name
-                        )}
-
-                    </div>
-
-                    <div class="account-type">
-
-                        ${escapeHTML(
-                            account.type
-                        )}
-
-                    </div>
-
-                </div>
-
-                <button
-                    class="account-edit"
-                    data-action="edit"
-                >
-
-                    ✎
-
-                </button>
-
-            </div>
-
-            <div class="account-value">
-
-                ${formatMoney(
-                    account.balance
-                )}
-
-            </div>
-
-            <div class="account-footer">
-
-                <span>
-                    Saldo inicial
-                </span>
-
-                <span>
-
-                    ${formatMoney(
-                        account.initialBalance
-                    )}
-
-                </span>
-
-            </div>
-
-        </article>
-
-    `;
 }

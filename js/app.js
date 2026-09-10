@@ -41,7 +41,7 @@ async function start() {
         credit,
         transactions,
         summary,
-        categories,
+        categories
     );
 }
 

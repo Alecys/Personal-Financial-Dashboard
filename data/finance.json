@@ -37,20 +37,38 @@
                 "nubank": {
                     "name": "Nubank",
                     "type": "Conta",
-                    "initialBalance": 500,
-                    "balance": 300
+                    "initialBalance": 500
                 },
                 "itau": {
                     "name": "Itaú",
                     "type": "Conta",
-                    "initialBalance": 0,
-                    "balance": 100
+                    "initialBalance": 0
                 },
                 "mercado-pago": {
                     "name": "Mercado Pago",
                     "type": "Conta",
-                    "initialBalance": 2000,
-                    "balance": 2000
+                    "initialBalance": 2000
+                }
+            },
+
+             "credit": {
+                "credit_nubank": {
+                    "name": "Nubank",
+                    "color": "#7c3aed",
+                    "lastFour": "4821",
+                    "limit": 1000,
+                    "initialBalance": 0,
+                    "closingDay": 5,
+                    "dueDay": 10
+                },
+                "credit_itau": {
+                    "name": "Itaú",
+                    "color": "#2563eb",
+                    "lastFour": "7214",
+                    "limit": 1001,
+                    "initialBalance": 10,
+                    "closingDay": 10,
+                    "dueDay": 15
                 }
             },
 
@@ -90,31 +108,56 @@
                 "nubank": {
                     "name": "Nubank",
                     "type": "Conta",
-                    "initialBalance": 333,
-                    "balance": 333
+                    "initialBalance": 333
                 },
                 "itau": {
                     "name": "Itaú",
                     "type": "Conta",
-                    "initialBalance": 222,
-                    "balance": 222
+                    "initialBalance": 222
                 },
                 "mercado-pago": {
                     "name": "Mercado Pago",
                     "type": "Conta",
-                    "initialBalance": 111,
-                    "balance": 111
+                    "initialBalance": 111
                 }
             },
 
             "credit": {
-                "nubank": {
+                "credit_nubank": {
                     "name": "Nubank",
-                    "limit": 2500,
-                    "closingDay": 5,
-                    "dueDay": 12,
+                    "color": "#7c3aed",
+                    "lastFour": "4821",
+                    "limit": 4500,
                     "initialBalance": -850,
-                    "status": "OPEN"
+                    "closingDay": 5,
+                    "dueDay": 10
+                },
+                "credit_itau": {
+                    "name": "Itaú",
+                    "color": "#2563eb",
+                    "lastFour": "7214",
+                    "limit": 3200,
+                    "initialBalance": -2000,
+                    "closingDay": 10,
+                    "dueDay": 15
+                },
+                "credit_inter": {
+                    "name": "Inter",
+                    "color": "#27272A",
+                    "lastFour": "1028",
+                    "limit": 6000,
+                    "initialBalance": -100,
+                    "closingDay": 15,
+                    "dueDay": 20
+                },
+                "credit_c6": {
+                    "name": "C6 Bank",
+                    "color": "#059669",
+                    "lastFour": "9034",
+                    "limit": 2800,
+                    "initialBalance": -3000,
+                    "closingDay": 20,
+                    "dueDay": 25
                 }
             },
 

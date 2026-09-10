@@ -1,0 +1,205 @@
+.flip {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.flip__face,
+.flip__back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition:
+        transform 0.6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.flip__face {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: white;
+}
+
+.flip__back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: white;
+}
+
+.flip.is-flipped .flip__face {
+    transform: rotateY(180deg);
+}
+
+.flip.is-flipped .flip__back {
+    transform: rotateY(0deg);
+}
+
+.flip__face,
+.flip__back {
+    transition:
+        transform 0.6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.flip__back {
+    padding: 18px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: white;
+}
+
+.flip__back-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.flip__brand {
+    font-size: 12px;
+}
+
+.flip__label {
+    margin-top: 3px;
+    font-size: 8px;
+    color: rgba(255, 255, 255, .55);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.flip__button {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .1);
+    color: white;
+    cursor: pointer;
+}
+
+.flip__button span {
+    display: block;
+    transform: rotateY(180deg) translateY(-2px);
+}
+
+.flip__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flip__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.flip__row span {
+    font-size: 8px;
+    color: rgba(255, 255, 255, .45);
+}
+
+.flip__row strong {
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+}
+
+.flip__footer {
+    font-size: 7px;
+    color: rgba(255, 255, 255, .35);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.flip__actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.flip__edit {
+    font-size: 14px;
+}
+
+.flip__button--back {
+    font-size: 15px;
+}
+
+.flip__invoice {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.flip__invoice span {
+    font-size: 8px;
+    color: rgba(255, 255, 255, .45);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.flip__invoice strong {
+    font-size: 24px;
+    font-weight: 550;
+    letter-spacing: -.03em;
+    color: white;
+}
+
+.flip__status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 9px;
+    color: rgba(255, 255, 255, .55);
+}
+
+.flip__status-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .45);
+}
+
+.flip__footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.flip__pay {
+    padding: 7px 14px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, .08);
+    color: white;
+    font-size: 9px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.flip__pay:hover {
+    background: rgba(255, 255, 255, .14);
+    transform: translateY(-1px);
+}

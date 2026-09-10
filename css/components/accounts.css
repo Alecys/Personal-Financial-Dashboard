@@ -19,9 +19,17 @@
 
 
 .accounts-grid {
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, 275px);
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 275px)
+        );
+
     gap: 12px;
+
 }
 
 
@@ -59,6 +67,10 @@
 }
 
 
+/* =========================
+   HEADER
+========================= */
+
 .account-header {
 
     display: flex;
@@ -94,6 +106,21 @@
 }
 
 
+/* =========================
+   VALUE
+========================= */
+
+.account-value-row {
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 8px;
+
+}
+
+
 .account-value {
 
     margin-top: 21px;
@@ -104,6 +131,56 @@
 
 }
 
+
+.account-variation {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 3px;
+
+    font-size: 10px;
+
+    font-weight: 550;
+
+}
+
+
+.account-variation.positive {
+
+    color:
+        var(--positive);
+
+}
+
+
+.account-variation.negative {
+
+    color:
+        var(--negative);
+
+}
+
+
+.account-variation.neutral {
+
+    color:
+        var(--text-muted);
+
+}
+
+
+.account-variation-symbol {
+
+    font-size: 9px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 .account-footer {
 
@@ -120,6 +197,10 @@
 
 }
 
+
+/* =========================
+   EDIT BUTTON
+========================= */
 
 .account-edit {
 
@@ -145,6 +226,19 @@
     transition:
         var(--transition);
 
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+.account-card:hover .account-edit {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
 }
 
 
@@ -155,5 +249,193 @@
 
     color:
         var(--text);
+
+}
+
+
+/* =========================
+   EDIT FORM
+========================= */
+
+.account-edit-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    width: 100%;
+
+}
+
+
+.account-edit-field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    width: 100%;
+
+}
+
+
+.account-edit-field span {
+
+    color:
+        var(--text-muted);
+
+    font-size: 8px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+.account-edit-field input {
+
+    box-sizing: border-box;
+
+    width: 100%;
+
+    padding: 6px 8px;
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-small);
+
+    outline: none;
+
+    font: inherit;
+
+    font-size: 10px;
+
+}
+
+
+.account-edit-field input:focus {
+
+    background:
+        var(--surface-3);
+
+    border-color:
+        var(--border-light);
+
+}
+
+
+/* =========================
+   EDIT ACTIONS
+========================= */
+
+.account-edit-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-top: 2px;
+
+}
+
+
+.account-edit-action {
+
+    width: 28px;
+
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    background:
+        var(--surface-2);
+
+    color:
+        var(--text-muted);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-small);
+
+    cursor: pointer;
+
+    transition:
+        var(--transition);
+
+}
+
+
+.account-edit-action:hover {
+
+    background:
+        var(--surface-3);
+
+    color:
+        var(--text);
+
+    border-color:
+        var(--border-light);
+
+}
+
+
+.account-save {
+
+    color:
+        var(--positive);
+
+}
+
+
+.account-cancel {
+
+    color:
+        var(--negative);
+
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.account-edit-field input[type="number"]::-webkit-inner-spin-button,
+.account-edit-field input[type="number"]::-webkit-outer-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+
+
+.account-edit-field input[type="number"] {
+
+    -moz-appearance: textfield;
 
 }
