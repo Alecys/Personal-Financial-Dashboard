@@ -187,6 +187,7 @@ function buildAccountOptions(
                         <option
                             value="${escapeHTML(id)}"
                             data-source-type="account"
+                            data-transaction-type="debit"
                             ${id === selectedId
                                 ? "selected"
                                 : ""
@@ -235,6 +236,7 @@ function buildCreditOptions(
                         <option
                             value="${escapeHTML(id)}"
                             data-source-type="credit"
+                            data-transaction-type="credit"
                             ${id === selectedId
                                 ? "selected"
                                 : ""
@@ -338,8 +340,13 @@ export function getTransactionSource(
         id:
             option.value,
 
+        sourceType:
+            option.dataset.sourceType ||
+            null,
+
         type:
-            option.dataset.sourceType || null
+            option.dataset.transactionType ||
+            null
 
     };
 

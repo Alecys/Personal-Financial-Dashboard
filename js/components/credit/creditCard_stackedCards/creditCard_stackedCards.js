@@ -46,41 +46,6 @@ export function CreditCardStackedCards({
         ];
     }
 
-    function closeCardState(
-        card
-    ) {
-        if (!card) {
-            return;
-        }
-
-        card.classList.remove(
-            "is-editing",
-            "is-paying"
-        );
-    }
-
-    function closeActiveState() {
-        const cards =
-            getCards();
-
-        cards.forEach(
-            card => {
-                if (
-                    card.classList.contains(
-                        "is-editing"
-                    ) ||
-                    card.classList.contains(
-                        "is-paying"
-                    )
-                ) {
-                    closeCardState(
-                        card
-                    );
-                }
-            }
-        );
-    }
-
     function renderStackedCards() {
         root.innerHTML = `
             <div class="card-deck">
@@ -136,8 +101,6 @@ export function CreditCardStackedCards({
                     items.length - 1
                 );
 
-        closeActiveState();
-
         const track =
             root.querySelector(
                 ".card-deck__track"
@@ -159,9 +122,7 @@ export function CreditCardStackedCards({
         bindEvents();
     }
 
-    function updateCards(
-        notifySelection = true
-    ) {
+    function updateCards() {
         const cards =
             getCards();
 
@@ -264,7 +225,6 @@ export function CreditCardStackedCards({
             items[currentIndex];
 
         if (
-            notifySelection &&
             selectedCard &&
             onSelect
         ) {
@@ -285,8 +245,6 @@ export function CreditCardStackedCards({
             return;
         }
 
-        closeActiveState();
-
         currentIndex =
             index;
 
@@ -300,8 +258,6 @@ export function CreditCardStackedCards({
         ) {
             return;
         }
-
-        closeActiveState();
 
         const cards =
             getCards();
@@ -339,8 +295,6 @@ export function CreditCardStackedCards({
         ) {
             return;
         }
-
-        closeActiveState();
 
         const cards =
             getCards();
@@ -421,8 +375,6 @@ export function CreditCardStackedCards({
                             cardIndex !==
                             currentIndex
                         ) {
-                            closeActiveState();
-
                             selectCard(
                                 cardIndex
                             );
@@ -510,9 +462,7 @@ export function CreditCardStackedCards({
         }
 
         else {
-            updateCards(
-                false
-            );
+            updateCards();
         }
 
         dragDistance =
@@ -560,8 +510,9 @@ export function CreditCardStackedCards({
             return;
         }
 
-        closeCardState(
-            selectedCard
+        selectedCard.classList.remove(
+            "is-editing",
+            "is-paying"
         );
     }
 

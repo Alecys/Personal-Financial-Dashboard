@@ -120,7 +120,7 @@ export function initializeCreditEdit(root) {
                     data-edit-action="close"
                     aria-label="Cancel editing"
                 >
-                    ×
+                    <span>×</
                 </button>
 
             </div>

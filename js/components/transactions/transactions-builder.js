@@ -43,14 +43,19 @@ export function buildTransactions(
     list.innerHTML =
         transactions
             .map(
-                renderTransaction
+                transaction =>
+                    renderTransaction(
+                        transaction,
+                        month
+                    )
             )
             .join("");
 
 }
 
 export function renderTransaction(
-    transaction
+    transaction,
+    month
 ) {
 
     const positive =
@@ -60,6 +65,12 @@ export function renderTransaction(
         positive
             ? "+"
             : "−";
+
+    const accountName =
+        getTransactionAccountName(
+            transaction,
+            month
+        );
 
     return `
 
@@ -90,8 +101,7 @@ export function renderTransaction(
                         ·
 
                         ${escapeHTML(
-                            transaction.account ||
-                            "No account"
+                            accountName
                         )}
 
                     </div>
@@ -149,5 +159,56 @@ export function renderTransaction(
         </article>
 
     `;
+
+}
+
+function getTransactionAccountName(
+    transaction,
+    month
+) {
+
+    const accountId =
+        transaction.account;
+
+    if (!accountId) {
+        return "No account";
+    }
+
+    if (
+        transaction.type ===
+        "credit"
+    ) {
+
+        const card =
+            month?.credit?.[
+                accountId
+            ];
+
+        if (card) {
+
+            return `Credit ${
+                card.name ||
+                accountId
+            }`;
+
+        }
+
+    }
+
+    const account =
+        month?.accounts?.[
+            accountId
+        ];
+
+    if (account) {
+
+        return (
+            account.name ||
+            accountId
+        );
+
+    }
+
+    return accountId;
 
 }

@@ -1,5 +1,5 @@
 import { getCurrentMonth, updateCurrentMonth } from "../../core/store.js";
-import { buildTransactionForm, buildTransactionActions, bindTransactionForm, validateTransaction } from "./transactions-form.js";
+import { buildTransactionForm, buildTransactionActions, bindTransactionForm, validateTransaction, getTransactionSource } from "./transactions-form.js";
 
 export function openTransactionEdit(
     transactionElement
@@ -62,6 +62,11 @@ export function openTransactionEdit(
                 return false;
             }
 
+            const source =
+                getTransactionSource(
+                    transactionElement
+                );
+
             const currentMonth =
                 getCurrentMonth();
 
@@ -95,7 +100,10 @@ export function openTransactionEdit(
                             values.group,
 
                         account:
-                            values.account,
+                            source?.id || "",
+
+                        type:
+                            source?.type || null,
 
                         date:
                             values.date,
@@ -103,7 +111,13 @@ export function openTransactionEdit(
                         amount:
                             Number(
                                 values.amount
-                            )
+                            ),
+
+                        installments:
+                            currentMonth.transactions[
+                                index
+                            ].installments ||
+                            "one-time"
 
                     };
 

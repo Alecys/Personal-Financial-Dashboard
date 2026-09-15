@@ -203,3 +203,24 @@
     background: rgba(255, 255, 255, .14);
     transform: translateY(-1px);
 }
+
+.flip__button {
+    transition:
+        transform .2s ease,
+        background-color .2s ease,
+        opacity .2s ease;
+}
+
+.flip__button:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+.flip__button:active {
+    filter: brightness(1.05);
+    transform: translateY(0);
+}
+
+.credit-edit__close span {
+        transform: translate(0px, -2px);
+}

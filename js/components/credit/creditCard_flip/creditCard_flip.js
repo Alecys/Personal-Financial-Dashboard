@@ -7,12 +7,9 @@ export function createCreditCardFlip({
     card,
     currentInvoice,
     invoiceClosed = false,
-    isPaid = false
+    isPaid = false,
+    invoiceStatus = "open"
 }) {
-    const limit =
-        Number(
-            card.limit || 0
-        );
 
     const invoiceValue =
         Number(
@@ -20,17 +17,34 @@ export function createCreditCardFlip({
         );
 
     const hasInvoice =
-        invoiceValue < 0;
+        invoiceValue !== 0;
 
     const status =
         isPaid
             ? "Already paid"
-            : invoiceClosed && hasInvoice
-                ? "Unpaid"
-                : "Open";
+            : invoiceStatus ===
+                "overdue"
+                ? "Overdue"
+                : hasInvoice &&
+                    (
+                        invoiceStatus ===
+                            "closed" ||
+                        invoiceStatus ===
+                            "overdue"
+                    )
+                    ? "Unpaid"
+                    : invoiceStatus ===
+                        "paid"
+                        ? "Already paid"
+                        : "Open";
 
     const showPayButton =
-        invoiceClosed &&
+        (
+            invoiceStatus ===
+                "closed" ||
+            invoiceStatus ===
+                "overdue"
+        ) &&
         hasInvoice &&
         !isPaid;
 
@@ -51,6 +65,7 @@ export function createCreditCardFlip({
                 <div class="flip__back-top">
 
                     <div>
+
                         <div class="flip__brand">
                             ${escapeHTML(
                                 card.name
@@ -60,6 +75,7 @@ export function createCreditCardFlip({
                         <div class="flip__label">
                             Statement
                         </div>
+
                     </div>
 
                     <div class="flip__actions">
@@ -92,13 +108,17 @@ export function createCreditCardFlip({
                 <div class="flip__content">
 
                     <div class="flip__invoice">
-                        <span>Closed invoice</span>
+
+                        <span>
+                            Closed invoice
+                        </span>
 
                         <strong>
                             ${formatMoney(
                                 invoiceValue
                             )}
                         </strong>
+
                     </div>
 
                     <div class="flip__status">
@@ -140,6 +160,7 @@ export function createCreditCardFlip({
 export function creditFlip(
     cardId
 ) {
+
     if (!cardId) {
         return;
     }
@@ -167,11 +188,13 @@ export function creditFlip(
     flip.classList.toggle(
         "is-flipped"
     );
+
 }
 
 export function initializeCreditFlip(
     root
 ) {
+
     if (
         initialized ||
         !root
@@ -185,6 +208,7 @@ export function initializeCreditFlip(
     root.addEventListener(
         "click",
         event => {
+
             const button =
                 event.target.closest(
                     '[data-action="flip"]'
@@ -209,6 +233,8 @@ export function initializeCreditFlip(
             creditFlip(
                 cardId
             );
+
         }
     );
+
 }

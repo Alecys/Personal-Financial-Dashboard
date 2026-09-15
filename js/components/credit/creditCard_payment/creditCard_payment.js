@@ -74,7 +74,10 @@ export function initializeCreditPayment({
         }
 
         if (
-            invoice.invoicePaid
+            invoice.status !==
+                "closed" &&
+            invoice.status !==
+                "overdue"
         ) {
             return;
         }
@@ -82,7 +85,8 @@ export function initializeCreditPayment({
         const amount =
             Math.abs(
                 Number(
-                    invoice.closedInvoice || 0
+                    invoice.closedInvoice ||
+                    0
                 )
             );
 
@@ -166,9 +170,19 @@ export function initializeCreditPayment({
 
         return `
             <div class="credit-payment__header">
+
                 <div class="credit-payment__heading">
-                    <span class="credit-payment__label">Pay invoice</span>
-                    <strong class="credit-payment__title">${escapeHTML(card.name)}</strong>
+
+                    <span class="credit-payment__label">
+                        Pay invoice
+                    </span>
+
+                    <strong class="credit-payment__title">
+                        ${escapeHTML(
+                            card.name
+                        )}
+                    </strong>
+
                 </div>
 
                 <button
@@ -179,21 +193,36 @@ export function initializeCreditPayment({
                 >
                     ×
                 </button>
+
             </div>
 
             <div class="credit-payment__invoice">
-                <span>Closed invoice</span>
-                <strong>${formatMoney(amount)}</strong>
+
+                <span>
+                    Closed invoice
+                </span>
+
+                <strong>
+                    ${formatMoney(
+                        amount
+                    )}
+                </strong>
+
             </div>
 
             <form class="credit-payment__form">
+
                 <label class="credit-payment__field">
-                    <span>Pay from</span>
+
+                    <span>
+                        Pay from
+                    </span>
 
                     <select
                         name="account"
                         required
                     >
+
                         <option value="">
                             Select account
                         </option>
@@ -201,7 +230,9 @@ export function initializeCreditPayment({
                         ${accounts.map(
                             account => `
                                 <option
-                                    value="${escapeHTML(account.id)}"
+                                    value="${escapeHTML(
+                                        account.id
+                                    )}"
                                 >
                                     ${escapeHTML(
                                         account.name ||
@@ -210,10 +241,13 @@ export function initializeCreditPayment({
                                 </option>
                             `
                         ).join("")}
+
                     </select>
+
                 </label>
 
                 <div class="credit-payment__actions">
+
                     <button
                         type="button"
                         class="credit-payment__cancel"
@@ -228,7 +262,9 @@ export function initializeCreditPayment({
                     >
                         Pay
                     </button>
+
                 </div>
+
             </form>
         `;
     }
@@ -311,13 +347,42 @@ export function initializeCreditPayment({
                         }
 
                         if (
-                            !Array.isArray(
-                                month.transactions
-                            )
+                            card.invoiceStatus !==
+                                "closed" &&
+                            card.invoiceStatus !==
+                                "overdue"
                         ) {
+                            return;
+                        }
+
+                        if (!Array.isArray(
+                            month.transactions
+                        )) {
                             month.transactions =
                                 [];
                         }
+
+                        const ids =
+                            month.transactions
+                                .map(
+                                    transaction =>
+                                        Number(
+                                            transaction.id
+                                        )
+                                )
+                                .filter(
+                                    id =>
+                                        Number.isFinite(
+                                            id
+                                        )
+                                );
+
+                        const nextId =
+                            ids.length
+                                ? Math.max(
+                                    ...ids
+                                ) + 1
+                                : 1;
 
                         const today =
                             new Date()
@@ -328,22 +393,41 @@ export function initializeCreditPayment({
                                 );
 
                         month.transactions.push({
-                            //id: String(month.transactions.length + 1),
-                            date: today,
-                            description: `Credit payment - ${card.name}`,
-                            group: "Credit",
-                            account: accountId,
-                            amount: -amount
+                            id:
+                                String(
+                                    nextId
+                                ),
+
+                            date:
+                                today,
+
+                            description:
+                                `Credit Payment • ${card.name}`,
+
+                            group:
+                                "Credit",
+
+                            account:
+                                accountId,
+
+                            type:
+                                "debit",
+
+                            amount:
+                                -amount,
+
+                            installments:
+                                "one-time"
                         });
 
                         card.initialBalance =
                             0;
 
-                        card.invoicePaid =
-                            true;
+                        card.openInvoice =
+                            0;
 
-                        card.paidInvoiceAmount =
-                            amount;
+                        card.invoiceStatus =
+                            "paid";
                     }
                 );
 

@@ -17,7 +17,7 @@
         "Parking",
         "Food",
         "Restaurant",
-        "Credit Card",
+        "Credit",
         "Transfer",
         "Well-being and Beauty",
         "Clothing",
@@ -51,13 +51,16 @@
                 }
             },
 
-             "credit": {
+            "credit": {
                 "credit_nubank": {
                     "name": "Nubank",
                     "color": "#7c3aed",
                     "lastFour": "4821",
                     "limit": 1000,
                     "initialBalance": 0,
+                    "openInvoice": 0,
+                    "nextInvoice": 0,
+                    "invoiceStatus": "open",
                     "closingDay": 5,
                     "dueDay": 10
                 },
@@ -67,6 +70,9 @@
                     "lastFour": "7214",
                     "limit": 1001,
                     "initialBalance": 10,
+                    "openInvoice": 0,
+                    "nextInvoice": 0,
+                    "invoiceStatus": "open",
                     "closingDay": 10,
                     "dueDay": 15
                 }
@@ -78,24 +84,30 @@
                     "date": "2026-08-05",
                     "description": "Salary",
                     "group": "Salary",
-                    "account": "Nubank",
-                    "amount": 4500
+                    "account": "nubank",
+                    "type": "debit",
+                    "amount": 4500,
+                    "installments": "one-time"
                 },
                 {
                     "id": "2",
                     "date": "2026-08-08",
                     "description": "Groceries",
                     "group": "Food",
-                    "account": "Nubank",
-                    "amount": -320.40
+                    "account": "nubank",
+                    "type": "debit",
+                    "amount": -320.40,
+                    "installments": "one-time"
                 },
                 {
                     "id": "3",
                     "date": "2026-08-10",
                     "description": "Fuel",
                     "group": "Transport",
-                    "account": "Itaú",
-                    "amount": -180
+                    "account": "itau",
+                    "type": "debit",
+                    "amount": -180,
+                    "installments": "one-time"
                 }
             ]
         },
@@ -129,6 +141,9 @@
                     "lastFour": "4821",
                     "limit": 4500,
                     "initialBalance": -850,
+                    "openInvoice": 0,
+                    "nextInvoice": 0,
+                    "invoiceStatus": "closed",
                     "closingDay": 5,
                     "dueDay": 10
                 },
@@ -138,6 +153,9 @@
                     "lastFour": "7214",
                     "limit": 3200,
                     "initialBalance": -2000,
+                    "openInvoice": 0,
+                    "nextInvoice": 0,
+                    "invoiceStatus": "closed",
                     "closingDay": 10,
                     "dueDay": 15
                 },
@@ -147,6 +165,9 @@
                     "lastFour": "1028",
                     "limit": 6000,
                     "initialBalance": -100,
+                    "openInvoice": 0,
+                    "nextInvoice": 0,
+                    "invoiceStatus": "closed",
                     "closingDay": 15,
                     "dueDay": 20
                 },
@@ -156,6 +177,9 @@
                     "lastFour": "9034",
                     "limit": 2800,
                     "initialBalance": -3000,
+                    "openInvoice": 0,
+                    "nextInvoice": 0,
+                    "invoiceStatus": "closed",
                     "closingDay": 20,
                     "dueDay": 25
                 }
@@ -167,24 +191,30 @@
                     "date": "2026-08-05",
                     "description": "Salary",
                     "group": "Salary",
-                    "account": "Nubank",
-                    "amount": 45000
+                    "account": "nubank",
+                    "type": "debit",
+                    "amount": 45000,
+                    "installments": "one-time"
                 },
                 {
                     "id": "2",
                     "date": "2026-08-08",
                     "description": "Groceries",
                     "group": "Food",
-                    "account": "Nubank",
-                    "amount": -320.400
+                    "account": "nubank",
+                    "type": "debit",
+                    "amount": -320.40,
+                    "installments": "one-time"
                 },
                 {
                     "id": "3",
                     "date": "2026-08-10",
                     "description": "Fuel",
                     "group": "Transport",
-                    "account": "Itaú",
-                    "amount": -1800
+                    "account": "itau",
+                    "type": "debit",
+                    "amount": -1800,
+                    "installments": "one-time"
                 }
             ]
         }

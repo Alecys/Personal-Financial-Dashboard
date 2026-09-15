@@ -1,5 +1,5 @@
 import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
-import { getCurrentMonth, subscribe } from "../../core/store.js";
+import { getCurrentMonth, updateCurrentMonth, subscribe } from "../../core/store.js";
 import { formatShortDate, escapeHTML } from "../../core/formatters.js";
 import { CreditCardStackedCards } from "./creditCard_stackedCards/creditCard_stackedCards.js";
 import { createCreditCardFace } from "./creditCard_face/creditCard_face.js";
@@ -15,6 +15,7 @@ loadStyle("./css/components/credit/creditCard_edit/creditCard_edit.css");
 loadStyle("./css/components/credit/creditCard_payment/creditCard_payment.css");
 
 export async function Credit() {
+
     const template =
         await loadTemplate(
             "./js/components/credit/credit.html"
@@ -35,6 +36,7 @@ export async function Credit() {
         getCards();
 
     function getCards() {
+
         return Object.entries(
             month?.credit || {}
         ).map(
@@ -43,147 +45,662 @@ export async function Credit() {
                 ...card
             })
         );
+
+    }
+
+    function getToday() {
+
+        const now =
+            new Date();
+
+        return {
+            year:
+                now.getFullYear(),
+
+            month:
+                now.getMonth() + 1,
+
+            day:
+                now.getDate()
+        };
+
     }
 
     function getTransactionDate(
         transaction
     ) {
-        return String(
-            transaction.date || ""
-        );
+
+        if (
+            !transaction?.date ||
+            !/^\d{4}-\d{2}-\d{2}$/.test(
+                transaction.date
+            )
+        ) {
+            return null;
+        }
+
+        const [
+            year,
+            month,
+            day
+        ] =
+            transaction.date
+                .split("-")
+                .map(
+                    Number
+                );
+
+        return {
+            year,
+            month,
+            day
+        };
+
     }
 
     function getTransactionAmount(
         transaction
     ) {
+
         return Number(
-            transaction.amount || 0
+            transaction?.amount || 0
         );
+
     }
 
-    function getInvoiceData(
+    function getTransactions(
         card
     ) {
+
+        return (
+            month?.transactions ||
+            []
+        ).filter(
+            transaction =>
+                transaction.account ===
+                    card.id &&
+                transaction.type ===
+                    "credit"
+        );
+
+    }
+
+    function getMonthId(
+        year,
+        monthNumber
+    ) {
+
+        return `${year}-${String(
+            monthNumber
+        ).padStart(
+            2,
+            "0"
+        )}`;
+
+    }
+
+    function getCurrentCycle(
+        card
+    ) {
+
         const closingDay =
             Number(
                 card.closingDay || 0
             );
 
-        const transactions =
-            (
-                month?.transactions ||
-                []
-            ).filter(
-                transaction =>
-                    transaction.account ===
-                    card.id
-            );
+        const today =
+            getToday();
 
-        const beforeClosing =
-            transactions.filter(
-                transaction => {
-                    const date =
-                        getTransactionDate(
-                            transaction
-                        );
+        if (
+            closingDay <= 0
+        ) {
 
-                    const day =
-                        Number(
-                            date.split("-")[2]
-                        );
-
-                    return (
-                        day <
-                        closingDay
-                    );
-                }
-            );
-
-        const afterClosing =
-            transactions.filter(
-                transaction => {
-                    const date =
-                        getTransactionDate(
-                            transaction
-                        );
-
-                    const day =
-                        Number(
-                            date.split("-")[2]
-                        );
-
-                    return (
-                        day >=
-                        closingDay
-                    );
-                }
-            );
-
-        const calculatedClosedInvoice =
-            Number(
-                card.initialBalance || 0
-            ) +
-            beforeClosing.reduce(
-                (
-                    total,
-                    transaction
-                ) =>
-                    total +
-                    getTransactionAmount(
-                        transaction
+            return {
+                currentMonth:
+                    getMonthId(
+                        today.year,
+                        today.month
                     ),
-                0
-            );
 
-        const invoicePaid =
-            Boolean(
-                card.invoicePaid
-            );
+                previousMonth:
+                    getMonthId(
+                        today.year,
+                        today.month
+                    )
+            };
 
-        const paidInvoiceAmount =
-            Math.abs(
-                Number(
-                    card.paidInvoiceAmount || 0
-                )
-            );
+        }
 
-        const closedInvoice =
-            invoicePaid &&
-            paidInvoiceAmount > 0
-                ? -paidInvoiceAmount
-                : calculatedClosedInvoice;
+        /*
+         * Before the closing day:
+         *
+         * The current cycle started on the
+         * previous closing day.
+         *
+         * Example:
+         *
+         * Closing = 10
+         * Today   = 08/09
+         *
+         * Current cycle:
+         * 10/08 → 09/09
+         *
+         * Closed cycle:
+         * previous cycle
+         */
 
-        const currentInvoice =
-            afterClosing.reduce(
-                (
-                    total,
-                    transaction
-                ) =>
-                    total +
-                    getTransactionAmount(
-                        transaction
+        if (
+            today.day <
+            closingDay
+        ) {
+
+            const previousDate =
+                new Date(
+                    today.year,
+                    today.month - 2,
+                    1
+                );
+
+            return {
+                currentMonth:
+                    getMonthId(
+                        today.year,
+                        today.month
                     ),
-                0
+
+                previousMonth:
+                    getMonthId(
+                        previousDate.getFullYear(),
+                        previousDate.getMonth() + 1
+                    )
+            };
+
+        }
+
+        /*
+         * On or after the closing day:
+         *
+         * The current cycle starts today.
+         *
+         * Example:
+         *
+         * Closing = 10
+         * Today   = 15/09
+         *
+         * Closed cycle:
+         * 01/09 → 09/09
+         *
+         * Current cycle:
+         * 10/09 → 09/10
+         */
+
+        const previousDate =
+            new Date(
+                today.year,
+                today.month - 1,
+                1
             );
 
         return {
-            closedInvoice,
-            currentInvoice,
-            invoiceClosed:
-                new Date().getDate() >=
-                closingDay,
-            invoicePaid:
-                invoicePaid &&
-                paidInvoiceAmount > 0
+            currentMonth:
+                getMonthId(
+                    today.year,
+                    today.month
+                ),
+
+            previousMonth:
+                getMonthId(
+                    previousDate.getFullYear(),
+                    previousDate.getMonth() + 1
+                )
         };
+
+    }
+
+    function calculateInvoices(
+        card
+    ) {
+
+        const transactions =
+            getTransactions(
+                card
+            );
+
+        const closingDay =
+            Number(
+                card.closingDay || 0
+            );
+
+        const today =
+            getToday();
+
+        let currentInvoice =
+            0;
+
+        let closedInvoice =
+            Number(
+                card.initialBalance || 0
+            );
+
+        let nextInvoice =
+            0;
+
+        if (
+            closingDay <= 0
+        ) {
+
+            return {
+                currentInvoice,
+                closedInvoice,
+                nextInvoice
+            };
+
+        }
+
+        const currentMonthId =
+            getMonthId(
+                today.year,
+                today.month
+            );
+
+        const currentMonthClosed =
+            today.day >=
+            closingDay;
+
+        transactions.forEach(
+            transaction => {
+
+                const date =
+                    getTransactionDate(
+                        transaction
+                    );
+
+                if (!date) {
+                    return;
+                }
+
+                const amount =
+                    getTransactionAmount(
+                        transaction
+                    );
+
+                const transactionMonthId =
+                    getMonthId(
+                        date.year,
+                        date.month
+                    );
+
+                /*
+                 * ------------------------------------------------
+                 * CURRENT CALENDAR MONTH
+                 * ------------------------------------------------
+                 */
+
+                if (
+                    transactionMonthId ===
+                    currentMonthId
+                ) {
+
+                    /*
+                     * Before closing:
+                     *
+                     * 01 → closingDay - 1
+                     * belongs to FACE.
+                     *
+                     * closingDay+
+                     * belongs to next cycle.
+                     */
+
+                    if (
+                        !currentMonthClosed
+                    ) {
+
+                        if (
+                            date.day <
+                            closingDay
+                        ) {
+
+                            currentInvoice +=
+                                amount;
+
+                        } else {
+
+                            nextInvoice +=
+                                amount;
+
+                        }
+
+                        return;
+
+                    }
+
+                    /*
+                     * After closing:
+                     *
+                     * 01 → closingDay - 1
+                     * belongs to FLIP.
+                     *
+                     * closingDay+
+                     * belongs to FACE.
+                     */
+
+                    if (
+                        date.day <
+                        closingDay
+                    ) {
+
+                        closedInvoice +=
+                            amount;
+
+                    } else {
+
+                        currentInvoice +=
+                            amount;
+
+                    }
+
+                    return;
+
+                }
+
+                /*
+                 * ------------------------------------------------
+                 * PREVIOUS CALENDAR MONTH
+                 * ------------------------------------------------
+                 *
+                 * When we are before the closing day,
+                 * transactions from the previous month
+                 * after the previous closing date belong
+                 * to the current FACE invoice.
+                 */
+
+                const previousMonth =
+                    new Date(
+                        today.year,
+                        today.month - 2,
+                        1
+                    );
+
+                const previousMonthId =
+                    getMonthId(
+                        previousMonth.getFullYear(),
+                        previousMonth.getMonth() + 1
+                    );
+
+                if (
+                    transactionMonthId !==
+                    previousMonthId
+                ) {
+
+                    return;
+
+                }
+
+                /*
+                 * If today is before the closing day,
+                 * the current invoice started on the
+                 * previous month's closing day.
+                 */
+
+                if (
+                    !currentMonthClosed &&
+                    date.day >=
+                    closingDay
+                ) {
+
+                    currentInvoice +=
+                        amount;
+
+                }
+
+            }
+        );
+
+        return {
+            currentInvoice,
+            closedInvoice,
+            nextInvoice
+        };
+
+    }
+
+    function getInvoiceStatus(
+        card,
+        closedInvoice
+    ) {
+
+        const storedStatus =
+            card.invoiceStatus ||
+            "open";
+
+        /*
+         * Paid is persistent.
+         *
+         * Even if a late transaction is added
+         * to the already-paid invoice, the status
+         * remains paid and Pay does not return.
+         */
+
+        if (
+            storedStatus ===
+            "paid"
+        ) {
+
+            return "paid";
+
+        }
+
+        const hasClosedInvoice =
+            Math.abs(
+                Number(
+                    closedInvoice || 0
+                )
+            ) > 0;
+
+        if (
+            !hasClosedInvoice
+        ) {
+
+            return "open";
+
+        }
+
+        if (
+            storedStatus ===
+            "overdue"
+        ) {
+
+            return "overdue";
+
+        }
+
+        if (
+            storedStatus ===
+            "closed"
+        ) {
+
+            const today =
+                getToday();
+
+            const dueDay =
+                Number(
+                    card.dueDay || 0
+                );
+
+            if (
+                dueDay > 0 &&
+                today.day >
+                    dueDay
+            ) {
+
+                return "overdue";
+
+            }
+
+            return "closed";
+
+        }
+
+        return "open";
+
+    }
+
+    function syncCreditInvoices() {
+
+        const currentMonth =
+            getCurrentMonth();
+
+        const changes =
+            [];
+
+        Object.entries(
+            currentMonth.credit || {}
+        ).forEach(
+            ([cardId, card]) => {
+
+                const calculated =
+                    calculateInvoices(
+                        card
+                    );
+
+                const openInvoice =
+                    Number(
+                        calculated.currentInvoice
+                    );
+
+                const nextInvoice =
+                    Number(
+                        calculated.nextInvoice
+                    );
+
+                const storedOpenInvoice =
+                    Number(
+                        card.openInvoice || 0
+                    );
+
+                const storedNextInvoice =
+                    Number(
+                        card.nextInvoice || 0
+                    );
+
+                if (
+                    storedOpenInvoice !==
+                        openInvoice ||
+                    storedNextInvoice !==
+                        nextInvoice
+                ) {
+
+                    changes.push({
+
+                        cardId,
+
+                        openInvoice,
+
+                        nextInvoice
+
+                    });
+
+                }
+
+            }
+        );
+
+        if (
+            !changes.length
+        ) {
+
+            return false;
+
+        }
+
+        updateCurrentMonth(
+            currentMonth => {
+
+                changes.forEach(
+                    change => {
+
+                        const card =
+                            currentMonth
+                                .credit?.[
+                                    change.cardId
+                                ];
+
+                        if (!card) {
+                            return;
+                        }
+
+                        card.openInvoice =
+                            change.openInvoice;
+
+                        card.nextInvoice =
+                            change.nextInvoice;
+
+                    }
+                );
+
+            }
+        );
+
+        return true;
+
+    }
+
+    function getInvoiceData(
+        card
+    ) {
+
+        const calculated =
+            calculateInvoices(
+                card
+            );
+
+        const currentInvoice =
+            calculated.currentInvoice;
+
+        const closedInvoice =
+            calculated.closedInvoice;
+
+        const nextInvoice =
+            calculated.nextInvoice;
+
+        const status =
+            getInvoiceStatus(
+                card,
+                closedInvoice
+            );
+
+        return {
+
+            status,
+
+            openInvoice:
+                currentInvoice,
+
+            closedInvoice,
+
+            nextInvoice,
+
+            invoiceClosed:
+                status === "closed" ||
+                status === "overdue" ||
+                status === "paid",
+
+            invoicePaid:
+                status === "paid"
+
+        };
+
     }
 
     function renderCard(
         card
     ) {
+
         const {
+            status,
+            openInvoice,
             closedInvoice,
-            currentInvoice,
+            nextInvoice,
             invoiceClosed,
             invoicePaid
         } =
@@ -191,25 +708,43 @@ export async function Credit() {
                 card
             );
 
-        const faceInvoice =
-            invoiceClosed
-                ? currentInvoice
-                : closedInvoice;
+        /*
+         * FACE
+         *
+         * Always shows the invoice currently
+         * being built.
+         */
 
-        const isPaid =
-            invoicePaid;
+        const faceInvoice =
+            openInvoice;
+
+        /*
+         * Credit usage:
+         *
+         * Closed invoice
+         * + current invoice
+         * + next invoice
+         */
+
+        const closedAmount =
+            Math.abs(
+                closedInvoice
+            );
+
+        const openAmount =
+            Math.abs(
+                openInvoice
+            );
+
+        const nextAmount =
+            Math.abs(
+                nextInvoice
+            );
 
         const used =
-            isPaid
-                ? Math.abs(
-                    currentInvoice
-                )
-                : Math.abs(
-                    closedInvoice
-                ) +
-                Math.abs(
-                    currentInvoice
-                );
+            closedAmount +
+            openAmount +
+            nextAmount;
 
         const limit =
             Number(
@@ -219,14 +754,18 @@ export async function Credit() {
         const usage =
             limit > 0
                 ? Math.min(
-                    (used / limit) * 100,
+                    (
+                        used /
+                        limit
+                    ) * 100,
                     100
                 )
                 : 0;
 
         const available =
             Math.max(
-                limit - used,
+                limit -
+                used,
                 0
             );
 
@@ -269,14 +808,23 @@ export async function Credit() {
 
         const face =
             createCreditCardFace({
+
                 card,
+
                 faceInvoice,
+
                 limit,
+
                 used,
+
                 available,
+
                 usage,
+
                 formattedClosingDate,
+
                 formattedDueDate
+
             });
 
         return `
@@ -295,12 +843,22 @@ export async function Credit() {
                 >
 
                     ${createCreditCardFlip({
+
                         face,
+
                         card,
+
                         currentInvoice:
                             closedInvoice,
+
                         invoiceClosed,
-                        isPaid
+
+                        isPaid:
+                            invoicePaid,
+
+                        invoiceStatus:
+                            status
+
                     })}
 
                     ${createCreditCardEdit()}
@@ -311,11 +869,13 @@ export async function Credit() {
 
             </article>
         `;
+
     }
 
     function handleAction(
         event
     ) {
+
         const button =
             event.target.closest(
                 "[data-action]"
@@ -345,22 +905,25 @@ export async function Credit() {
             button.dataset.action;
 
         if (
-            action ===
-            "edit"
+            action === "edit"
         ) {
+
             creditEdit(
                 cardId
             );
+
         }
 
         if (
-            action ===
-            "pay"
+            action === "pay"
         ) {
+
             creditPayment(
                 cardId
             );
+
         }
+
     }
 
     stage.addEventListener(
@@ -375,16 +938,19 @@ export async function Credit() {
 
     const payment =
         initializeCreditPayment({
+
             root:
                 stage,
 
             getInvoice:
                 getInvoiceData
+
         });
 
     function creditEdit(
         cardId
     ) {
+
         payment?.close(
             cardId
         );
@@ -392,11 +958,13 @@ export async function Credit() {
         edit?.open(
             cardId
         );
+
     }
 
     function creditPayment(
         cardId
     ) {
+
         edit?.close(
             cardId
         );
@@ -404,10 +972,12 @@ export async function Credit() {
         payment?.open(
             cardId
         );
+
     }
 
     const cardDeck =
         CreditCardStackedCards({
+
             root:
                 stage,
 
@@ -421,6 +991,7 @@ export async function Credit() {
 
             onSelect:
                 cardId => {
+
                     edit?.close(
                         cardId
                     );
@@ -428,14 +999,17 @@ export async function Credit() {
                     payment?.close(
                         cardId
                     );
+
                 }
+
         });
 
     initializeCreditFlip(
         stage
     );
 
-    subscribe(() => {
+    function refresh() {
+
         month =
             getCurrentMonth();
 
@@ -445,7 +1019,27 @@ export async function Credit() {
         cardDeck?.updateItems(
             cards
         );
+
+    }
+
+    syncCreditInvoices();
+
+    refresh();
+
+    subscribe(() => {
+
+        month =
+            getCurrentMonth();
+
+        syncCreditInvoices();
+
+        month =
+            getCurrentMonth();
+
+        refresh();
+
     });
 
     return section;
+
 }
