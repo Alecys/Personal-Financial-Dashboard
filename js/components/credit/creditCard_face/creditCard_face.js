@@ -38,7 +38,7 @@ export function createCreditCardFace({
 
         <div class="card-content">
 
-            <div class="card-value">
+            <div class="display-value">
                 ${formatMoney(faceInvoice)}
             </div>
 

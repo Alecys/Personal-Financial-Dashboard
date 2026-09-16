@@ -28,6 +28,7 @@ export function buildTransactionForm(
                 </span>
 
                 <input
+                    class="system-input"
                     type="text"
                     value="${escapeHTML(
                         transaction.description ?? ""
@@ -46,6 +47,7 @@ export function buildTransactionForm(
                 </span>
 
                 <select
+                    class="system-input"
                     data-transaction-field="group"
                 >
 
@@ -91,6 +93,7 @@ export function buildTransactionForm(
                 </span>
 
                 <select
+                    class="system-input"
                     data-transaction-field="account"
                 >
 
@@ -127,6 +130,7 @@ export function buildTransactionForm(
                 </span>
 
                 <input
+                    class="system-input"
                     type="date"
                     value="${convertDateToInput(
                         transaction.date,
@@ -146,6 +150,7 @@ export function buildTransactionForm(
                 </span>
 
                 <input
+                    class="system-input"
                     type="number"
                     step="0.01"
                     value="${transaction.amount ?? ""}"

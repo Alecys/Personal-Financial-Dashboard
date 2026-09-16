@@ -17,6 +17,10 @@ import {
     openAccountEdit
 } from "./accounts-edit.js";
 
+import {
+    openAccountTransfer
+} from "./accounts-transfer.js";
+
 
 export async function Accounts() {
 
@@ -48,29 +52,59 @@ export async function Accounts() {
         "click",
         event => {
 
-            const button =
+            const editButton =
                 event.target.closest(
                     '[data-action="edit"]'
                 );
 
-            if (!button) {
-                return;
-            }
+            if (editButton) {
 
-            const accountElement =
-                button.closest(
-                    "[data-account-id]"
+                const accountElement =
+                    editButton.closest(
+                        "[data-account-id]"
+                    );
+
+                openAccountEdit(
+                    accountElement
                 );
 
-            openAccountEdit(
-                accountElement
-            );
+                return;
+
+            }
+
+            const transferButton =
+                event.target.closest(
+                    '[data-action="transfer"]'
+                );
+
+            if (transferButton) {
+
+                const accountElement =
+                    transferButton.closest(
+                        "[data-account-id]"
+                    );
+
+                openAccountTransfer(
+                    accountElement
+                );
+
+            }
 
         }
     );
 
     window.addEventListener(
         "finance-account-edit-cancel",
+        refresh
+    );
+
+    window.addEventListener(
+        "finance-account-transfer-finish",
+        refresh
+    );
+
+    window.addEventListener(
+        "finance-account-transfer-cancel",
         refresh
     );
 

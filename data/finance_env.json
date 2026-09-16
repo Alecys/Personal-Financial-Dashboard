@@ -36,18 +36,101 @@
             "accounts": {
                 "nubank": {
                     "name": "Nubank",
-                    "type": "Account",
+                    "type": "Conta",
                     "initialBalance": 500
                 },
                 "itau": {
                     "name": "Itaú",
-                    "type": "Account",
+                    "type": "Conta",
                     "initialBalance": 0
                 },
                 "mercado-pago": {
                     "name": "Mercado Pago",
-                    "type": "Account",
+                    "type": "Conta",
                     "initialBalance": 2000
+                }
+            },
+
+            "credit": {
+                "credit_nubank": {
+                    "name": "Nubank",
+                    "color": "#7c3aed",
+                    "lastFour": "4821",
+                    "limit": 1000,
+                    "initialBalance": 0,
+                    "openInvoice": 0,
+                    "nextInvoice": 0,
+                    "invoiceStatus": "open",
+                    "closingDay": 5,
+                    "dueDay": 10
+                },
+                "credit_itau": {
+                    "name": "Itaú",
+                    "color": "#2563eb",
+                    "lastFour": "7214",
+                    "limit": 1001,
+                    "initialBalance": 10,
+                    "openInvoice": 0,
+                    "nextInvoice": 0,
+                    "invoiceStatus": "open",
+                    "closingDay": 10,
+                    "dueDay": 15
+                }
+            },
+
+            "transactions": [
+                {
+                    "id": "1",
+                    "date": "2026-08-05",
+                    "description": "Salary",
+                    "group": "Salary",
+                    "account": "nubank",
+                    "type": "debit",
+                    "amount": 4500,
+                    "installments": "one-time"
+                },
+                {
+                    "id": "2",
+                    "date": "2026-08-08",
+                    "description": "Groceries",
+                    "group": "Food",
+                    "account": "nubank",
+                    "type": "debit",
+                    "amount": -320.40,
+                    "installments": "one-time"
+                },
+                {
+                    "id": "3",
+                    "date": "2026-08-10",
+                    "description": "Fuel",
+                    "group": "Transport",
+                    "account": "itau",
+                    "type": "debit",
+                    "amount": -180,
+                    "installments": "one-time"
+                }
+            ]
+        },
+
+        "2026-09": {
+            "name": "September",
+            "year": 2026,
+
+            "accounts": {
+                "nubank": {
+                    "name": "Nubank",
+                    "type": "Conta",
+                    "initialBalance": 333
+                },
+                "itau": {
+                    "name": "Itaú",
+                    "type": "Conta",
+                    "initialBalance": 222
+                },
+                "mercado-pago": {
+                    "name": "Mercado Pago",
+                    "type": "Conta",
+                    "initialBalance": 111
                 }
             },
 
@@ -99,106 +182,6 @@
                     "invoiceStatus": "closed",
                     "closingDay": 20,
                     "dueDay": 25
-                }
-            },
-
-            "transactions": [
-                {
-                    "id": "1",
-                    "date": "2026-08-05",
-                    "description": "Salary",
-                    "group": "Salary",
-                    "account": "nubank",
-                    "type": "debit",
-                    "amount": 4500,
-                    "installments": "one-time"
-                },
-                {
-                    "id": "2",
-                    "date": "2026-08-08",
-                    "description": "Groceries",
-                    "group": "Food",
-                    "account": "nubank",
-                    "type": "debit",
-                    "amount": -320.40,
-                    "installments": "one-time"
-                },
-                {
-                    "id": "3",
-                    "date": "2026-08-10",
-                    "description": "Fuel",
-                    "group": "Transport",
-                    "account": "itau",
-                    "type": "debit",
-                    "amount": -180,
-                    "installments": "one-time"
-                }
-            ]
-        },
-
-        "2026-09": {
-            "name": "September",
-            "year": 2026,
-
-            "accounts": {
-                "99Lex": {
-                    "name": "99Lex",
-                    "type": "Account",
-                    "initialBalance": 0
-                },
-                "99Kath": {
-                    "name": "99Kath",
-                    "type": "Account",
-                    "initialBalance": 0
-                },
-                "99Ana": {
-                    "name": "99Ana",
-                    "type": "Account",
-                    "initialBalance": 1663.16
-                },
-                "mercadopago": {
-                    "name": "Mercado Pago",
-                    "type": "Account",
-                    "initialBalance": 20.11
-                }
-            },
-
-            "credit": {
-                "credit_nubank": {
-                    "name": "Nubank",
-                    "color": "#7c3aed",
-                    "lastFour": "4821",
-                    "limit": 8900,
-                    "initialBalance": 0,
-                    "openInvoice": 0,
-                    "nextInvoice": 0,
-                    "invoiceStatus": "open",
-                    "closingDay": 2,
-                    "dueDay": 9
-                },
-                "mercadopago": {
-                    "name": "Mercado Pago",
-                    "color": "#27272A",
-                    "lastFour": "7214",
-                    "limit": 1700,
-                    "initialBalance": 0,
-                    "openInvoice": 0,
-                    "nextInvoice": 0,
-                    "invoiceStatus": "open",
-                    "closingDay": 11,
-                    "dueDay": 16
-                },
-                "bancobrasil": {
-                    "name": "Banco Brasil",
-                    "color": "#717116",
-                    "lastFour": "1028",
-                    "limit": 3000,
-                    "initialBalance": 0,
-                    "openInvoice": 0,
-                    "nextInvoice": 0,
-                    "invoiceStatus": "open",
-                    "closingDay": 16,
-                    "dueDay": 28
                 }
             },
 

@@ -1,5 +1,7 @@
 .credit-payment {
+
     width: 100%;
+
     height: 100%;
 
     padding: 18px;
@@ -7,7 +9,9 @@
     box-sizing: border-box;
 
     display: flex;
+
     flex-direction: column;
+
     gap: 15px;
 
     border-radius: 18px;
@@ -15,48 +19,74 @@
     color: white;
 
     overflow: hidden;
+
 }
 
+
 .credit-payment__header {
+
     display: flex;
+
     align-items: flex-start;
+
     justify-content: space-between;
 
     gap: 12px;
+
 }
+
 
 .credit-payment__heading {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 3px;
+
 }
 
+
 .credit-payment__label {
+
     font-size: 7px;
 
     text-transform: uppercase;
+
     letter-spacing: .07em;
 
     opacity: .45;
+
 }
+
 
 .credit-payment__title {
+
     font-size: 13px;
+
     font-weight: 600;
+
 }
 
+
 .credit-payment__close {
+
     width: 28px;
+
     height: 28px;
 
     flex-shrink: 0;
 
     display: grid;
+
     place-items: center;
 
     padding: 0;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
     border-radius: 50%;
 
     background:
@@ -71,115 +101,112 @@
     transition:
         background .2s ease,
         transform .2s ease;
+
 }
 
+
 .credit-payment__close:hover {
+
     background:
         rgba(0,0,0,.24);
 
     transform:
         translateY(-1px);
+
 }
+
 
 .credit-payment__invoice {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 5px;
+
 }
 
+
 .credit-payment__invoice span {
+
     font-size: 8px;
 
     text-transform: uppercase;
+
     letter-spacing: .05em;
 
     opacity: .45;
+
 }
 
+
 .credit-payment__invoice strong {
+
     font-size: 24px;
+
     font-weight: 550;
 
     letter-spacing: -.03em;
+
 }
 
+
 .credit-payment__form {
-    
+
     display: flex;
+
     flex-direction: column;
 
     gap: 12px;
+
 }
+
 
 .credit-payment__field {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 5px;
+
 }
 
+
 .credit-payment__field span {
+
     font-size: 7px;
 
     text-transform: uppercase;
+
     letter-spacing: .05em;
 
     opacity: .45;
+
 }
 
-.credit-payment__field select {
-    width: 100%;
-
-    box-sizing: border-box;
-
-    padding: 8px;
-
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 6px;
-
-    outline: none;
-
-    background:
-        rgba(0,0,0,.16);
-
-    color: white;
-
-    font: inherit;
-    font-size: 9px;
-
-    cursor: pointer;
-
-    transition:
-        border-color .2s ease,
-        background .2s ease;
-}
-
-.credit-payment__field select:focus {
-    border-color:
-        rgba(255,255,255,.28);
-
-    background:
-        rgba(0,0,0,.22);
-}
-
-.credit-payment__field select option {
-    background: #1b1b1b;
-    color: white;
-}
 
 .credit-payment__actions {
+
     display: flex;
+
     justify-content: flex-end;
 
     gap: 7px;
+
 }
+
 
 .credit-payment__cancel,
 .credit-payment__pay {
-    padding: 7px 12px;
+
+    padding:
+        7px 12px;
 
     border-radius: 6px;
 
     font-size: 8px;
+
     font-weight: 600;
 
     cursor: pointer;
@@ -187,32 +214,47 @@
     transition:
         background .2s ease,
         transform .2s ease;
+
 }
 
+
 .credit-payment__cancel {
-    border: 1px solid rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
     background:
         rgba(255,255,255,.04);
 
     color:
         rgba(255,255,255,.65);
+
 }
 
+
 .credit-payment__pay {
-    border: 1px solid rgba(255,255,255,.16);
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
 
     background:
         rgba(255,255,255,.12);
 
-    color: white;
+    color:
+        white;
+
 }
+
 
 .credit-payment__cancel:hover,
 .credit-payment__pay:hover {
+
     background:
         rgba(255,255,255,.17);
 
     transform:
         translateY(-1px);
+
 }

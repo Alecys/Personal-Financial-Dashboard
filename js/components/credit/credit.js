@@ -669,6 +669,11 @@ export async function Credit() {
                 closedInvoice
             );
 
+        const displayedClosedInvoice =
+            status === "paid"
+                ? 0
+                : closedInvoice;
+
         return {
 
             status,
@@ -676,7 +681,8 @@ export async function Credit() {
             openInvoice:
                 currentInvoice,
 
-            closedInvoice,
+            closedInvoice:
+                displayedClosedInvoice,
 
             nextInvoice,
 

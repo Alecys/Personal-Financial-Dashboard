@@ -1,78 +1,224 @@
 * {
-
     box-sizing: border-box;
-
 }
-
 
 html {
-
     scroll-behavior: smooth;
-
 }
 
-
 body {
-
     margin: 0;
-
     background: var(--bg);
-
     color: var(--text);
-
     font-family:
         Inter,
         "Segoe UI",
         Roboto,
         Arial,
         sans-serif;
-
     -webkit-font-smoothing: antialiased;
-
 }
-
 
 button,
 input,
 select {
-
     font: inherit;
-
 }
-
 
 button {
-
     cursor: pointer;
-
 }
-
 
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-
-    outline: 1px solid var(--border-light);
-
+    outline:
+        1px solid
+        var(--border-light);
     outline-offset: 2px;
-
 }
-
 
 h1,
 h2,
 h3,
 p {
-
     margin: 0;
-
 }
 
-
 .hidden {
-
     display: none !important;
+}
 
+/* =========================
+   SECTION LABEL
+========================= */
+
+.section-label {
+    display: block;
+    margin-bottom: 12px;
+    color:
+        var(--text-muted);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+}
+
+/* =========================
+   SYSTEM ACTION
+========================= */
+
+.system-action {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    background: transparent;
+    color:
+        var(--text-muted);
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+        opacity .2s ease,
+        background .2s ease,
+        transform .2s ease,
+        color .2s ease;
+    opacity: .7;
+}
+
+.system-action:hover {
+    background:
+        var(--surface-3);
+    color:
+        var(--text);
+    opacity: 1;
+}
+
+.system-action:active {
+    transform:
+        scale(.96);
+}
+
+.system-action span {
+    display: grid;
+    place-items: center;
+    line-height: 1;
+}
+
+/* =========================
+   SYSTEM INPUT
+========================= */
+
+.system-input {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 34px;
+    padding:
+        7px 8px;
+    border:
+        1px solid
+        rgba(255, 255, 255, .1);
+    border-radius:
+        6px;
+    outline: none;
+    background:
+        rgba(0, 0, 0, .14);
+    color:
+        white;
+    font: inherit;
+    font-size: 9px;
+    transition:
+        border-color .2s ease,
+        background .2s ease;
+}
+
+.system-input:focus {
+    border-color:
+        rgba(255, 255, 255, .28);
+    background:
+        rgba(0, 0, 0, .22);
+}
+
+select.system-input {
+    cursor: pointer;
+}
+
+select.system-input option {
+    background:
+        #1b1b1b;
+    color:
+        white;
+}
+
+.system-input[type="number"] {
+    appearance: textfield;
+    -moz-appearance:
+        textfield;
+}
+
+.system-input[type="number"]::-webkit-inner-spin-button,
+.system-input[type="number"]::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance:
+        none;
+}
+
+/* =========================
+   SYSTEM ACTIONS
+========================= */
+
+.system-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 7px;
+    margin-top: 2px;
+}
+
+/* =========================
+   SYSTEM BUTTONS
+========================= */
+
+.system-cancel,
+.system-save {
+    padding:
+        7px 12px;
+    border-radius: 6px;
+    font-size: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.system-cancel {
+    border:
+        1px solid
+        rgba(255, 255, 255, .1);
+    background:
+        rgba(255, 255, 255, .04);
+    color:
+        rgba(255, 255, 255, .65);
+}
+
+.system-save {
+    border:
+        1px solid
+        rgba(255, 255, 255, .16);
+    background:
+        rgba(255, 255, 255, .12);
+    color:
+        white;
+}
+
+.system-cancel:hover,
+.system-save:hover {
+    background:
+        rgba(255, 255, 255, .17);
+    transform:
+        translateY(-1px);
 }
 
 /* =========================
@@ -85,24 +231,26 @@ p {
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+    background:
+        transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--border);
+    background:
+        var(--border);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--border-light);
+    background:
+        var(--border-light);
 }
 
-input[type="number"] {
-    appearance: textfield;
-    -moz-appearance: textfield;
+.display-value{
+    font-size: 24px;
+    font-weight: 550;
+    /* letter-spacing: -.03em; */
+    color: white;
 }
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    margin: 0;
-    -webkit-appearance: none;
+.display-value.display-space-top{
+    margin-top: 21px;
 }

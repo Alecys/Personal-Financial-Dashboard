@@ -3,7 +3,6 @@ import {
     escapeHTML
 } from "../../core/formatters.js";
 
-
 export function buildAccounts(
     element,
     month
@@ -37,7 +36,6 @@ export function buildAccounts(
 
 }
 
-
 function renderAccount(
     id,
     account,
@@ -51,87 +49,98 @@ function renderAccount(
             month
         );
 
-    const variation =
-        calculateVariation(
-            account.initialBalance,
-            balance
-        );
-
     return `
-
         <article
-            class="account-card"
-            data-account-id="${escapeHTML(id)}"
+            class="account-float"
         >
+            <div
+                class="account-card"
+                data-account-id="${escapeHTML(id)}"
+            >
 
-            <div class="account-header">
+                <div class="account-header">
 
-                <div>
+                    <div class="account-heading">
 
-                    <div class="account-name">
-                        ${escapeHTML(
-                            account.name
-                        )}
+                        <div class="account-name">
+                            ${escapeHTML(
+                                account.name
+                            )}
+                        </div>
+
+                        <div class="account-type">
+                            ${escapeHTML(
+                                account.type
+                            )}
+                        </div>
+
                     </div>
 
-                    <div class="account-type">
-                        ${escapeHTML(
-                            account.type
-                        )}
+                    <div class="account-actions">
+
+                        <button
+                            class="system-action account-edit-button"
+                            type="button"
+                            data-action="edit"
+                            aria-label="Edit account"
+                            title="Edit account"
+                        >
+                            <span>✎</span>
+                        </button>
+
+                        <button
+                            class="system-action account-transfer-button"
+                            type="button"
+                            data-action="transfer"
+                            aria-label="Transfer money"
+                            title="Transfer money"
+                        >
+                            <span>⇄</span>
+                        </button>
+
                     </div>
 
                 </div>
 
-                <button
-                    class="account-edit"
-                    type="button"
-                    data-action="edit"
-                    aria-label="Edit account"
-                    title="Edit account"
-                >
-                    ✎
-                </button>
+                <div class="account-main">
 
-            </div>
+                    <div class="account-value-row">
 
-            <div class="account-value-row">
+                        <div class="account-value">
+                            ${formatMoney(
+                                balance
+                            )}
+                        </div>
 
-                <div class="account-value">
-
-                    ${formatMoney(
-                        balance
-                    )}
+                    </div>
 
                 </div>
 
-                ${renderVariation(
-                    variation
-                )}
+                <div class="account-footer">
 
+                    <div class="account-footer-info">
+
+                        <span>
+                            Opening balance
+                        </span>
+
+                        <span>
+                            ${formatMoney(
+                                account.initialBalance
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
             </div>
-
-            <div class="account-footer">
-
-                <span>
-                    Opening balance
-                </span>
-
-                <span>
-                    ${formatMoney(
-                        account.initialBalance
-                    )}
-                </span>
-
-            </div>
-
         </article>
 
     `;
 
 }
 
-
-function calculateAccountBalance(
+export function calculateAccountBalance(
     accountId,
     account,
     month
@@ -170,109 +179,51 @@ function calculateAccountBalance(
             0
         );
 
+    const transfers =
+        month?.transfers || [];
+
+    const transferTotal =
+        transfers.reduce(
+            (total, transfer) => {
+
+                const amount =
+                    Math.abs(
+                        Number(
+                            transfer.amount || 0
+                        )
+                    );
+
+                if (
+                    transfer.from ===
+                    accountId
+                ) {
+
+                    return total - amount;
+
+                }
+
+                if (
+                    transfer.to ===
+                    accountId
+                ) {
+
+                    return total + amount;
+
+                }
+
+                return total;
+
+            },
+            0
+        );
+
     return (
         initialBalance +
-        transactionTotal
+        transactionTotal +
+        transferTotal
     );
 
 }
-
-
-function calculateVariation(
-    initialBalance,
-    currentBalance
-) {
-
-    const initial =
-        Number(
-            initialBalance || 0
-        );
-
-    const current =
-        Number(
-            currentBalance || 0
-        );
-
-    if (initial === 0) {
-        return null;
-    }
-
-    return (
-        (
-            (current - initial) /
-            Math.abs(initial)
-        ) * 100
-    );
-
-}
-
-
-function renderVariation(
-    variation
-) {
-
-    if (
-        variation === null ||
-        !Number.isFinite(variation)
-    ) {
-        return "";
-    }
-
-    if (variation === 0) {
-
-        return `
-
-            <div class="account-variation neutral">
-
-                <span class="account-variation-symbol">
-                    —
-                </span>
-
-                <span>
-                    0.0%
-                </span>
-
-            </div>
-
-        `;
-
-    }
-
-    const positive =
-        variation > 0;
-
-    const symbol =
-        positive
-            ? "+"
-            : "−";
-
-    const className =
-        positive
-            ? "positive"
-            : "negative";
-
-    return `
-
-        <div
-            class="account-variation ${className}"
-        >
-
-            <span class="account-variation-symbol">
-                ${symbol}
-            </span>
-
-            <span>
-                ${Math.abs(
-                    variation
-                ).toFixed(1)}%
-            </span>
-
-        </div>
-
-    `;
-
-}
-
 
 function transactionBelongsToAccount(
     transaction,

@@ -2,440 +2,275 @@
    ACCOUNTS
 ========================= */
 
-.section-label {
-
-    margin-bottom: 12px;
-
-    color:
-        var(--text-muted);
-
-    font-size: 9px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1.8px;
-
-}
-
-
 .accounts-grid {
-
     display: grid;
-
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(220px, 275px)
+            minmax(150px, 230px)
         );
-
     gap: 12px;
-
+    align-items: start;
 }
 
-
 .account-card {
-
     padding: 20px;
-
     background:
         linear-gradient(
             145deg,
             var(--surface-2),
             var(--surface)
         );
-
     border:
         1px solid var(--border);
-
     border-radius:
         var(--radius);
-
     transition:
         var(--transition);
-
+    
+        position: absolute;
+    width: 100%;
 }
 
-
+.account-float{
+    position: relative;
+}
 .account-card:hover {
-
     transform:
         translateY(-2px);
-
     border-color:
         var(--border-light);
-
 }
-
 
 /* =========================
    HEADER
 ========================= */
 
 .account-header {
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
 }
 
+.account-heading {
+    min-width: 0;
+}
 
 .account-name {
-
     color:
         var(--text-soft);
-
     font-size: 10px;
-
     text-transform: uppercase;
-
     letter-spacing: 1.3px;
-
 }
-
 
 .account-type {
-
     color:
         var(--text-muted);
-
     font-size: 9px;
-
 }
 
+/* =========================
+   ACTIONS
+========================= */
+
+.account-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.account-edit-button,
+.account-transfer-button {
+    width: 30px;
+    height: 30px;
+}
+
+.account-edit-button {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.account-card:hover .account-edit-button {
+    opacity: .7;
+    pointer-events: auto;
+}
+
+.account-edit-button:hover {
+    opacity: 1;
+}
+
+.account-transfer-button {
+    opacity: .7;
+    font-size: 17px;
+}
+
+.account-transfer-button:hover {
+    opacity: 1;
+    transform:
+        translateX(1px);
+}
+
+.account-transfer-button span {
+    font-size: 17px;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.account-main {
+    min-width: 0;
+}
 
 /* =========================
    VALUE
 ========================= */
 
 .account-value-row {
-
     display: flex;
-
     align-items: baseline;
-
     gap: 8px;
-
 }
-
 
 .account-value {
-
     margin-top: 21px;
-
     font-size: 24px;
-
     font-weight: 550;
-
 }
-
-
-.account-variation {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 3px;
-
-    font-size: 10px;
-
-    font-weight: 550;
-
-}
-
-
-.account-variation.positive {
-
-    color:
-        var(--positive);
-
-}
-
-
-.account-variation.negative {
-
-    color:
-        var(--negative);
-
-}
-
-
-.account-variation.neutral {
-
-    color:
-        var(--text-muted);
-
-}
-
-
-.account-variation-symbol {
-
-    font-size: 9px;
-
-}
-
 
 /* =========================
    FOOTER
 ========================= */
 
 .account-footer {
-
     display: flex;
-
     justify-content: space-between;
-
-    margin-top: 13px;
-
-    color:
-        var(--text-muted);
-
-    font-size: 10px;
-
-}
-
-
-/* =========================
-   EDIT BUTTON
-========================= */
-
-.account-edit {
-
-    width: 30px;
-
-    height: 30px;
-
-    display: flex;
-
     align-items: center;
-
-    justify-content: center;
-
-    background: transparent;
-
+    margin-top: 13px;
     color:
         var(--text-muted);
-
-    border: 0;
-
-    border-radius: 8px;
-
-    transition:
-        var(--transition);
-
-    opacity: 0;
-
-    pointer-events: none;
-
+    font-size: 10px;
 }
 
-
-.account-card:hover .account-edit {
-
-    opacity: 1;
-
-    pointer-events: auto;
-
+.account-footer-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
-
-
-.account-edit:hover {
-
-    background:
-        var(--surface-3);
-
-    color:
-        var(--text);
-
-}
-
 
 /* =========================
    EDIT FORM
 ========================= */
 
 .account-edit-form {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 8px;
-
     width: 100%;
-
+    margin-top: 20px;
 }
-
 
 .account-edit-field {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 4px;
-
     width: 100%;
-
 }
-
 
 .account-edit-field span {
-
     color:
         var(--text-muted);
-
     font-size: 8px;
-
     text-transform: uppercase;
-
-    letter-spacing: 0.5px;
-
+    letter-spacing: .5px;
 }
-
-
-.account-edit-field input {
-
-    box-sizing: border-box;
-
-    width: 100%;
-
-    padding: 6px 8px;
-
-    background:
-        var(--surface);
-
-    color:
-        var(--text);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius-small);
-
-    outline: none;
-
-    font: inherit;
-
-    font-size: 10px;
-
-}
-
-
-.account-edit-field input:focus {
-
-    background:
-        var(--surface-3);
-
-    border-color:
-        var(--border-light);
-
-}
-
 
 /* =========================
-   EDIT ACTIONS
+   EDIT MODE
 ========================= */
 
-.account-edit-actions {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 6px;
-
-    margin-top: 2px;
-
+.account-editing .account-footer {
+    justify-content: flex-end;
 }
 
+.account-editing .account-footer .system-actions {
+    margin-top: 2px;
+}
 
-.account-edit-action {
+/* =========================
+   TRANSFER MODE
+========================= */
 
-    width: 28px;
-
-    height: 28px;
-
+.account-transfer-balance {
     display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
 
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 0;
-
-    background:
-        var(--surface-2);
-
+.account-transfer-balance span {
+    margin-top: 13px;
     color:
         var(--text-muted);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius-small);
-
-    cursor: pointer;
-
-    transition:
-        var(--transition);
-
+    font-size: 10px;
 }
 
-
-.account-edit-action:hover {
-
-    background:
-        var(--surface-3);
-
+.account-transfer-balance strong {
     color:
         var(--text);
-
-    border-color:
-        var(--border-light);
-
+    font-size: 24px;
+    font-weight: 550;
 }
 
+.account-transfer-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+}
 
-.account-save {
+.account-transfer-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
+.account-transfer-field > span {
     color:
-        var(--positive);
-
+        var(--text-muted);
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
 }
 
-
-.account-cancel {
-
-    color:
-        var(--negative);
-
+.account-transfer-mode,
+.account-editing{
+    box-shadow: 0px 10px 20px 1px rgba(0, 0, 0, 0.36);
 }
-
-
 /* =========================
-   INPUTS
+   TRANSFER FOOTER
 ========================= */
 
-.account-edit-field input[type="number"]::-webkit-inner-spin-button,
-.account-edit-field input[type="number"]::-webkit-outer-spin-button {
-
-    -webkit-appearance: none;
-
-    margin: 0;
-
+.account-transfer-mode .account-footer {
+    justify-content: flex-end;
 }
 
+.account-transfer-mode .account-footer .system-actions {
+    margin-top: 2px;
+}
 
-.account-edit-field input[type="number"] {
+/* =========================
+   MOBILE
+========================= */
 
-    -moz-appearance: textfield;
+@media (max-width: 600px) {
+
+    .account-actions {
+        gap: 4px;
+    }
+
+    .account-transfer-fields {
+        gap: 10px;
+    }
 
 }

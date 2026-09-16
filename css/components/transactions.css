@@ -4,17 +4,24 @@
 
 .section-transactions {
     overflow: hidden;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    background:
+        var(--surface);
+    border:
+        1px solid
+        var(--border);
+    border-radius:
+        var(--radius);
 }
 
 .panel-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 19px 21px;
-    border-bottom: 1px solid var(--border);
+    padding:
+        19px 21px;
+    border-bottom:
+        1px solid
+        var(--border);
 }
 
 .panel-title {
@@ -26,10 +33,10 @@
 
 .panel-subtitle {
     margin-top: 4px;
-    color: var(--text-muted);
+    color:
+        var(--text-muted);
     font-size: 10px;
 }
-
 
 /* =========================
    ACTIONS
@@ -43,18 +50,27 @@
 
 .transaction-sort,
 .transaction-add {
-    background: transparent;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-small);
-    transition: var(--transition);
+    background:
+        transparent;
+    color:
+        var(--text-muted);
+    border:
+        1px solid
+        var(--border);
+    border-radius:
+        var(--radius-small);
+    transition:
+        var(--transition);
 }
 
 .transaction-sort:hover,
 .transaction-add:hover {
-    background: var(--surface-2);
-    color: var(--text);
-    border-color: var(--border-light);
+    background:
+        var(--surface-2);
+    color:
+        var(--text);
+    border-color:
+        var(--border-light);
 }
 
 .transaction-sort {
@@ -65,11 +81,12 @@
 }
 
 .transaction-add {
-    padding: 8px 12px;
-    color: var(--text-soft);
+    padding:
+        8px 12px;
+    color:
+        var(--text-soft);
     font-size: 10px;
 }
-
 
 /* =========================
    LIST
@@ -81,7 +98,6 @@
     max-height: 450px;
 }
 
-
 /* =========================
    TRANSACTION
 ========================= */
@@ -92,7 +108,9 @@
         minmax(0, 1fr)
         0px;
     align-items: stretch;
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid
+        var(--border);
     transition:
         grid-template-columns 180ms ease,
         background 180ms ease;
@@ -102,7 +120,8 @@
     grid-template-columns:
         minmax(0, 1fr)
         44px;
-    background: rgba(255, 255, 255, 0.018);
+    background:
+        rgba(255, 255, 255, 0.018);
 }
 
 .transaction-content {
@@ -115,11 +134,13 @@
     gap: 20px;
     min-width: 0;
     min-height: 67px;
-    padding: 0 20px 0 20px;
+    padding:
+        0 20px;
 }
 
 .transaction-editing .transaction-content {
-    grid-template-columns: auto;
+    grid-template-columns:
+        auto;
 }
 
 /* =========================
@@ -133,7 +154,8 @@
 
 .transaction-name {
     overflow: hidden;
-    color: var(--text);
+    color:
+        var(--text);
     font-size: 12px;
     font-weight: 500;
     text-overflow: ellipsis;
@@ -142,10 +164,10 @@
 
 .transaction-meta {
     margin-top: 4px;
-    color: var(--text-muted);
+    color:
+        var(--text-muted);
     font-size: 9px;
 }
-
 
 /* =========================
    DATE / VALUE
@@ -158,7 +180,8 @@
 }
 
 .transaction-date {
-    color: var(--text-muted);
+    color:
+        var(--text-muted);
     font-size: 10px;
 }
 
@@ -169,13 +192,14 @@
 }
 
 .transaction-value.positive {
-    color: var(--positive);
+    color:
+        var(--positive);
 }
 
 .transaction-value.negative {
-    color: var(--negative);
+    color:
+        var(--negative);
 }
-
 
 /* =========================
    EDIT AREA
@@ -189,39 +213,47 @@
 }
 
 .transaction-edit {
-    flex: 0 0 44px;
+    flex:
+        0 0 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    background: var(--surface-2);
-    color: var(--text-muted);
+    background:
+        var(--surface-2);
+    color:
+        var(--text-muted);
     border: 0;
-    border-left: 1px solid var(--border);
+    border-left:
+        1px solid
+        var(--border);
     font-size: 15px;
     pointer-events: none;
-    transform: translateX(100%);
+    transform:
+        translateX(100%);
     transition:
         transform 180ms ease,
         background 180ms ease,
         color 180ms ease;
 }
 
-
 /* =========================
    HOVER NORMAL
 ========================= */
 
-.transaction:not(.transaction-editing):hover .transaction-edit {
+.transaction:not(.transaction-editing):hover
+.transaction-edit {
     pointer-events: auto;
-    transform: translateX(0);
+    transform:
+        translateX(0);
 }
 
 .transaction-edit:hover {
-    background: var(--surface-3);
-    color: var(--text);
+    background:
+        var(--surface-3);
+    color:
+        var(--text);
 }
-
 
 /* =========================
    EDITING
@@ -231,7 +263,6 @@
     grid-template-columns:
         minmax(0, 1fr)
         max-content;
-
     background:
         var(--surface-2);
 }
@@ -240,10 +271,13 @@
    EDIT ANIMATION
 ========================= */
 
-
 .transaction-editing .transaction-edit-area {
-    transform: translateX(100%);
-    animation: transaction-action-in 180ms ease forwards;
+    transform:
+        translateX(100%);
+    animation:
+        transaction-action-in
+        180ms ease
+        forwards;
 }
 
 .transaction-editing .transaction-edit {
@@ -252,15 +286,18 @@
 }
 
 @keyframes transaction-action-in {
+
     from {
-        transform: translateX(100%);
+        transform:
+            translateX(100%);
     }
 
     to {
-        transform: translateX(0);
+        transform:
+            translateX(0);
     }
-}
 
+}
 
 /* =========================
    EDIT FORM
@@ -287,61 +324,46 @@
 }
 
 .transaction-edit-field span {
-    color: var(--text-muted);
+    color:
+        var(--text-muted);
     font-size: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-
-.transaction-edit-field input,
-.transaction-edit-field select {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 7px 8px;
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-small);
-    outline: none;
-    font: inherit;
-    font-size: 10px;
-}
-
-.transaction-edit-field input:focus,
-.transaction-edit-field select:focus {
-    background: var(--surface-3);
-    border-color: var(--border-light);
-}
-
 
 /* =========================
    EDIT CONTROLS
 ========================= */
 
 .transaction-save {
-    color: var(--positive);
+    color:
+        var(--positive);
 }
 
 .transaction-save:hover {
-    background: var(--surface-3);
-    color: var(--text);
+    background:
+        var(--surface-3);
+    color:
+        var(--text);
 }
 
 .transaction-delete:hover {
-    color: var(--negative);
+    color:
+        var(--negative);
 }
 
-
 /* =========================
-   INPUTS
+   DATE INPUT
 ========================= */
 
-.transaction-edit-field input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1) brightness(1.3);
+.transaction-edit-field
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter:
+        invert(1)
+        brightness(1.3);
     opacity: 1;
     cursor: pointer;
 }
-
 
 /* =========================
    MOBILE

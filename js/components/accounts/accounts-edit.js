@@ -7,7 +7,6 @@ import {
     escapeHTML
 } from "../../core/formatters.js";
 
-
 export function openAccountEdit(
     accountElement
 ) {
@@ -43,61 +42,73 @@ export function openAccountEdit(
 
     accountElement.innerHTML = `
 
-        <div class="account-edit-form">
+        ${createEditHeader(account)}
 
-            <label class="account-edit-field">
+        <div class="account-main">
 
-                <span>
-                    Name
-                </span>
+            <div class="account-edit-form">
 
-                <input
-                    type="text"
-                    value="${escapeHTML(
-                        account.name ?? ""
-                    )}"
-                    data-account-field="name"
-                >
+                <label class="account-edit-field">
 
-            </label>
+                    <span>
+                        Name
+                    </span>
 
-            <label class="account-edit-field">
+                    <input
+                        class="system-input"
+                        type="text"
+                        value="${escapeHTML(
+                            account.name ?? ""
+                        )}"
+                        data-account-field="name"
+                    >
 
-                <span>
-                    Opening balance
-                </span>
+                </label>
 
-                <input
-                    type="number"
-                    step="0.01"
-                    value="${Number(
-                        account.initialBalance || 0
-                    )}"
-                    data-account-field="initialBalance"
-                >
+                <label class="account-edit-field">
 
-            </label>
+                    <span>
+                        Opening balance
+                    </span>
 
-            <div class="account-edit-actions">
+                    <input
+                        class="system-input"
+                        type="number"
+                        step="0.01"
+                        value="${Number(
+                            account.initialBalance || 0
+                        )}"
+                        data-account-field="initialBalance"
+                    >
+
+                </label>
+
+            </div>
+
+        </div>
+
+        <div class="account-footer">
+
+            <div class="system-actions">
 
                 <button
                     type="button"
-                    class="account-edit-action account-save"
-                    data-account-action="save"
-                    aria-label="Save account"
-                    title="Save account"
-                >
-                    ✓
-                </button>
-
-                <button
-                    type="button"
-                    class="account-edit-action account-cancel"
+                    class="system-cancel"
                     data-account-action="cancel"
                     aria-label="Cancel"
                     title="Cancel"
                 >
-                    ×
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="system-save"
+                    data-account-action="save"
+                    aria-label="Save account"
+                    title="Save account"
+                >
+                    Save
                 </button>
 
             </div>
@@ -120,6 +131,47 @@ export function openAccountEdit(
 
 }
 
+function createEditHeader(
+    account
+) {
+
+    return `
+
+        <div class="account-header">
+
+            <div class="account-heading">
+
+                <div class="account-name">
+                    ${escapeHTML(
+                        account.name
+                    )}
+                </div>
+
+                <div class="account-type">
+                    Edit account
+                </div>
+
+            </div>
+
+            <div class="account-actions">
+
+                <button
+                    class="system-action"
+                    type="button"
+                    data-account-action="cancel"
+                    aria-label="Cancel editing"
+                    title="Cancel editing"
+                >
+                    <span>×</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
 
 function bindEditEvents(
     accountElement,
@@ -131,13 +183,12 @@ function bindEditEvents(
             '[data-account-action="save"]'
         );
 
-    const cancelButton =
-        accountElement.querySelector(
+    const cancelButtons =
+        accountElement.querySelectorAll(
             '[data-account-action="cancel"]'
         );
 
     let finished = false;
-
 
     function finish() {
 
@@ -156,6 +207,17 @@ function bindEditEvents(
 
     }
 
+    function cancel() {
+
+        if (!finish()) {
+            return;
+        }
+
+        cancelAccountEdit(
+            accountElement
+        );
+
+    }
 
     function handleOutsideClick(
         event
@@ -169,14 +231,9 @@ function bindEditEvents(
             return;
         }
 
-        cancelAccountEdit(
-            accountElement
-        );
-
-        finish();
+        cancel();
 
     }
-
 
     saveButton?.addEventListener(
         "click",
@@ -196,22 +253,16 @@ function bindEditEvents(
         }
     );
 
+    cancelButtons.forEach(
+        button => {
 
-    cancelButton?.addEventListener(
-        "click",
-        () => {
-
-            if (!finish()) {
-                return;
-            }
-
-            cancelAccountEdit(
-                accountElement
+            button.addEventListener(
+                "click",
+                cancel
             );
 
         }
     );
-
 
     document.addEventListener(
         "pointerdown",
@@ -219,7 +270,6 @@ function bindEditEvents(
     );
 
 }
-
 
 function saveAccount(
     accountElement,
@@ -251,7 +301,6 @@ function saveAccount(
             balanceInput.value
         );
 
-
     if (!name) {
 
         nameInput.focus();
@@ -259,7 +308,6 @@ function saveAccount(
         return false;
 
     }
-
 
     if (
         !Number.isFinite(
@@ -273,12 +321,13 @@ function saveAccount(
 
     }
 
-
     updateCurrentMonth(
         month => {
 
             const account =
-                month.accounts?.[accountId];
+                month.accounts?.[
+                    accountId
+                ];
 
             if (!account) {
                 return;
@@ -296,7 +345,6 @@ function saveAccount(
     return true;
 
 }
-
 
 function cancelAccountEdit(
     accountElement

@@ -1,27 +1,24 @@
 .credit-edit {
     width: 100%;
     height: 100%;
-
     padding: 18px;
-
     box-sizing: border-box;
-
     display: flex;
     flex-direction: column;
     gap: 12px;
-
     border-radius: 18px;
-
     color: white;
-
     overflow: hidden;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .credit-edit__header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-
     gap: 12px;
 }
 
@@ -33,10 +30,8 @@
 
 .credit-edit__label {
     font-size: 7px;
-
     text-transform: uppercase;
     letter-spacing: .07em;
-
     opacity: .45;
 }
 
@@ -45,29 +40,26 @@
     font-weight: 600;
 }
 
+/* =========================
+   CLOSE
+========================= */
+
 .credit-edit__close {
     width: 28px;
     height: 28px;
-
     flex-shrink: 0;
-
     display: grid;
     place-items: center;
-
     padding: 0;
-
-    border: 1px solid rgba(255,255,255,.12);
+    border:
+        1px solid
+        rgba(255,255,255,.12);
     border-radius: 50%;
-
     background:
         rgba(0,0,0,.12);
-
     color: white;
-
     font-size: 17px;
-
     cursor: pointer;
-
     transition:
         background .2s ease,
         transform .2s ease;
@@ -76,18 +68,19 @@
 .credit-edit__close:hover {
     background:
         rgba(0,0,0,.24);
-
     transform:
         translateY(-1px);
 }
 
+/* =========================
+   FORM
+========================= */
+
 .credit-edit__form {
     flex: 1;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     gap: 9px;
 }
 
@@ -95,110 +88,19 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-
     min-width: 0;
 }
 
 .credit-edit__field span {
     font-size: 7px;
-
     text-transform: uppercase;
     letter-spacing: .05em;
-
     opacity: .45;
-}
-
-.credit-edit__field input {
-    width: 100%;
-
-    box-sizing: border-box;
-
-    padding: 7px 8px;
-
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 6px;
-
-    outline: none;
-
-    background:
-        rgba(0,0,0,.14);
-
-    color: white;
-
-    font: inherit;
-    font-size: 9px;
-
-    transition:
-        border-color .2s ease,
-        background .2s ease;
-}
-
-.credit-edit__field input:focus {
-    border-color:
-        rgba(255,255,255,.28);
-
-    background:
-        rgba(0,0,0,.22);
 }
 
 .credit-edit__row {
     display: grid;
-
     grid-template-columns:
         1fr 1fr;
-
     gap: 8px;
-}
-
-.credit-edit__actions {
-    display: flex;
-    justify-content: flex-end;
-
-    gap: 7px;
-
-    margin-top: 2px;
-}
-
-.credit-edit__cancel,
-.credit-edit__save {
-    padding: 7px 12px;
-
-    border-radius: 6px;
-
-    font-size: 8px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-        background .2s ease,
-        transform .2s ease;
-}
-
-.credit-edit__cancel {
-    border: 1px solid rgba(255,255,255,.1);
-
-    background:
-        rgba(255,255,255,.04);
-
-    color:
-        rgba(255,255,255,.65);
-}
-
-.credit-edit__save {
-    border: 1px solid rgba(255,255,255,.16);
-
-    background:
-        rgba(255,255,255,.12);
-
-    color: white;
-}
-
-.credit-edit__cancel:hover,
-.credit-edit__save:hover {
-    background:
-        rgba(255,255,255,.17);
-
-    transform:
-        translateY(-1px);
 }

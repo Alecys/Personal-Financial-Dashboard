@@ -1,18 +1,32 @@
-import { getCurrentMonth, updateCurrentMonth } from "../../../core/store.js";
-import { escapeHTML } from "../../../core/formatters.js";
+import {
+    getCurrentMonth,
+    updateCurrentMonth
+} from "../../../core/store.js";
+
+import {
+    escapeHTML
+} from "../../../core/formatters.js";
 
 export function createCreditCardEdit() {
+
     return `
         <div class="credit-edit"></div>
     `;
+
 }
 
-export function initializeCreditEdit(root) {
+export function initializeCreditEdit(
+    root
+) {
+
     if (!root) {
         return null;
     }
 
-    function getCard(cardId) {
+    function getCard(
+        cardId
+    ) {
+
         const month =
             getCurrentMonth();
 
@@ -27,11 +41,17 @@ export function initializeCreditEdit(root) {
             id: cardId,
             ...card
         };
+
     }
 
-    function open(cardId) {
+    function open(
+        cardId
+    ) {
+
         const card =
-            getCard(cardId);
+            getCard(
+                cardId
+            );
 
         if (!card) {
             return;
@@ -69,7 +89,9 @@ export function initializeCreditEdit(root) {
         );
 
         edit.innerHTML =
-            createForm(card);
+            createForm(
+                card
+            );
 
         deckCard.classList.add(
             "is-editing"
@@ -79,9 +101,13 @@ export function initializeCreditEdit(root) {
             deckCard,
             cardId
         );
+
     }
 
-    function close(cardId) {
+    function close(
+        cardId
+    ) {
+
         const deckCard =
             root.querySelector(
                 `.deck-card[data-card-id="${CSS.escape(String(cardId))}"]`
@@ -94,10 +120,15 @@ export function initializeCreditEdit(root) {
         deckCard.classList.remove(
             "is-editing"
         );
+
     }
 
-    function createForm(card) {
+    function createForm(
+        card
+    ) {
+
         return `
+
             <div class="credit-edit__header">
 
                 <div class="credit-edit__heading">
@@ -120,7 +151,7 @@ export function initializeCreditEdit(root) {
                     data-edit-action="close"
                     aria-label="Cancel editing"
                 >
-                    <span>×</
+                    <span>×</span>
                 </button>
 
             </div>
@@ -128,9 +159,13 @@ export function initializeCreditEdit(root) {
             <form class="credit-edit__form">
 
                 <label class="credit-edit__field">
-                    <span>Name</span>
+
+                    <span>
+                        Name
+                    </span>
 
                     <input
+                        class="system-input"
                         type="text"
                         name="name"
                         value="${escapeHTML(
@@ -139,14 +174,19 @@ export function initializeCreditEdit(root) {
                         autocomplete="off"
                         required
                     >
+
                 </label>
 
                 <div class="credit-edit__row">
 
                     <label class="credit-edit__field">
-                        <span>Last four</span>
+
+                        <span>
+                            Last four
+                        </span>
 
                         <input
+                            class="system-input"
                             type="text"
                             name="lastFour"
                             value="${escapeHTML(
@@ -156,12 +196,17 @@ export function initializeCreditEdit(root) {
                             inputmode="numeric"
                             autocomplete="off"
                         >
+
                     </label>
 
                     <label class="credit-edit__field">
-                        <span>Credit limit</span>
+
+                        <span>
+                            Credit limit
+                        </span>
 
                         <input
+                            class="system-input"
                             type="number"
                             name="limit"
                             value="${Number(
@@ -170,6 +215,7 @@ export function initializeCreditEdit(root) {
                             min="0"
                             step="0.01"
                         >
+
                     </label>
 
                 </div>
@@ -177,9 +223,13 @@ export function initializeCreditEdit(root) {
                 <div class="credit-edit__row">
 
                     <label class="credit-edit__field">
-                        <span>Closing</span>
+
+                        <span>
+                            Closing
+                        </span>
 
                         <input
+                            class="system-input"
                             type="number"
                             name="closingDay"
                             value="${Number(
@@ -188,12 +238,17 @@ export function initializeCreditEdit(root) {
                             min="1"
                             max="31"
                         >
+
                     </label>
 
                     <label class="credit-edit__field">
-                        <span>Due</span>
+
+                        <span>
+                            Due
+                        </span>
 
                         <input
+                            class="system-input"
                             type="number"
                             name="dueDay"
                             value="${Number(
@@ -202,15 +257,16 @@ export function initializeCreditEdit(root) {
                             min="1"
                             max="31"
                         >
+
                     </label>
 
                 </div>
 
-                <div class="credit-edit__actions">
+                <div class="system-actions">
 
                     <button
                         type="button"
-                        class="credit-edit__cancel"
+                        class="system-cancel"
                         data-edit-action="close"
                     >
                         Cancel
@@ -218,7 +274,7 @@ export function initializeCreditEdit(root) {
 
                     <button
                         type="submit"
-                        class="credit-edit__save"
+                        class="system-save"
                     >
                         Save
                     </button>
@@ -226,13 +282,16 @@ export function initializeCreditEdit(root) {
                 </div>
 
             </form>
+
         `;
+
     }
 
     function bindForm(
         deckCard,
         cardId
     ) {
+
         const edit =
             deckCard.querySelector(
                 ".credit-edit"
@@ -245,6 +304,7 @@ export function initializeCreditEdit(root) {
         edit.addEventListener(
             "click",
             event => {
+
                 const action =
                     event.target.closest(
                         "[data-edit-action]"
@@ -258,21 +318,29 @@ export function initializeCreditEdit(root) {
                     action.dataset.editAction ===
                     "close"
                 ) {
-                    close(cardId);
+
+                    close(
+                        cardId
+                    );
+
                 }
+
             }
         );
 
         edit.addEventListener(
             "submit",
             event => {
+
                 event.preventDefault();
 
                 const form =
                     event.target;
 
                 const formData =
-                    new FormData(form);
+                    new FormData(
+                        form
+                    );
 
                 const name =
                     String(
@@ -338,6 +406,7 @@ export function initializeCreditEdit(root) {
 
                 updateCurrentMonth(
                     month => {
+
                         const currentCard =
                             month.credit?.[
                                 cardId
@@ -357,16 +426,22 @@ export function initializeCreditEdit(root) {
                             closingDay,
                             dueDay
                         };
+
                     }
                 );
 
-                close(cardId);
+                close(
+                    cardId
+                );
+
             }
         );
+
     }
 
     return {
         open,
         close
     };
+
 }

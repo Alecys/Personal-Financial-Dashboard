@@ -113,11 +113,11 @@ export function createCreditCardFlip({
                             Closed invoice
                         </span>
 
-                        <strong>
+                        <div class="display-value">
                             ${formatMoney(
                                 invoiceValue
                             )}
-                        </strong>
+                        </div>
 
                     </div>
 
