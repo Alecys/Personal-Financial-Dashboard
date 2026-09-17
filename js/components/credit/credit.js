@@ -1,11 +1,11 @@
 import { loadTemplate, loadStyle, createElement } from "../../core/component.js";
 import { getCurrentMonth, updateCurrentMonth, subscribe } from "../../core/store.js";
 import { formatShortDate, escapeHTML } from "../../core/formatters.js";
-import { CreditCardStackedCards } from "./creditCard_stackedCards/creditCard_stackedCards.js";
-import { createCreditCardFace } from "./creditCard_face/creditCard_face.js";
-import { createCreditCardFlip, initializeCreditFlip } from "./creditCard_flip/creditCard_flip.js";
-import { createCreditCardEdit, initializeCreditEdit } from "./creditCard_edit/creditCard_edit.js";
-import { createCreditCardPayment, initializeCreditPayment } from "./creditCard_payment/creditCard_payment.js";
+import { CreditCardStackedCards } from "./creditCard_stackedCards.js";
+import { createCreditCardFace } from "./creditCard_face.js";
+import { createCreditCardFlip, initializeCreditFlip } from "./creditCard_flip.js";
+import { createCreditCardEdit, initializeCreditEdit } from "./creditCard_edit.js";
+import { createCreditCardPayment, initializeCreditPayment } from "./creditCard_payment.js";
 
 loadStyle("./css/components/credit.css");
 loadStyle("./css/components/credit/creditCard_stackedCards/creditCard_stackedCards.css");
@@ -474,12 +474,12 @@ export async function Credit() {
             "open";
 
         /*
-         * Paid is persistent.
-         *
-         * Even if a late transaction is added
-         * to the already-paid invoice, the status
-         * remains paid and Pay does not return.
-         */
+        * Paid is persistent.
+        *
+        * Even if a late transaction is added
+        * to the already-paid invoice, the status
+        * remains paid and Pay does not return.
+        */
 
         if (
             storedStatus ===
@@ -505,6 +505,11 @@ export async function Credit() {
 
         }
 
+        /*
+        * Once the closing date has been reached,
+        * the calculated closed invoice is payable.
+        */
+
         if (
             storedStatus ===
             "overdue"
@@ -514,34 +519,25 @@ export async function Credit() {
 
         }
 
+        const today =
+            getToday();
+
+        const dueDay =
+            Number(
+                card.dueDay || 0
+            );
+
         if (
-            storedStatus ===
-            "closed"
+            dueDay > 0 &&
+            today.day >
+                dueDay
         ) {
 
-            const today =
-                getToday();
-
-            const dueDay =
-                Number(
-                    card.dueDay || 0
-                );
-
-            if (
-                dueDay > 0 &&
-                today.day >
-                    dueDay
-            ) {
-
-                return "overdue";
-
-            }
-
-            return "closed";
+            return "overdue";
 
         }
 
-        return "open";
+        return "closed";
 
     }
 

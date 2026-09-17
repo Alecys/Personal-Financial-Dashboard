@@ -151,6 +151,7 @@
 }
 
 .flip__invoice span {
+    margin-top: 12px;
     font-size: 8px;
     color: rgba(255, 255, 255, .45);
     text-transform: uppercase;
@@ -221,6 +222,15 @@
     transform: translateY(0);
 }
 
-.credit-edit__close span {
-        transform: translate(0px, -2px);
+
+.flip__pay:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: grayscale(1);
+}
+
+.flip__pay:disabled:hover {
+    transform: none;
+    box-shadow: none;
 }

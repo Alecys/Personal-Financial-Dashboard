@@ -29,47 +29,14 @@
 }
 
 .credit-edit__label {
-    font-size: 7px;
+    font-size: 8px;
+    color: rgba(255, 255, 255, .55);
     text-transform: uppercase;
-    letter-spacing: .07em;
-    opacity: .45;
+    letter-spacing: .05em;
 }
 
 .credit-edit__title {
-    font-size: 13px;
-    font-weight: 600;
-}
-
-/* =========================
-   CLOSE
-========================= */
-
-.credit-edit__close {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    padding: 0;
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-    border-radius: 50%;
-    background:
-        rgba(0,0,0,.12);
-    color: white;
-    font-size: 17px;
-    cursor: pointer;
-    transition:
-        background .2s ease,
-        transform .2s ease;
-}
-
-.credit-edit__close:hover {
-    background:
-        rgba(0,0,0,.24);
-    transform:
-        translateY(-1px);
+    font-size: 12px;
 }
 
 /* =========================
@@ -92,10 +59,10 @@
 }
 
 .credit-edit__field span {
-    font-size: 7px;
+    font-size: 8px;
     text-transform: uppercase;
-    letter-spacing: .05em;
-    opacity: .45;
+    letter-spacing: .5px;
+    opacity: .65;
 }
 
 .credit-edit__row {

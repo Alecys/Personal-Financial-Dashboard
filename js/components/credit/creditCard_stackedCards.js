@@ -375,6 +375,15 @@ export function CreditCardStackedCards({
                             cardIndex !==
                             currentIndex
                         ) {
+
+                            const selectedCard =
+                                getSelectedCard();
+
+                            selectedCard?.classList.remove(
+                                "is-editing",
+                                "is-paying"
+                            );
+
                             selectCard(
                                 cardIndex
                             );

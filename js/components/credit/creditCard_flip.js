@@ -1,4 +1,4 @@
-import { formatMoney, escapeHTML } from "../../../core/formatters.js";
+import { formatMoney, escapeHTML } from "../../core/formatters.js";
 
 let initialized = false;
 
@@ -38,7 +38,7 @@ export function createCreditCardFlip({
                         ? "Already paid"
                         : "Open";
 
-    const showPayButton =
+    const canPay =
         (
             invoiceStatus ===
                 "closed" ||
@@ -66,13 +66,13 @@ export function createCreditCardFlip({
 
                     <div>
 
-                        <div class="flip__brand">
+                        <div class="credit-name">
                             ${escapeHTML(
                                 card.name
                             )}
                         </div>
 
-                        <div class="flip__label">
+                        <div class="credit-type">
                             Statement
                         </div>
 
@@ -135,19 +135,14 @@ export function createCreditCardFlip({
 
                 <div class="flip__footer">
 
-                    ${
-                        showPayButton
-                            ? `
-                                <button
-                                    class="flip__pay"
-                                    type="button"
-                                    data-action="pay"
-                                >
-                                    Pay
-                                </button>
-                            `
-                            : ""
-                    }
+                    <button
+                        class="flip__pay"
+                        type="button"
+                        data-action="pay"
+                        ${canPay ? "" : "disabled"}
+                    >
+                        Pay
+                    </button>
 
                 </div>
 

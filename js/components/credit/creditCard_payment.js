@@ -1,5 +1,5 @@
-import { getCurrentMonth, updateCurrentMonth } from "../../../core/store.js";
-import { formatMoney, escapeHTML } from "../../../core/formatters.js";
+import { getCurrentMonth, updateCurrentMonth } from "../../core/store.js";
+import { formatMoney, escapeHTML } from "../../core/formatters.js";
 
 export function createCreditCardPayment() {
     return `
@@ -173,25 +173,26 @@ export function initializeCreditPayment({
 
                 <div class="credit-payment__heading">
 
-                    <span class="credit-payment__label">
-                        Pay invoice
-                    </span>
-
-                    <strong class="credit-payment__title">
+                    <span class="credit-payment__title">
                         ${escapeHTML(
                             card.name
                         )}
-                    </strong>
+                    </span>    
+                
+                    <span class="credit-payment__label">
+                        Pay invoice
+                    </span>
+                    
 
                 </div>
 
                 <button
-                    class="credit-payment__close"
+                    class="credit__close"
                     type="button"
                     data-payment-action="close"
                     aria-label="Cancel payment"
                 >
-                    ×
+                    <span>×</span>
                 </button>
 
             </div>

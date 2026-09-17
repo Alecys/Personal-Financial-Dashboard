@@ -48,23 +48,17 @@
 
 
 .credit-payment__label {
-
-    font-size: 7px;
-
+    font-size: 8px;
+    color: rgba(255, 255, 255, .55);
     text-transform: uppercase;
-
-    letter-spacing: .07em;
-
-    opacity: .45;
+    letter-spacing: .05em;
 
 }
 
 
 .credit-payment__title {
 
-    font-size: 13px;
-
-    font-weight: 600;
+    font-size: 12px;
 
 }
 

@@ -1,3 +1,118 @@
 .section-credit {
     min-width: 0;
 }
+
+
+/* =========================
+   Correção Semantica
+========================= */
+
+/* 
+flip__face
+.flip__face, .flip__back
+*/
+.creditCard {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: white;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+    border-radius: 18px;
+    -webkit-backface-visibility: hidden;
+}
+
+.creditCard-top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.creditCard-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.creditCard-footer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+/* =========================
+   CLOSE
+========================= */
+
+.credit__close {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+    border-radius: 50%;
+    background:
+        rgba(0,0,0,.12);
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.credit__close:hover {
+    background:
+        rgba(0,0,0,.24);
+    transform:
+        translateY(-1px);
+}
+
+.credit__close span {
+        transform: translate(0px, -2px);
+}
+
+.credit-name {
+    font-size: 12px;
+    color: white;
+}
+
+.credit-type {
+    margin-top: 3px;
+    font-size: 8px;
+    color: rgba(255, 255, 255, .55);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.credit-flip-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.credit-flip-top-title-text {
+    display: block;
+}
+
+.credit-flip-top-title-buttons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}

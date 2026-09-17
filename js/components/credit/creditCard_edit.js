@@ -1,11 +1,11 @@
 import {
     getCurrentMonth,
     updateCurrentMonth
-} from "../../../core/store.js";
+} from "../../core/store.js";
 
 import {
     escapeHTML
-} from "../../../core/formatters.js";
+} from "../../core/formatters.js";
 
 export function createCreditCardEdit() {
 
@@ -133,20 +133,20 @@ export function initializeCreditEdit(
 
                 <div class="credit-edit__heading">
 
-                    <span class="credit-edit__label">
-                        Edit card
-                    </span>
-
-                    <strong class="credit-edit__title">
+                    <span class="credit-name">
                         ${escapeHTML(
                             card.name
                         )}
-                    </strong>
+                    </span>
+
+                    <span class="credit-type">
+                        Edit card
+                    </span>
 
                 </div>
 
                 <button
-                    class="credit-edit__close"
+                    class="credit__close"
                     type="button"
                     data-edit-action="close"
                     aria-label="Cancel editing"

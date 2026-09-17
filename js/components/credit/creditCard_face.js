@@ -1,4 +1,4 @@
-import { formatMoney, escapeHTML } from "../../../core/formatters.js";
+import { formatMoney, escapeHTML } from "../../core/formatters.js";
 
 export function createCreditCardFace({
     card,
