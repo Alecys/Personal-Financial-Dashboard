@@ -1,0 +1,1518 @@
+{
+  "version": 1,
+  "currentMonth": "2026-10",
+  "groups": [
+    "💰 Salary",
+    "💵 Bonus",
+    "💶 Pay",
+    "💹 CDI",
+    "💼 Freelance",
+    "📝 Daily Expense",
+    "🎉 Party",
+    "📌 Fixed",
+    "🏠 Housing",
+    "🚖 Transport",
+    "⛽ Motorcycle Fuel",
+    "🅿️ Parking",
+    "🛒 Food",
+    "🍽️ Restaurant",
+    "💳 Credit",
+    "🔁 Transfer",
+    "🧴 Well-being and Beauty",
+    "👕 Clothing",
+    "🎁 Gift",
+    "➕ Health",
+    "👑 Mother's Bills",
+    "🚧 Toll",
+    "💸 Kath's Debt",
+    "🏍️ Motorcycle",
+    "🐛 Bug"
+  ],
+  "months": {
+    "2026-09": {
+      "name": "September",
+      "year": 2026,
+      "summary": {
+        "profit": 731.13,
+        "costs": 2025.37,
+        "gains": 2756.5,
+        "nextMonth": -397.13
+      },
+      "accounts": {
+        "99Lex": {
+          "name": "99Lex",
+          "type": "Account",
+          "initialBalance": 0,
+          "actualBalance": 0
+        },
+        "99Kath": {
+          "name": "99Kath",
+          "type": "Account",
+          "initialBalance": 1175.6,
+          "actualBalance": 0
+        },
+        "99Ana": {
+          "name": "99Ana",
+          "type": "Account",
+          "initialBalance": 0,
+          "actualBalance": 1673.54
+        },
+        "mercadopago": {
+          "name": "Mercado Pago",
+          "type": "Account",
+          "initialBalance": 24.18,
+          "actualBalance": 655.08
+        }
+      },
+      "credit": {
+        "mercadopago": {
+          "name": "Mercado Pago",
+          "color": "#27272A",
+          "lastFour": "",
+          "limit": 1700,
+          "initialBalance": -380.33,
+          "openInvoice": -410.81,
+          "nextInvoice": -397.13000000000005,
+          "invoiceStatus": "paid",
+          "closingDay": 11,
+          "dueDay": 16
+        },
+        "nubank": {
+          "name": "Nubank",
+          "color": "#7C3AED",
+          "lastFour": "",
+          "limit": 0,
+          "initialBalance": 0,
+          "openInvoice": 0,
+          "nextInvoice": 0,
+          "invoiceStatus": "paid",
+          "closingDay": 0,
+          "dueDay": 0
+        }
+      },
+      "transactions": [
+        {
+          "id": "1",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "CDI - 99Lex",
+          "group": "CDI",
+          "account": "99Lex",
+          "type": "debit",
+          "amount": 0,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "2",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "CDI - 99Kath",
+          "group": "CDI",
+          "account": "99Kath",
+          "type": "debit",
+          "amount": 0.26,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "3",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "CDI - 99Ana",
+          "group": "CDI",
+          "account": "99Ana",
+          "type": "debit",
+          "amount": 21.96,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "4",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "CDI - ML",
+          "group": "CDI",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 1.83,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "5",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Salary",
+          "group": "Salary",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 2372.45,
+          "recurrence": "fixed",
+          "installments": 0
+        },
+        {
+          "id": "6",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Card Pokemon",
+          "group": "Pay",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 80,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "7",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Inovarre",
+          "group": "Freelance",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 130,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "8",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Arrumar Note Dell",
+          "group": "Freelance",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 150,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "10",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Parcela - Moto",
+          "group": "Motorcycle",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -1182.42,
+          "recurrence": "installment",
+          "installments": 3
+        },
+        {
+          "id": "11",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Parcela - Tenis",
+          "group": "Credit",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -93.75,
+          "recurrence": "installment",
+          "installments": 5
+        },
+        {
+          "id": "12",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Parcela - 2ª Revisão",
+          "group": "Credit",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -60.67,
+          "recurrence": "installment",
+          "installments": 1
+        },
+        {
+          "id": "13",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Food Sampa",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -12.99,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "14",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Correção dia 20",
+          "group": "Bug",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -30.48,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "15",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Seguro",
+          "group": "Motorcycle",
+          "account": "99Ana",
+          "type": "debit",
+          "amount": -144.92,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "16",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Estacionamento Sampa",
+          "group": "Parking",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -150,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "17",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "WellHub",
+          "group": "Credit",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 0,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "18",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Telecomunicadores",
+          "group": "Motorcycle",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 0,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "19",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Mnxdi",
+          "group": "Well-being and Beauty",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 0,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "20",
+          "date": "2026-09-11",
+          "time": "00:00:00",
+          "description": "Credit",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -30.48,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "21",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Bolo",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -6,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "22",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Xoxo",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -4.79,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "23",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Posto",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -30.76,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "24",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Halls",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -3.5,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "25",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Mercado",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -10.57,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "26",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Posto",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -39.03,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "27",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Drift",
+          "group": "Party",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -42,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "28",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Drift",
+          "group": "Party",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -10,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "29",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Drift",
+          "group": "Party",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -42.72,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "30",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Drift Estacionamento",
+          "group": "Party",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -50,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "31",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Energetico",
+          "group": "Party",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -25,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "32",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Drift",
+          "group": "Party",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -30,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "33",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Dipirona",
+          "group": "Health",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -7,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "34",
+          "date": "2026-09-12",
+          "time": "00:00:00",
+          "description": "Posto",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -35.09,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "35",
+          "date": "2026-09-30",
+          "time": "23:59:00",
+          "description": "BUG - Ajuste de conciliação Mercado Pago",
+          "group": "Bug",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 17.09,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792178755050",
+          "date": "2026-10-30",
+          "time": "16:29:17",
+          "description": "Credit",
+          "group": "Credit",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": 30.19,
+          "recurrence": "once",
+          "installments": 0
+        }
+      ],
+      "transfers": [
+        {
+          "id": "1",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "from": "99Lex",
+          "to": "mercadopago",
+          "amount": 0
+        },
+        {
+          "id": "2",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "from": "99Lex",
+          "to": "99Kath",
+          "amount": 0
+        },
+        {
+          "id": "3",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "from": "mercadopago",
+          "to": "99Ana",
+          "amount": 620.64
+        },
+        {
+          "id": "4",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "from": "99Kath",
+          "to": "99Ana",
+          "amount": 1175.86
+        },
+        {
+          "id": "5",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "from": "99Kath",
+          "to": "mercadopago",
+          "amount": 0
+        }
+      ]
+    },
+    "2026-10": {
+      "name": "October",
+      "year": 2026,
+      "accounts": {
+        "99Lex": {
+          "name": "99Lex",
+          "type": "Account",
+          "initialBalance": 0,
+          "actualBalance": 0
+        },
+        "99Kath": {
+          "name": "99Kath",
+          "type": "Account",
+          "initialBalance": 0,
+          "actualBalance": 0
+        },
+        "99Ana": {
+          "name": "99Ana",
+          "type": "Account",
+          "initialBalance": 1673.54,
+          "actualBalance": 2800
+        },
+        "mercadopago": {
+          "name": "Mercado Pago",
+          "type": "Account",
+          "initialBalance": 287.85,
+          "actualBalance": 1076.24
+        }
+      },
+      "credit": {
+        "mercadopago": {
+          "name": "Mercado Pago",
+          "color": "#27272A",
+          "lastFour": "",
+          "limit": 1700,
+          "initialBalance": -397.13000000000005,
+          "openInvoice": -397.13000000000005,
+          "nextInvoice": -412.32999999999987,
+          "invoiceStatus": "paid",
+          "closingDay": 11,
+          "dueDay": 16,
+          "installmentTotal": 0
+        },
+        "nubank": {
+          "name": "Nubank",
+          "color": "#7C3AED",
+          "lastFour": "",
+          "limit": 8900,
+          "initialBalance": 0,
+          "openInvoice": 0,
+          "nextInvoice": -1020.1500000000001,
+          "invoiceStatus": "paid",
+          "closingDay": 2,
+          "dueDay": 8,
+          "installmentTotal": 0
+        }
+      },
+      "transactions": [
+        {
+          "id": "5",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Salary",
+          "group": "Salary",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 2372.46,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "10",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Parcela - Moto",
+          "group": "Motorcycle",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -1182.42,
+          "recurrence": "once",
+          "installments": 2
+        },
+        {
+          "id": "11",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Parcela - Tenis",
+          "group": "Credit",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -93.75,
+          "recurrence": "once",
+          "installments": 5
+        },
+        {
+          "id": "12",
+          "date": "2026-10-01",
+          "time": "17:14:50",
+          "description": "CDI - 99Ana",
+          "group": "CDI",
+          "account": "99Ana",
+          "type": "debit",
+          "amount": 12.25,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "13",
+          "date": "2026-10-01",
+          "time": "17:16:27",
+          "description": "CDI - ML",
+          "group": "CDI",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 10.67,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "15",
+          "date": "2026-10-02",
+          "time": "17:19:15",
+          "description": "Deposito\t",
+          "group": "Bonus",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 200,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990739",
+          "date": "2026-10-02",
+          "time": "17:21:31",
+          "description": "Café Gourmet Santander",
+          "group": "Restaurant",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -26.81,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990740",
+          "date": "2026-10-02",
+          "time": "17:21:52",
+          "description": "WellHub\t",
+          "group": "Well-being and Beauty",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -99.99,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990742",
+          "date": "2026-10-06",
+          "time": "17:24:44",
+          "description": "Estacionamento Sampa\t",
+          "group": "Motorcycle",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -150,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "14",
+          "date": "2026-10-12",
+          "time": "17:18:52",
+          "description": "Freela Leonor 10-12/10\t",
+          "group": "Freelance",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 1704,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990741",
+          "date": "2026-10-15",
+          "time": "17:24:16",
+          "description": "Seguro",
+          "group": "Motorcycle",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -144.72,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "16",
+          "date": "2026-10-16",
+          "time": "17:19:35",
+          "description": "Erick Pay\t",
+          "group": "Pay",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 150,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990738",
+          "date": "2026-10-16",
+          "time": "17:19:50",
+          "description": "Payment - Mercado Pago",
+          "group": "Credit Card",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -397.13000000000005,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990743",
+          "date": "2026-10-09",
+          "time": "17:25:22",
+          "description": "Multa Sampa\t",
+          "group": "Motorcycle",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -78.1,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990744",
+          "date": "2026-10-02",
+          "time": "17:25:48",
+          "description": "Pão de Queijo\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -7,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990745",
+          "date": "2026-10-09",
+          "time": "17:26:04",
+          "description": "Troca Oleo\t",
+          "group": "Motorcycle",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -72,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990746",
+          "date": "2026-10-09",
+          "time": "17:26:24",
+          "description": "Crédito",
+          "group": "Fixed",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -30,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990747",
+          "date": "2026-10-09",
+          "time": "17:26:40",
+          "description": "Combustivel\t",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -38.22,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990748",
+          "date": "2026-10-02",
+          "time": "17:27:00",
+          "description": "Posto\t",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -27.26,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990749",
+          "date": "2026-10-02",
+          "time": "17:27:21",
+          "description": "Xoxo Energetico e choco\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -27.79,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990750",
+          "date": "2026-10-02",
+          "time": "17:27:33",
+          "description": "Posto\t",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -36.42,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990751",
+          "date": "2026-10-02",
+          "time": "17:27:51",
+          "description": "Combustivel\t",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -24,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990752",
+          "date": "2026-10-02",
+          "time": "17:28:04",
+          "description": "Combustivel\t",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -33.97,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990753",
+          "date": "2026-10-02",
+          "time": "17:28:17",
+          "description": "Mc'Donalds - Leicos Food\t",
+          "group": "Restaurant",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -65.95,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990754",
+          "date": "2026-10-02",
+          "time": "17:28:29",
+          "description": "Bar Motoqueiro - Morungaba\t",
+          "group": "Restaurant",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": -24,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990755",
+          "date": "2026-10-02",
+          "time": "17:30:00",
+          "description": "Rastreador\t",
+          "group": "Bonus",
+          "account": "mercadopago",
+          "type": "debit",
+          "amount": 25,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990756",
+          "date": "2026-10-11",
+          "time": "17:30:37",
+          "description": "Claro",
+          "group": "Fixed",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -30,
+          "recurrence": "fixed",
+          "installments": 0
+        },
+        {
+          "id": "1792181990757",
+          "date": "2026-10-12",
+          "time": "17:31:19",
+          "description": "Flex Itatiba - Compra do Freela\t",
+          "group": "Food",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -788.41,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990758",
+          "date": "2026-10-11",
+          "time": "17:31:54",
+          "description": "Salgado Unicamp\t",
+          "group": "Food",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -17,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990759",
+          "date": "2026-10-12",
+          "time": "17:38:12",
+          "description": "Combustivel\t",
+          "group": "Motorcycle Fuel",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -41.82,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990760",
+          "date": "2026-10-11",
+          "time": "17:38:49",
+          "description": "Remedio\t",
+          "group": "Well-being and Beauty",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -45.98,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990761",
+          "date": "2026-10-12",
+          "time": "17:39:05",
+          "description": "Cineminha\t",
+          "group": "Party",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -52,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990762",
+          "date": "2026-10-12",
+          "time": "17:39:18",
+          "description": "Cueca\t",
+          "group": "Clothing",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -29.99,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990763",
+          "date": "2026-10-11",
+          "time": "17:39:48",
+          "description": "Frescos Itatiba - Compra do Freela\t",
+          "group": "Food",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -14.95,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990764",
+          "date": "2026-10-21",
+          "time": "17:08:13",
+          "description": "Ifood\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -31.99,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990765",
+          "date": "2026-10-21",
+          "time": "17:08:31",
+          "description": "Pão Sampa Italiano\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -23.9,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990766",
+          "date": "2026-10-21",
+          "time": "17:08:50",
+          "description": "Mercado\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -17.96,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990767",
+          "date": "2026-10-21",
+          "time": "17:09:05",
+          "description": "Mercado\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -8.99,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990768",
+          "date": "2026-10-21",
+          "time": "17:09:25",
+          "description": "Combustivel\t",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -29.92,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990769",
+          "date": "2026-10-21",
+          "time": "17:09:43",
+          "description": "Pão de Queijo\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -7,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990770",
+          "date": "2026-10-21",
+          "time": "17:09:57",
+          "description": "Energetico + halls\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -16.5,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990771",
+          "date": "2026-10-21",
+          "time": "17:10:22",
+          "description": "BK\t",
+          "group": "Restaurant",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -44.7,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990772",
+          "date": "2026-10-21",
+          "time": "17:10:42",
+          "description": "Combustivel\t",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -26.18,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990773",
+          "date": "2026-10-21",
+          "time": "17:10:56",
+          "description": "Sorvete\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -9,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990774",
+          "date": "2026-10-21",
+          "time": "17:11:10",
+          "description": "Combustivel\t",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -40.37,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990775",
+          "date": "2026-10-21",
+          "time": "17:11:23",
+          "description": "Combustivel\t",
+          "group": "Motorcycle Fuel",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -29.34,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990776",
+          "date": "2026-10-21",
+          "time": "17:11:39",
+          "description": "Almoço 99\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -23.26,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990777",
+          "date": "2026-10-21",
+          "time": "17:12:00",
+          "description": "Padaria\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -11.52,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990778",
+          "date": "2026-10-21",
+          "time": "17:12:13",
+          "description": "Almoço 99\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -25.2,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990779",
+          "date": "2026-10-21",
+          "time": "17:12:27",
+          "description": "Entre aulas cafe\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -6,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990780",
+          "date": "2026-10-21",
+          "time": "17:12:39",
+          "description": "Padaria\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -5.96,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990781",
+          "date": "2026-10-21",
+          "time": "17:12:51",
+          "description": "Almoço 99\t",
+          "group": "Gift",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -35.96,
+          "recurrence": "once",
+          "installments": 0
+        },
+        {
+          "id": "1792181990782",
+          "date": "2026-10-21",
+          "time": "17:13:33",
+          "description": "Almoço 99\t",
+          "group": "Food",
+          "account": "mercadopago",
+          "type": "credit",
+          "amount": -18.58,
+          "recurrence": "once",
+          "installments": 0
+        }
+      ],
+      "transfers": [
+        {
+          "id": "1",
+          "date": "2026-10-21",
+          "from": "mercadopago",
+          "to": "99Ana",
+          "amount": 1114.21
+        }
+      ]
+    },
+    "2026-11": {
+      "name": "November",
+      "year": 2026,
+      "accounts": {
+        "99Lex": {
+          "name": "99Lex",
+          "type": "Account",
+          "initialBalance": 0,
+          "actualBalance": 0
+        },
+        "99Kath": {
+          "name": "99Kath",
+          "type": "Account",
+          "initialBalance": 0,
+          "actualBalance": 0
+        },
+        "99Ana": {
+          "name": "99Ana",
+          "type": "Account",
+          "initialBalance": 2800,
+          "actualBalance": 2800
+        },
+        "mercadopago": {
+          "name": "Mercado Pago",
+          "type": "Account",
+          "initialBalance": 1076.24,
+          "actualBalance": 1076.24
+        }
+      },
+      "credit": {
+        "mercadopago": {
+          "name": "Mercado Pago",
+          "color": "#27272A",
+          "lastFour": "",
+          "limit": 1700,
+          "initialBalance": -412.32999999999987,
+          "openInvoice": -412.32999999999987,
+          "nextInvoice": 0,
+          "invoiceStatus": "unpaid",
+          "closingDay": 11,
+          "dueDay": 16,
+          "installmentTotal": 0
+        },
+        "nubank": {
+          "name": "Nubank",
+          "color": "#7C3AED",
+          "lastFour": "",
+          "limit": 8900,
+          "initialBalance": -1020.1500000000001,
+          "openInvoice": -2296.32,
+          "nextInvoice": 0,
+          "invoiceStatus": "unpaid",
+          "closingDay": 2,
+          "dueDay": 8,
+          "installmentTotal": 281.25
+        }
+      },
+      "transactions": [
+        {
+          "id": "1792181990742",
+          "date": "2026-10-06",
+          "time": "17:24:44",
+          "description": "Estacionamento Sampa\t",
+          "group": "Motorcycle",
+          "account": "",
+          "type": "",
+          "amount": -150,
+          "recurrence": "fixed",
+          "installments": 0
+        },
+        {
+          "id": "1792181990741",
+          "date": "2026-10-15",
+          "time": "17:24:16",
+          "description": "Seguro",
+          "group": "",
+          "account": "",
+          "type": "",
+          "amount": -144.72,
+          "recurrence": "fixed",
+          "installments": 0
+        },
+        {
+          "id": "1792181990756",
+          "date": "2026-10-11",
+          "time": "17:30:37",
+          "description": "Claro",
+          "group": "",
+          "account": "",
+          "type": "",
+          "amount": -30,
+          "recurrence": "fixed",
+          "installments": 0
+        },
+        {
+          "id": "10",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Parcela - Moto",
+          "group": "Motorcycle",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -1182.42,
+          "recurrence": "installment",
+          "installments": 1
+        },
+        {
+          "id": "11",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Parcela - Tenis",
+          "group": "Credit",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -93.75,
+          "recurrence": "installment",
+          "installments": 4
+        },
+        {
+          "id": "5",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Salary",
+          "group": "Salary",
+          "account": "",
+          "type": "",
+          "amount": 2372.46,
+          "recurrence": "fixed",
+          "installments": 0
+        }
+      ],
+      "transfers": []
+    },
+    "2026-12": {
+      "name": "December",
+      "year": 2026,
+      "accounts": {
+        "99Lex": {
+          "name": "99Lex",
+          "type": "Account",
+          "initialBalance": 0,
+          "actualBalance": 0
+        },
+        "99Kath": {
+          "name": "99Kath",
+          "type": "Account",
+          "initialBalance": 0,
+          "actualBalance": 0
+        },
+        "99Ana": {
+          "name": "99Ana",
+          "type": "Account",
+          "initialBalance": 2800,
+          "actualBalance": 2800
+        },
+        "mercadopago": {
+          "name": "Mercado Pago",
+          "type": "Account",
+          "initialBalance": 1076.24,
+          "actualBalance": 1076.24
+        }
+      },
+      "credit": {
+        "mercadopago": {
+          "name": "Mercado Pago",
+          "color": "#27272A",
+          "lastFour": "",
+          "limit": 1700,
+          "initialBalance": 0,
+          "openInvoice": 0,
+          "nextInvoice": 0,
+          "invoiceStatus": "unpaid",
+          "closingDay": 11,
+          "dueDay": 16,
+          "installmentTotal": 0
+        },
+        "nubank": {
+          "name": "Nubank",
+          "color": "#7C3AED",
+          "lastFour": "",
+          "limit": 8900,
+          "initialBalance": -30,
+          "openInvoice": -123.75,
+          "nextInvoice": -30,
+          "invoiceStatus": "unpaid",
+          "closingDay": 2,
+          "dueDay": 8,
+          "installmentTotal": 281.25
+        }
+      },
+      "transactions": [
+        {
+          "id": "1792181990742",
+          "date": "2026-10-06",
+          "time": "17:24:44",
+          "description": "Estacionamento Sampa\t",
+          "group": "Motorcycle",
+          "account": "",
+          "type": "",
+          "amount": -150,
+          "recurrence": "fixed",
+          "installments": 0
+        },
+        {
+          "id": "1792181990741",
+          "date": "2026-10-15",
+          "time": "17:24:16",
+          "description": "Seguro",
+          "group": "",
+          "account": "",
+          "type": "",
+          "amount": -144.72,
+          "recurrence": "fixed",
+          "installments": 0
+        },
+        {
+          "id": "1792181990756",
+          "date": "2026-10-11",
+          "time": "17:30:37",
+          "description": "Claro",
+          "group": "Fixed",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -30,
+          "recurrence": "fixed",
+          "installments": 0
+        },
+        {
+          "id": "11",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Parcela - Tenis",
+          "group": "Credit",
+          "account": "nubank",
+          "type": "credit",
+          "amount": -93.75,
+          "recurrence": "installment",
+          "installments": 3
+        },
+        {
+          "id": "5",
+          "date": "2026-09-01",
+          "time": "00:00:00",
+          "description": "Salary",
+          "group": "Salary",
+          "account": "",
+          "type": "",
+          "amount": 2372.46,
+          "recurrence": "fixed",
+          "installments": 0
+        }
+      ],
+      "transfers": []
+    }
+  }
+}

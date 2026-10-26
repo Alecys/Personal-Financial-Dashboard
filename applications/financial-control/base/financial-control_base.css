@@ -1,0 +1,94 @@
+/* ========================================
+   FINANCIAL CONTROL
+======================================== */
+
+.financial-control {
+  width: min(100% - 2rem, 93.75rem);
+
+  margin-inline: auto;
+
+  /* padding-block: clamp(1.25rem, 3vw, 2rem) clamp(2rem, 5vw, 4rem); */
+}
+
+/* ========================================
+   LAYOUT
+======================================== */
+
+.financial-control-layout {
+  display: grid;
+
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+
+  grid-template-areas:
+    "balance balance balance balance balance balance balance balance balance balance balance balance"
+    "accounts accounts accounts accounts accounts accounts accounts accounts credit credit credit credit"
+    "transactions transactions transactions transactions transactions transactions transactions transactions summary summary summary summary"
+    "categories categories categories categories categories categories categories categories categories categories categories categories";
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+/* ========================================
+   COMPONENT SLOTS
+======================================== */
+
+.financial-control-header {
+  margin-bottom: clamp(1.25rem, 4vw, 3rem);
+}
+
+.financial-control-balance {
+  grid-area: balance;
+  min-width: 0;
+  margin-bottom: var(--space-6);
+}
+
+.financial-control-accounts {
+  grid-area: accounts;
+
+  min-width: 0;
+}
+
+.financial-control-credit {
+  grid-area: credit;
+
+  min-width: 0;
+}
+
+.financial-control-transactions {
+  grid-area: transactions;
+
+  min-width: 0;
+}
+
+.financial-control-summary {
+  grid-area: summary;
+
+  min-width: 0;
+}
+
+.financial-control-categories {
+  grid-area: categories;
+
+  min-width: 0;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 48rem) {
+  .financial-control {
+    width: min(100% - 1.5rem, 93.75rem);
+  }
+
+  .financial-control-layout {
+    grid-template-columns: minmax(0, 1fr);
+
+    grid-template-areas:
+      "balance"
+      "accounts"
+      "credit"
+      "transactions"
+      "summary"
+      "categories";
+  }
+}

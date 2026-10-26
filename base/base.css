@@ -1,0 +1,26 @@
+/* ========================================
+   PAGE
+======================================== */
+
+.base-page {
+  width: min(100%, 96rem);
+  min-height: 100vh;
+  margin-inline: auto;
+  padding-block: clamp(1.5rem, 3vw, 3rem);
+  /* padding-inline: clamp(1rem, 3vw, 2rem); */
+  background: var(--color-background);
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.base-content {
+  width: 100%;
+
+  min-width: 0;
+
+  display: grid;
+
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+}

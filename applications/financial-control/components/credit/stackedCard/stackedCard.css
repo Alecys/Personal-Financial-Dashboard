@@ -1,0 +1,91 @@
+/* ========================================
+   STACKED CARD
+   ======================================== */
+
+/* ========================================
+   CREDIT GRID
+   ======================================== */
+
+.credit-grid[data-field="credits"] {
+  position: relative;
+
+  width: 100%;
+
+  perspective: 62.5rem;
+
+  overflow: visible;
+
+  touch-action: pan-y;
+}
+
+/* ========================================
+   CREDIT FLOAT
+   ======================================== */
+
+.credit-grid[data-field="credits"] .credit-float {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 300px;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    box-shadow 0.35s ease;
+
+  will-change: transform;
+}
+
+/* ========================================
+   ACTIVE CARD
+   ======================================== */
+
+.credit-grid[data-field="credits"] .credit-float[data-position="0"] {
+  position: relative;
+}
+
+/* ========================================
+   DRAGGING
+   ======================================== */
+
+.credit-grid[data-field="credits"].is-dragging .credit-float {
+  transition: none;
+}
+
+/* ========================================
+   DECK CARD
+   ======================================== */
+
+.credit-grid[data-field="credits"] .deck-card {
+  cursor: grab;
+}
+
+/* ========================================
+   GRABBING
+   ======================================== */
+
+.credit-grid[data-field="credits"].is-dragging .deck-card {
+  cursor: grabbing;
+}
+
+/* ========================================
+   SWIPE LEFT
+   ======================================== */
+
+.credit-grid[data-field="credits"] .credit-float.swipe-left {
+  transform: translateX(-130%) rotate(-12deg) !important;
+
+  opacity: 0;
+}
+
+/* ========================================
+   SWIPE RIGHT
+   ======================================== */
+
+.credit-grid[data-field="credits"] .credit-float.swipe-right {
+  transform: translateX(130%) rotate(12deg) !important;
+
+  opacity: 0;
+}

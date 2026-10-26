@@ -1,0 +1,371 @@
+/* ========================================
+   LETTERING
+======================================== */
+
+.lettering-title-minimal,
+.lettering-title-minimal-more,
+.lettering-title-minimal-minimal {
+  color: var(--color-text-muted);
+  font-size: 0.625rem;
+  letter-spacing: 0.1125rem;
+}
+
+.lettering-title-minimal-soft {
+  color: var(--color-text-muted);
+  font-size: 0.545rem;
+  letter-spacing: 0rem;
+}
+
+.lettering-title-minimal-soft-more {
+  color: var(--color-text-soft);
+  font-size: 0.65rem;
+  letter-spacing: 0.06rem;
+}
+
+.lettering-title-minimal-minimal {
+  letter-spacing: 0rem;
+}
+
+.lettering-title-minimal-more {
+  font-size: 0.7rem;
+  letter-spacing: 0.15rem;
+}
+
+.lettering-text-small {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.lettering-value-currency-upper {
+  font-size: clamp(2.375rem, 5vw, 3.625rem);
+  font-weight: 600;
+  letter-spacing: -0.125rem;
+}
+
+.lettering-value-currency {
+  font-size: 1.5rem;
+  font-weight: 550;
+}
+
+.lettering-value-percent {
+  font-size: 0.75rem;
+}
+
+/* ========================================
+   VALUE STATES
+======================================== */
+
+.value-positive {
+  color: var(--color-positive);
+}
+
+.value-negative {
+  color: var(--color-negative);
+}
+
+.value-normal-text {
+  font-size: var(--space-075);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ========================================
+   INPUT
+======================================== */
+
+.input-opacity {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 34px;
+  padding: 7px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  outline: none;
+  background: rgba(0, 0, 0, 0.14);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 9px;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.input-opacity:focus {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+select.input-opacity {
+  cursor: pointer;
+}
+
+select.input-opacity optgroup {
+  background: var(--color-surface-light);
+  color: var(--color-text);
+}
+
+select.input-opacity option {
+  background: var(--color-input-background);
+  color: var(--color-text);
+}
+
+.input-opacity[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.input-opacity[type="number"]::-webkit-inner-spin-button,
+.input-opacity[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.button-opacity-select,
+.button-opacity-select-bigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  place-items: center;
+  padding: var(--space-2) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  transition: background var(--transition);
+}
+
+.button-cubic {
+  height: 34px;
+  width: 34px;
+  padding: unset;
+}
+
+.button-translucent {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 0;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+  opacity: 0.7;
+}
+
+.button-translucent:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+  opacity: 1;
+}
+
+.button-translucent:active {
+  transform: scale(0.96);
+}
+
+.button-opacity-select-bigger {
+  padding: var(--space-2);
+  min-width: var(--space-7);
+  min-height: var(--space-7);
+}
+
+.button-opacity-select:hover,
+.button-opacity-select-bigger:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.translateY-minusOne {
+  transform: translateY(-1px);
+}
+
+.translateY-minusTwo {
+  transform: translateY(-2px);
+}
+
+.button-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+[show-button-hidden]:hover .button-hidden {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button-text-confirm {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 7px 14px;
+  border-radius: var(--radius-small);
+  color: white;
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.button-text-cancel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 7px 14px;
+  border-radius: var(--radius-small);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* ========================================
+   TEXT
+======================================== */
+
+.text-white-main {
+  color: var(--color-text);
+  font-size: var(--space-070);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.text-white-bigger {
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 1.5px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.displayFlex-right {
+  justify-content: flex-end;
+  display: flex;
+  width: 100%;
+  gap: var(--space-2);
+}
+
+.lettering-text-small-bold {
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.lettering-text-small-title {
+  color: var(--color-text);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.lettering-text-small-spaced {
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+}
+
+.lettering-info-small {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 0.5rem;
+  opacity: 0.65;
+}
+
+.lettering-text-tiny {
+  font-size: 0.5rem;
+  opacity: 0.5;
+  letter-spacing: 0.06rem;
+}
+
+.lettering-text-small-medium {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ========================================
+   BUTTON TRANSLUCENT CIRCLE
+   ======================================== */
+
+.button-translucent-circle,
+.button-translucent-circle-flip {
+  width: 30px;
+  height: 30px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: rgba(0, 0, 0, 0.12);
+
+  color: var(--color-text);
+
+  font-size: 0.9375rem;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.button-translucent-circle {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.button-translucent-circle:hover,
+.button-translucent-circle-flip:hover {
+  background: rgba(0, 0, 0, 0.24);
+
+  color: var(--color-text);
+
+  opacity: 1;
+
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   BUTTON TRANSLUCENT CIRCLE FLIP
+   ======================================== */
+
+.button-translucent-circle-flip {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.button-translucent-circle-flip:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+}
+
+.first-upper {
+  text-transform: capitalize;
+}

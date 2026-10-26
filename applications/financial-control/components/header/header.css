@@ -1,0 +1,37 @@
+/* ========================================
+   HEADER
+======================================== */
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+/* ========================================
+   BRAND
+======================================== */
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ========================================
+   MONTH-DISPLAY
+======================================== */
+
+.header-month-control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.header-month-display {
+  min-width: 150px;
+}
